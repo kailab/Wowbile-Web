@@ -1,0 +1,17 @@
+{% extends "WowbileBackendBundle::form.html.twig" %}
+
+{% block form_title %}
+{% if entity.id %}
+{{ 'Editing Wöwkipedia Entry' | trans }}
+{% else %}
+{{ 'New Wöwkipedia Entry' | trans }}
+{% endif %}
+{% endblock %}
+
+{% block form_translation %}
+    {{ form_row(trans.name, {'attr':{'size':40}}) }}
+    <div class="form_row">
+    {{ form_widget(trans.description, {'attr':{'class':'tinymce','rows':10,'cols':50}}) }}
+    </div>
+    {{ form_rest(trans) }}
+{% endblock %}

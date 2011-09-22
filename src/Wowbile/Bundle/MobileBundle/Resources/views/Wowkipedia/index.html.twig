@@ -1,0 +1,20 @@
+{% extends "WowbileMobileBundle::layout.html.twig" %}
+
+{% block header %}
+<h1>{{ 'Wöwkipedia' | trans }}</h1>
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+<ul data-role="listview" data-filter="true"
+data-filter-placeholder="{{ 'Search terms...'}}" data-filter-theme="b">
+{% for letter,subentries in entries %}
+<li data-role="list-divider">{{ letter | upper }}</li>
+{% for entry in subentries %}
+<li><a href="">{{ entry.name }}</a></li>
+{% endfor %}
+{% endfor %}
+</ul>
+
+{% endblock %}

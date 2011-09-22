@@ -1,0 +1,65 @@
+{% extends "WowbileBackendBundle::index.html.twig" %}
+
+{% block content_title %}
+{{ 'Wöwkipedia' | trans }}
+{% endblock %}
+
+{% block content_body %}
+{% if entities %}
+
+{% include 'WowbileBackendBundle::_pagination.html.twig' with {'route': 'backend_wowkipedia_entry_index', 'pager': pager} %}
+
+<table class="entity_list">
+<thead>
+<tr>
+    <th>{{ 'Name' | trans }}</th>
+    <th>{{ 'Updated' | trans }}</th>
+    <th>{{ 'Active' | trans }}</th>
+    <th>{{ 'In Homepage' | trans }}</th>
+    <th>{{ 'Actions' | trans }}</th>
+</tr>
+</thead>
+<tbody>
+{% for entry in entities %}
+<tr>
+    <td>
+        {{ entry.name }}
+    </td>
+    <td>
+        {{ entry.updated.format('d/m/Y H:i:s') }}
+    </td>
+    <td>
+        <a href="{{ path('backend_wowkipedia_entry_toggle',{'id':entry.id}) }}">
+            {{ entry.active ? 'Yes' : 'No' | trans }}
+        </a>
+    </td>
+    <td>
+        <a href="{{ path('backend_wowkipedia_entry_homepage',{'id':entry.id}) }}">
+            {{ entry.homepage ? 'Yes' : 'No' | trans }}
+        </a>
+    </td>
+    <td class="actions">
+        <ul>
+            <li><a href="{{ path('backend_wowkipedia_entry_edit',{'id':entry.id}) }}">{{ 'Edit' | trans }}</a></li>
+            <li><a href="{{ path('backend_wowkipedia_entry_delete',{'id':entry.id}) }}">{{ 'Delete' | trans }}</a></li>
+        </ul>
+    </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% include 'WowbileBackendBundle::_pagination.html.twig' with {'route': 'backend_wowkipedia_entry_list', 'pager': pager} %}
+
+{% else %}
+
+<p>{{ 'No entries found.' | trans }}</p>
+
+{% endif %}
+
+<ul id="entity_list_actions">
+    <li><a href="{{ path('backend_wowkipedia_entry_new') }}">{{ 'Add new Entry' | trans }}</a></li>
+</ul>
+
+
+{% endblock %}

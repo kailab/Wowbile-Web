@@ -1,0 +1,171 @@
+
+
+#top {
+	border-bottom: 1px solid #33A3C9;
+	margin-bottom: 15px;
+	overflow: hidden;
+	position: relative;
+	padding-bottom: 40px;
+}
+
+#map_canvas {
+	width: 515px;
+	height: 120px;
+	border: 1px solid #33A3C9;
+	float: right;
+	margin-bottom: 10px;
+}
+
+
+.logo {
+	float: left;
+	width: 115px;
+}
+
+.address {
+	width: 165px;
+	float: left;
+}
+
+.address p {
+	margin-bottom: 10px;
+}
+
+.info {
+	margin: 0;
+}
+
+.info dt {
+	color: #33A3C9;
+	float: left;
+	clear: left;
+	margin-right: 5px;
+	font-weight: bold;
+}
+
+.info dt:after {
+	content: ':';
+}
+
+.info dt:first-child {
+	clear: none;
+}
+
+.info dd {
+	margin: 0 0 10px 0;
+}
+
+.info a {
+	color: #000000;
+	text-decoration: none;
+}
+
+.info a:hover {
+	text-decoration: underline;
+}
+
+#followus {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	text-align: right;
+	font-family: Nunito, Arial, sans-serif;
+	font-weight: bold;
+	height: 30px;
+	line-height: 30px;
+	font-size: 12pt;
+	margin-bottom: 10px;
+}
+
+#followus ul {
+	margin: 0;
+	padding: 0;
+	float: right;
+}
+
+#followus li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	padding-left: 15px;
+	height: 30px;
+	list-style: none;
+}
+
+.person {
+	height: 380px;
+	width: 250px;
+	margin-left: 20px;
+	text-align: center;
+	float: left;
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}
+
+.person:first-child {
+	margin-left: 0;
+}
+
+.person h2 {
+	margin: 0 0 0 0;
+	padding: 0;
+	font-size: 130%;
+}
+
+.person .position {
+	color: #c4c4c4;
+	margin: 0 0 2px 0;
+	font-weight: bold;
+}
+
+.person .description {
+	color: #33A3C9;
+	font-size: x-small;
+}
+
+.person .info dt {
+	display: inline;
+	float: none;
+}
+
+.person .info dd {
+	display: inline;
+}
+
+.person .info dd:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    margin-bottom: 2px;
+    visibility: hidden;
+}
+
+.person#dguzman {
+		background-image: url(../bundles/wowbilefrontend/images/contact_dguzman.png);
+}
+
+.person#dguzman:hover {
+		background-image: url(../bundles/wowbilefrontend/images/contact_dguzman_focus.png);
+}
+
+.person#ftellez {
+		background-image: url(../bundles/wowbilefrontend/images/contact_ftellez.png);
+}
+
+.person#ftellez:hover {
+		background-image: url(../bundles/wowbilefrontend/images/contact_ftellez_focus.png);
+}
+
+.person#tgarcia {
+		background-image: url(../bundles/wowbilefrontend/images/contact_tgarcia.png);
+}
+
+.person#tgarcia:hover {
+		background-image: url(../bundles/wowbilefrontend/images/contact_tgarcia_focus.png);
+}
+
+
+#footer_wrapper {
+	margin: 0 auto;
+}

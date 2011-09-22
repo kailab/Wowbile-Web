@@ -1,0 +1,235 @@
+#twitter_widget {
+	float: right;
+}
+
+#followus {
+	padding-top: 10px;
+	clear: both;
+	text-align: right;
+	font-family: Nunito, Arial, sans-serif;
+	font-weight: bold;
+	height: 30px;
+	line-height: 30px;
+	font-size: 12pt;
+}
+
+#followus ul {
+	margin: 0;
+	padding: 0;
+	float: right;
+}
+
+#followus li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	padding-left: 15px;
+	height: 30px;
+	list-style: none;
+}
+
+#blocks {
+	width: 600px;
+}
+
+.block {
+	width: 185px;
+	background-color: #e6e6e6;
+	border-radius: 15px;
+	float: left;
+	margin-right: 15px;
+	text-align: center;
+	font-size: 10pt;
+	padding-bottom: 15px;
+	color: #777;
+	min-height: 200px;
+}
+
+.block .title {
+	background-color: #33A3C9;
+	background-image: url(../bundles/wowbilefrontend/images/block_title_bg.png);
+	background-repeat: repeat-x;
+	color: #FFFFFF;
+	border-radius: 15px 15px 0 0;
+	padding: 2px 10px;
+	margin-bottom: 10px;
+	font-family: Nunito, Arial, sans-serif;
+}
+
+.block .title h2 {
+	margin: 0;
+	padding: 0;
+	text-align: right;
+	color: #FFFFFF;
+	text-shadow: -2px -2px 5px #1e79a5;
+	font-size: 170%;
+}
+
+.block .title h2 a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.block .body {
+	padding: 0 15px;
+	font-weight: bold;
+	position: relative;
+	height: 150px;
+}
+
+.block .button {
+	background-color: #33a3c9;
+	background-image: url(../bundles/wowbilefrontend/images/block_button_bg.png);
+	background-repeat: repeat-x;
+	color: #FFFFFF;
+	display: block;
+	box-shadow: -2px 2px 3px #CCCCCC;
+	text-shadow: -1px 1px 1px #CCCCCC;
+	padding: 5px;
+}
+.block .button a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.block .button.download {
+	position: absolute;
+	width: 145px;
+	bottom: 0;
+}
+
+.block .button.download a {
+	display: block;
+	background-image: url(../bundles/wowbilefrontend/images/block_button_download.png);
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+
+.block .button:active {
+	box-shadow: -1px -1px 3px #CCCCCC;
+}
+
+.block .explain {
+	color: #33a3c9;
+	font-size: 8pt;
+	font-weight: bold;
+}
+
+.block ul {
+	margin: 0;
+	padding: 0;
+}
+
+.block ul li {
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid #FFFFFF;
+	list-style: none;
+	padding: 2px;
+}
+
+.block ul li a {
+	text-decoration: none;
+	color: #777;
+	font-weight: bold;
+	display: block;
+	background-image: url(../bundles/wowbilefrontend/images/block_li_a_bg.png);
+	background-position: right center;
+	background-repeat: no-repeat;
+	margin-right: 5px;
+}
+
+.block ul li a:hover {
+	color: #999;
+}
+
+.block.wowkipedia dl {
+	border-bottom: 1px solid #FFFFFF;
+	overflow: hidden;
+}
+
+.block.wowkipedia dd {
+	font-size: 30pt;
+	color: #33a3c9;
+	font-family: Nunito, Arial, sans-serif;
+	line-height: normal;
+	margin: 0;
+	text-align: left;
+	float : left;
+	clear: left;
+	padding: 0 5px 0 5px;
+	width: 40px;
+	border-top: 1px solid #FFFFFF;
+}
+
+.block.wowkipedia dt {
+	text-align: left;
+	border-top: 1px solid #FFFFFF;
+	float: left;
+	width: 130px;
+	padding: 10px 5px 10px 0px;
+}
+
+.block.wowkipedia .entry {
+	margin-bottom: 5px;
+}
+
+.block.wowkipedia .entry a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.block.wowkipedia .entry p:first-child {
+	display: inline;
+}
+
+.block.wowkipedia .entry .name {
+	color: #33a3c9;
+	display: inline;
+	font-weight: bold;
+}
+
+.block.wowkipedia .entry .description {
+	display: inline;
+}
+
+.testimony {
+	border-bottom: 1px solid #cce8f3;
+	padding-bottom: 30px;
+	margin: 0 15px 30px 0;
+	font-family: Nunito, Arial, sans-serif;
+	float: left;
+	width: 585px;
+	font-size: 12pt;
+}
+
+.testimony .side {
+	float: left;
+	width: 160px;
+}
+
+.testimony .text {
+	margin: 0 0 1em 155px;
+	padding: 0 0 0 35px;
+	background-image: url(../bundles/wowbilefrontend/images/quote_start.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+
+.testimony .text blockquote {
+	margin: 0;
+	background-image: url(../bundles/wowbilefrontend/images/quote_end.png);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+}
+
+.testimony .text strong {
+	font-size: 120%;
+	color: #33a3c9;
+}
+
+.testimony .info {
+	margin: 0 0 0 190px;
+	font-size: 10pt;
+	text-transform: uppercase;
+}

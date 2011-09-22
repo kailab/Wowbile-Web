@@ -1,0 +1,156 @@
+{% extends "WowbileFrontendBundle::layout.html.twig" %}
+
+{% block title %}
+{{ parent() }} - {{ 'Contact' | trans }}
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+{% stylesheets filter='cssrewrite'
+        'bundles/wowbilefrontend/css/contact.css'
+    %}
+<link rel="stylesheet" href="{{ asset_url }}" type="text/css"
+	media="all" />
+{% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+
+<div id="top">
+	<div class="logo">
+	<img 
+	src="{{ asset('bundles/wowbilefrontend/images/logo_small.png') }}"
+	alt="{{ frontend_helper.configuration.site_name }}"/>
+	</div>
+	
+	<div class="address">
+		<p>Pau Claris 115 Entlo 2ª</p>
+		<p>08009 Barcelona (SPAIN)</p>
+		<dl class="info">
+			<dt>@!</dt>
+			<dd>{{ 'info@wowbile.eu' | mailto | raw }}</dd>
+			<dt>m!</dt>
+			<dd>{{ '+34 633 666 666' | callto | raw }}</dd>
+		</dl>
+	</div>
+	
+	<div id="map_canvas">
+	</div>
+	
+	{% include 'WowbileFrontendBundle:Default:_followus.html.twig' %}
+</div>
+
+<div id="map_info" style="display: none">
+<h3>{{ frontend_helper.configuration.site_name }}</h3>
+<ul>
+<li><a target="_blank" href="http://maps.google.com/maps/place?cid=4564555432391284045">{{ 'see in google maps' | trans }}</a></li>
+<li><a target="_blank" href="http://maps.google.com/maps?q=wowbile&daddr=Pau+Clar%C3%ADs+115,+entlo,+2%C2%AA,+08009+Barcelona,+Espa%C3%B1a+(w%C3%B6wbile!)&hl=es&ie=UTF8&sll=41.392119,2.1679&sspn=0.071946,0.071946&view=map&geocode=CW5v0hjCMnxJFfeXdwIdXBQhACFNFUNR-45YPw&t=m&z=16&vpsrc=0">{{ 'how to arrive' | trans }}</a></li>
+</ul>
+</div>
+
+<div id="people">
+<div class="person" id="dguzman">
+	<h2>Dionis Guzmán</h2>
+	<div class="position">{{ 'Founder' | trans }}</div>
+	<dl class="info">
+		<dt>@!</dt>
+		<dd>{{ 'dionis@wowbile.eu' | mailto | raw }}</dd>
+		<dt>m!</dt>
+		<dd>{{ '+34 633 666 666' | callto | raw }}</dd>
+	</dl>
+	<div class="description">
+	{{ 'the one helping to make things happen' | trans }}
+	</div>
+</div>
+
+<div class="person" id="ftellez">
+	<h2>Francisco Téllez</h2>
+	<div class="position">{{ 'Programmer' | trans }}</div>
+	<dl class="info">
+		<dt>@!</dt>
+		<dd>{{ 'fran@wowbile.eu' | mailto | raw }}</dd>
+		<dt>m!</dt>
+		<dd>{{ '+34 633 666 666' | callto | raw }}</dd>
+	</dl>
+	<div class="description">
+	{{ 'the one programming to make things happen' | trans }}
+	</div>
+</div>
+
+<div class="person" id="tgarcia">
+	<h2>Toni García</h2>
+	<div class="position">{{ 'Founder' | trans }}</div>
+	<dl class="info">
+		<dt>@!</dt>
+		<dd>{{ 'toni@wowbile.eu' | mailto | raw }}</dd>
+		<dt>m!</dt>
+		<dd>{{ '+34 633 666 666' | callto | raw }}</dd>
+	</dl>
+	<div class="description">
+	{{ 'the one fixing to make things happen' | trans }}
+	</div>
+</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var options = {
+        zoom: 14,
+        center: new google.maps.LatLng(41.391868, 2.168099),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var canvas = $('#map_canvas');
+    var map = new google.maps.Map(canvas.get(0), options);
+
+	var image = new google.maps.MarkerImage(
+		{{ asset('bundles/wowbilefrontend/images/map_marker.png') | json_encode | raw }},
+		new google.maps.Size(43,44),
+		new google.maps.Point(0,0),
+		new google.maps.Point(14,41)
+	);
+    
+    var marker = new google.maps.Marker({
+        position: options.center, 
+        map: map, 
+        icon: image,
+        title: {{ frontend_helper.configuration.site_name | json_encode | raw }},
+    });
+
+    var info = new google.maps.InfoWindow();
+    info.setContent($('#map_info').html());
+    info.setPosition(marker.position);
+
+    var resize_map = function(h, callback){
+        if(canvas.height() == h){
+            return;
+        }
+    	canvas.animate({height:h}, function(){
+    		google.maps.event.trigger(map, "resize");
+    		map.panTo(options.center);
+    		if($.isFunction(callback)){
+        		callback.call(this);
+    		}
+    	});
+    };
+
+    var h = canvas.outerHeight();
+    canvas.mouseenter(function(){
+    	resize_map(h*2, function(){
+        	info.open(map);
+    	});
+    });
+    canvas.mouseleave(function(){
+    	resize_map(h, function(){
+        	info.close(map);
+    	});
+    });
+    
+});
+</script>
+
+{% endblock %}

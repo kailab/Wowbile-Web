@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="helper.wowbile.frontend" class="Wowbile\Bundle\FrontendBundle\Templating\Helper\FrontendHelper">
+            <tag name="templating.helper" />
+            <argument type="collection">
+                <argument key="site_name">Wöwbile</argument>
+                <argument key="twitter">wowbile</argument>
+                <argument key="facebook">Wowbile/134570826606044</argument>
+                <argument key="slideshare">mmaspain</argument>
+                <argument type="collection" key="main_menu">
+                	<argument key="frontend_homepage">home</argument>
+                	<argument key="frontend_who">who we are</argument>
+                	<argument key="frontend_concepts">what we do</argument>
+                	<argument key="frontend_customers">customers</argument>
+                	<argument key="frontend_contact">contact</argument>
+                </argument>
+            </argument>
+        </service>
+        <service id="twig.extension.helper.frontend" class="Wowbile\Bundle\FrontendBundle\Templating\Twig\Extension\FrontendExtension">
+            <tag name="twig.extension" />
+            <argument type="service" id="helper.wowbile.frontend" />
+        </service>
+        <service id="helper.wowbile.locale" class="Wowbile\Bundle\FrontendBundle\Templating\Helper\LocaleHelper" scope="request">
+            <tag name="templating.helper" />
+            <argument type="collection">
+                <argument>es</argument>
+                <argument>en</argument>
+            </argument>
+            <argument type="service" id="session" />
+            <argument type="service" id="router" />
+            <argument type="service" id="request" />
+        </service>
+       
+        <service id="ltwig.extension.helper.locale" class="Kailab\Bundle\SharedBundle\Templating\Twig\Extension\HelperExtension">
+            <tag name="twig.extension" />
+            <argument>helper.wowbile.locale</argument>
+            <argument type="service" id="service_container" />
+        </service>
+        
+        <service id="twig.extension.text" class="Twig_Extensions_Extension_Text">
+            <tag name="twig.extension"/>
+        </service>
+    </services>
+</container>

@@ -1,0 +1,117 @@
+.person {
+	width: 250px;
+	margin-left: 20px;
+	float: left;
+	height: 450px;
+	background-repeat: no-repeat;
+	background-position: right top;
+	position: relative;
+}
+
+.person:first-child {
+	margin-left: 0;
+}
+
+.person h2 {
+	font-size: 120%;
+}
+
+.person .excerpt {
+	width: 50%;
+}
+
+#dguzman {
+	background-image: url(../images/who_dguzman.png);
+}
+
+#dguzman:hover {
+	background-image: url(../images/who_dguzman_focus.png);
+}
+
+.person#ftellez {
+	background-image: url(../images/who_ftellez.png);
+}
+
+.person#ftellez:hover {
+	background-image: url(../images/who_ftellez_focus.png);
+}
+
+.person#tgarcia {
+	background-image: url(../images/who_tgarcia.png);
+}
+
+.person#tgarcia:hover {
+	background-image: url(../images/who_tgarcia_focus.png);
+}
+
+.popup {
+	border: 4px solid #33a3ca;
+	border-radius: 20px;
+	font-size: 10pt;
+	position: absolute;
+	padding: 10px;	
+	background-color: #FFFFFF;
+	box-shadow: -2px 2px solid #000000;
+	width: 300px;
+	z-index: 5;
+	opacity: 0.9;
+}
+
+.popup .content {
+	max-height: 500px;
+	overflow: auto;
+	padding: 10px;	
+}
+
+.popup .close {
+	position: absolute;
+	right: 0;
+	width: 24px;
+	height: 24px;
+	background-image: url(../images/popup_close.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	top: -10px;
+	right: -10px;
+	cursor: pointer;
+}
+
+.popup .close:hover{
+	background-image: url(../images/popup_close_focus.png);
+}
+
+.info {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.info dt {
+	color: #33A3C9;
+	float: left;
+	clear: left;
+	margin-right: 5px;
+	font-weight: bold;
+}
+
+.info dt:after {
+	content: ':';
+}
+
+.info dt:first-child {
+	clear: none;
+}
+
+.info dd {
+	margin: 0;
+}
+
+.info a {
+	color: #000000;
+	text-decoration: none;
+}
+
+.info a:hover {
+	text-decoration: underline;
+}
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <!--
+    <parameters>
+        <parameter key="wowbile_backend.example.class">Wowbile\Bundle\BackendBundle\Example</parameter>
+    </parameters>
+
+    <services>
+        <service id="wowbile_backend.example" class="%wowbile_backend.example.class%">
+            <argument type="service" id="service_id" />
+            <argument>plain_value</argument>
+            <argument>%parameter_name%</argument>
+        </service>
+    </services>
+    -->
+    
+	<services>
+		<service id="doctrine.listener.i18n" class="Kailab\Bundle\SharedBundle\Doctrine\I18nListener">
+			<argument type="service" id="service_container"/>
+			<tag name="doctrine.event_listener" event="postLoad"/>
+		</service>
+		<service id="doctrine.listener.position" class="Kailab\Bundle\SharedBundle\Doctrine\PositionListener">
+			<argument type="service" id="service_container"/>
+			<tag name="doctrine.event_listener" event="prePersist"/>
+		</service>
+		<service id="doctrine.listener.timestampable" class="Kailab\Bundle\SharedBundle\Doctrine\TimestampableListener">
+			<argument type="service" id="service_container"/>
+			<tag name="doctrine.event_listener" event="prePersist"/>
+		</service>
+		<service id="doctrine.listener.asset" class="Kailab\Bundle\SharedBundle\Doctrine\AssetListener">
+			<argument type="service" id="service_container"/>
+			<tag name="doctrine.event_listener" event="postPersist"/>
+			<tag name="doctrine.event_listener" event="postUpdate"/>
+			<tag name="doctrine.event_listener" event="postRemove"/>
+			<tag name="doctrine.event_listener" event="postLoad"/>
+		</service>
+		<service id="doctrine.asset.storage" class="Kailab\Bundle\SharedBundle\Asset\DirectoryAssetStorage">
+			<argument type="service" id="service_container"/>
+		</service>
+		<service id="twig.extension.kailab.html" class="Kailab\Bundle\SharedBundle\Templating\Twig\Extension\HtmlExtension">
+            <tag name="twig.extension"/>
+        </service>
+	</services>
+</container>

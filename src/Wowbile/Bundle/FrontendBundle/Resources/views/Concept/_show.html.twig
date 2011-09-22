@@ -1,0 +1,23 @@
+<div class="concept {{ concept.orientation }}"
+{% if hidden is defined %}style="display: none;"{% endif %}	
+>
+	<a name="{{ concept.slug }}"></a>
+	{% if concept.screenshots.count > 0 %}
+	<ul class="screenshots">
+	{% for screen in concept.screenshots %}
+	<li style="display:{% if loop.first %}none{% else %}block{% endif %};">
+	<a href="{{ screen.uri }}" rel="{{ concept.slug }}-screenshots">
+		{% if concept.orientation == 'both' %}
+		<img src="{{ screen.uri('bigcenter') }}" alt="screenshot"/>
+		{% else %}
+		<img src="{{ screen.uri('big') }}" alt="screenshot"/>
+		{% endif %}
+	</a></li>
+	{% endfor %}
+	</ul>
+	{% endif %}
+	<h2>{{ concept.name }}</h2>
+	<div class="content">
+	{{ concept.description | raw }}
+	</div>
+</div>

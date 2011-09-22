@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f6f8;
+    background-image: url(../bundles/wowbilefrontend/images/bg.png);
+    background-repeat: repeat-x;
+}
+
+a {
+    color: #33a3c9;
+}
+
+a img {
+    border: 0;
+}
+
+p {
+	margin: 0 0 0.7em 0;
+	line-height: 1.4em;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: Nunito, Arial, sans-serif;
+	color: #33a3c9;
+	margin-top: 0;
+}
+
+ul li {
+	margin: 0;
+	padding: 0;
+	list-style: url(../bundles/wowbilefrontend/images/bullet.png) square;
+}
+
+#body_wrapper {
+    width: 800px;
+    margin: 20px auto 0 auto;
+}
+
+ul#main_menu {
+    margin: 0;
+    padding: 0;
+}
+
+#logo {
+    margin-bottom: 20px;
+}
+
+#languages {
+    float: right;
+    margin: 0;
+}
+
+#languages li {
+    float: right;
+    list-style: none;
+    font-size: x-small;
+    border-right: 1px solid #000000;
+    margin-right: 1em;
+    padding-right: 1em;
+}
+
+#languages li:first-child {
+    border-right: 0;
+    margin-right: 0;
+    padding-right: 0;
+}
+
+#languages a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #d7d7d7;
+}
+
+#languages .selected a {
+    color: #33a3c9;
+}
+
+#main_menu {
+	font-size: 12pt;
+}
+
+#main_menu li:first-child {
+    margin-left: 0px;
+}
+
+#main_menu li {
+    float: left;
+    margin-left: 5px;
+    font-family: Nunito, Arial, sans-serif;
+    list-style: none;
+}
+
+#main_menu li a {
+    color: #FFFFFF;
+    background-color: #d7d7d7;
+    padding: 1px 0px;
+    text-decoration: none;
+    font-weight: bold;
+    width: 156px;
+    text-align: center;
+    display: block;
+}
+
+#main_menu .selected {
+    background-color: #33a3c9;
+    background-image: url(../bundles/wowbilefrontend/images/main_menu_selected_bg.png);
+    background-repeat: repeat-x;
+}
+
+#main_menu li a:hover {
+    background-color: #c6c6c6;
+}
+
+#main_menu .first {
+    border-radius: 1em 0 0 1em;
+}
+
+#main_menu .last {
+    border-radius: 0 1em 1em 0;
+}
+
+#header_wrapper {
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+#main_wrapper {
+    clear: both;
+}
+
+#footer_wrapper {
+    clear: both;
+    background-color: #33a3c9;
+    width: 800px;
+    margin: 10px auto 0 auto;
+}
+
+#footer {
+    padding: 0.5em;
+}
+
+#main_wrapper {
+    overflow: hidden;
+}

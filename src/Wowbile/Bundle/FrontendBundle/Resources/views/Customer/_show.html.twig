@@ -1,0 +1,33 @@
+<div class="customer {{ customer.orientation }}"
+{% if hidden is defined %}style="display: none;"{% endif %}	
+>
+	<a name="{{ customer.slug }}"></a>
+	<ul class="screenshots">
+	{% for screen in customer.screenshots %}
+	<li style="display:{% if loop.first %}none{% else %}block{% endif %};">
+	<a href="{{ screen.uri }}" rel="{{ customer.slug }}-screenshots">
+		{% if customer.orientation == 'both' %}
+		<img src="{{ screen.uri('bigcenter') }}" alt="screenshot"/>
+		{% else %}
+		<img src="{{ screen.uri('big') }}" alt="screenshot"/>
+		{% endif %}
+	</a></li>
+	{% endfor %}
+	</ul>
+	{% if customer.image.uri %}
+	<div class="image">
+	<img src="{{ customer.image.uri }}" alt="{{ customer.name }}"/>
+	</div>
+	{% endif %}
+	<h2 {% if customer.image.uri %}class="withimage"{% endif %}>{{ customer.name }}</h2>
+	{% if customer.excerpt %}
+	<div class="excerpt {% if customer.image.uri %}withimage{% endif %}">
+	{{ customer.excerpt }}
+	</div>
+	{% endif %}
+	<div class="content">
+	<blockquote>
+		{{ customer.description | raw }}
+	</blockquote>
+	</div>
+</div>

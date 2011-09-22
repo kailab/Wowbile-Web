@@ -1,0 +1,53 @@
+{% extends "WowbileMobileBundle::layout.html.twig" %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div id="logo">
+	<img src="{{ asset('bundles/wowbilemobile/images/logo.png') }}"/>
+</div>
+
+{% if testimony %}
+<div class="testimony">
+<div class="text">
+	<blockquote>{{ testimony.description | raw }}</blockquote>
+</div>
+<div class="info">{{ testimony.info | raw }}</div>
+</div>
+{% endif %}
+
+<ul data-role="listview" data-inset="true">
+	<li data-role="list-divider" role="heading"></li>
+	{% for route,text in mobile_helper.mainMenuItems %}
+	<li><a href="{{ path(route) }}">{{ text | trans }}</a></li>
+   	{% endfor %}
+</ul>
+
+<div id="boxes">
+<ul data-role="listview" data-inset="true" class="small">
+	<li data-role="list-divider" role="heading"></li>
+	<li><a href="">
+		<h3>{{ 'work' | trans | wowbilify | raw }}</h3>
+		<p>{{ 'download our powerpoint' | trans }}</p>
+	</a>
+	</li>
+	<li><a href="">
+		<h3>{{ 'links' | trans | wowbilify | raw }}</h3>
+		<p>{{ 'listing of related websites' | trans }}</p> 
+	</a></li>
+	<li><a href="{{ path('mobile_wowkipedia') }}">
+		<h3>{{ 'wowkipedia' | trans | wowbilify | raw }}</h3>
+		<p>{{ 'learn new words' | trans }}</p> 
+	</a></li>
+</ul>
+
+<div id="bottom" class="ui-body ui-body-c">
+	<a href="http://www.mmaspain.com/">
+		<img src="{{ asset('bundles/wowbilemobile/images/logo_mma.png') }}"/>
+	</a>
+</div>
+</div>
+
+
+{% endblock %}

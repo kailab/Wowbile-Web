@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+        <title>{% block title %}{{ mobile_helper.configuration.site_name }}{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        {% block javascripts %}
+        {% javascripts
+            'bundles/wowbilefrontend/js/jquery.js'
+        %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+        {% endjavascripts %}      
+	   	<script type="text/javascript">
+		$(document).bind("mobileinit", function(){
+		  	$.extend($.mobile, {
+				defaultPageTransition: 'slide'
+		  	});
+		});  
+	    </script>
+        {% javascripts
+            'bundles/wowbilemobile/js/jquery.mobile.js'
+        %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+        {% endjavascripts %}
+        {% endblock %}
+        
+        {% block stylesheets %}
+        {% stylesheets filter='cssrewrite'
+            'bundles/wowbilemobile/css/layout.css'
+            'bundles/wowbilemobile/css/mobile_theme/jquery.mobile.css'
+         %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+        {% endstylesheets %}
+        <link href='http://fonts.googleapis.com/css?family=Nunito:300,400,700' rel='stylesheet' type='text/css'>
+        {% endblock %}
+    </head>
+    <body>
+		<div data-role="page"> 
+			<div data-role="header" data-theme="b">
+			{% block header %}
+			<a href="{{ path('mobile_homepage') }}" data-icon="home" data-iconpos="notext" data-direction="reverse"></a>
+			{% endblock %}
+			</div> 
+			<div data-role="content" data-theme="d">
+			{% block content %}
+			{% endblock %}
+			</div> 
+			<div data-role="footer" data-theme="b">
+			{% block footer %}
+			{% endblock %}
+			</div> 
+		</div> 
+    </body>
+</html>
+

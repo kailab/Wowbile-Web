@@ -1,0 +1,75 @@
+{% extends "WowbileBackendBundle::form.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+{% stylesheets filter='cssrewrite'
+    'bundles/wowbilebackend/css/screenshots.css'
+%}
+<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+{% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+        'bundles/wowbilebackend/js/jquery.screenshots.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block form_title %}
+{% if entity.id %}
+{{ 'Editing Concept' | trans }}
+{% else %}
+{{ 'New Concept' | trans }}
+{% endif %}
+{% endblock %}
+
+{% block form_translation %}
+    {{ form_row(trans.name, {'attr':{'size':40}}) }}
+    {{ form_row(trans.excerpt, {'attr':{'cols':40, 'rows':5}}) }}
+    <div class="form_row">
+    {{ form_widget(trans.description, {'attr':{'class':'tinymce','rows':10,'cols':50}}) }}
+    </div>
+    {{ form_rest(trans) }}
+{% endblock %}
+
+{% block form_rest %}
+{{ form_row(form.url, {'attr':{'size':40}}) }}
+{{ form_row(form.slug, {'attr':{'size':40}}) }}
+
+{{ form_widget(form.screenshots, {'attr':{'class':'screenshots'}}) }}
+
+<script type="text/html" id="screenshots_template">
+<div class="form_row">
+    <h3>{{ 'Selected screenshots' | trans }}</h3>
+    <ul class="selected_screenshots screenshots">
+    </ul>
+</div>
+<div class="form_row">
+    <h3>{{ 'Available screenshots' | trans }}</h3>
+    <ul class="available_screenshots screenshots">
+    </ul>
+</div>
+</script>
+
+<script type="text/html" id="screenshot_template">
+<li class="screenshot_wrapper">
+    <img src="__url__" />
+</li>
+</script>
+
+{{ parent() }}
+{% endblock %}
+
+{% block footer %}
+{{ parent() }}
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.screenshots').screenshots({
+    });
+});
+</script>
+{% endblock %}

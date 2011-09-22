@@ -1,0 +1,133 @@
+{% extends "WowbileFrontendBundle::layout.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="http://widgets.twimg.com/j/2/widget.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite'
+        'bundles/wowbilefrontend/css/homepage.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+
+<div id="twitter_widget"></div>
+
+{% if testimony %}
+<div class="testimony">
+<div class="side">
+	{% if testimony.image.uri %}
+	<img src="{{ testimony.image.uri }}"/>
+	{% else %}
+	<img src="{{ asset('bundles/wowbilefrontend/images/test_testimony.png') }}"/>
+	{% endif %}
+</div>
+<div class="text">
+	<blockquote>{{ testimony.description | raw }}</blockquote>
+</div>
+<div class="info">{{ testimony.info | raw }}</div>
+</div>
+{% endif %}
+
+<div id="blocks">
+	<div class="block">
+	    <div class="title">
+	        <h2>{{ 'work!' | trans | wowbilify }}</h2>
+	    </div>
+	    <div class="body">
+	        <p>{{ 'Download this file to get more detailed information about wowbile' | trans }}</p>
+	        <div class="button download">
+		        <a href="http://www.google.com">
+		            {{ 'Download PPT' | trans }}
+		        </a>
+	        </div>
+	    </div>
+	</div>
+	
+	{% if links %}
+	<div class="block">
+	    <div class="title">
+	        <h2>{{ 'links!' | trans | wowbilify }}</h2>
+	    </div>
+	    	<p class="explain">Texto de prueba</p>
+			<ul>
+				{% for link in links %}
+				<li>{{ link | raw }}</li>
+				{% endfor %}
+			</ul>
+	</div>
+	{% endif %}
+	
+	{% if wowkipedia %}
+	<div class="block wowkipedia">
+	    <div class="title">
+	        <h2><a href="{{ path('wowkipedia') }}">{{ 'wowkipedia' | trans | wowbilify }}</a></h2>
+	    </div>
+	    	<p class="explain">Texto de prueba</p>
+			<dl>
+				{% for letter,entries in wowkipedia %}
+				<dd>{{ letter | wowbilify }}!</dd>
+				<dt>{% for entry in entries %}
+				<div class="entry">
+					<a href="{{ path('wowkipedia') }}#{{ entry.anchor }}">
+						<div class="name">{{ entry.name }}:</div>
+						<div class="description">{{ entry.excerpt | raw }}</div>
+					</a>
+				</div>
+				{% endfor %}
+				</dt>
+				{% endfor %}
+			</dl>
+	</div>
+	{% endif %}
+</div>
+
+{% include 'WowbileFrontendBundle:Default:_followus.html.twig' %}
+
+<a href="http://www.mmaspain.com/">
+    <img src="{{ asset('bundles/wowbilefrontend/images/logo_mma.png') }}"/>
+</a>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var h = $('#main').innerHeight()-155;
+	var user = {{ frontend_helper.configuration.twitter | json_encode | raw }};
+    new TWTR.Widget({
+      id: 'twitter_widget',
+      version: 2,
+      type: 'profile',
+      rpp: 30,
+      interval: 6000,
+      width: 200,
+      height: h,
+      theme: {
+        shell: {
+          background: '#33A3C9',
+          color: '#ffffff'
+        },
+        tweets: {
+          background: '#ffffff',
+          color: '#000000',
+          links: '#33A3C9'
+        }
+      },
+      features: {
+        scrollbar: true,
+        loop: false,
+        live: true,
+        hashtags: true,
+        timestamp: true,
+        avatars: false,
+        behavior: 'all'
+      }
+    }).render().setUser(user).start();
+});
+</script>
+
+
+{% endblock %}

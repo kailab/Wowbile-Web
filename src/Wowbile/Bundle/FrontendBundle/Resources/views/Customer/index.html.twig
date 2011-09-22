@@ -1,0 +1,77 @@
+{% extends "WowbileFrontendBundle::layout.html.twig" %}
+
+{% block title %}
+{{ parent() }} - {{ 'Our customers' | trans }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite'
+        'bundles/wowbilefrontend/css/customers.css'
+        'bundles/wowbilefrontend/css/fancybox_theme/jquery.fancybox.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+        'bundles/wowbilefrontend/js/jquery.cycle.js'
+        'bundles/wowbilefrontend/js/jquery.fancybox.js'
+        'bundles/wowbilefrontend/js/jquery.easing.js'
+        'bundles/wowbilefrontend/js/jquery.mousewheel.js'
+        'bundles/wowbilefrontend/js/jquery.slidemenu.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block content %}
+
+{% if customers %}
+
+<div id="customers_list">
+<div class="left"></div>
+<div class="right"></div>
+<div class="scroll">
+<ul class="customers">
+{% for customer in customers %}
+<li {% if loop.first%}class="selected"{% endif %}>
+<a href="#{{ customer.slug }}" title="{{ customer.name }}">
+	{{ customer.name | truncate(12) }}
+</a></li>
+{% endfor %}
+</ul>
+</div>
+</div>
+
+{% for customer in customers %}
+{% include 'WowbileFrontendBundle:Customer:_show.html.twig'
+with {'customer': customer, 'hidden': true} %}
+
+{% endfor %}
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.screenshots').cycle({
+		slideCss: { position: 'absolute', 'right':0, 'top':0 }
+	});
+	$('#customers_list').slidemenu({
+		sectionSelector: '.customer',
+		previousSelector: '.left',
+		nextSelector: '.right'
+	});
+	$('.screenshots li a').fancybox({
+	});
+});
+</script>
+
+{% else %}
+
+<p class="flash_info">{{ 'We currently have no information to show about our customers.' | trans }}</p>
+
+{% endif %}
+
+{% endblock %}

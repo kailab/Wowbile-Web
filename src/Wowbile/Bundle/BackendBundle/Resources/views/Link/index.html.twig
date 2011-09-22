@@ -1,0 +1,65 @@
+{% extends "WowbileBackendBundle::index.html.twig" %}
+
+{% block content_title %}
+{{ 'Links' | trans }}
+{% endblock %}
+
+{% block content_body %}
+{% if entities %}
+
+{% include 'WowbileBackendBundle::_pagination.html.twig' with {'route': 'backend_link_index', 'pager': pager} %}
+
+<table class="entity_list">
+<thead>
+<tr>
+    <th>{{ 'Name' | trans }}</th>
+    <th>{{ 'Updated' | trans }}</th>
+    <th>{{ 'Active' | trans }}</th>
+    <th>{{ 'In Homepage' | trans }}</th>
+    <th>{{ 'Actions' | trans }}</th>
+</tr>
+</thead>
+<tbody>
+{% for entity in entities %}
+<tr>
+    <td>
+        {{ entity | raw }}
+    </td>
+    <td>
+        {{ entity.updated.format('d/m/Y H:i:s') }}
+    </td>
+    <td>
+        <a href="{{ path('backend_link_toggle',{'id':entity.id}) }}">
+            {{ entity.active ? 'Yes' : 'No' | trans }}
+        </a>
+    </td>
+    <td>
+        <a href="{{ path('backend_link_homepage',{'id':entity.id}) }}">
+            {{ entity.homepage ? 'Yes' : 'No' | trans }}
+        </a>
+    </td>
+    <td class="actions">
+        <ul>
+            <li><a href="{{ path('backend_link_edit',{'id':entity.id}) }}">{{ 'Edit' | trans }}</a></li>
+            <li><a href="{{ path('backend_link_delete',{'id':entity.id}) }}">{{ 'Delete' | trans }}</a></li>
+        </ul>
+    </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% include 'WowbileBackendBundle::_pagination.html.twig' with {'route': 'backend_link_list', 'pager': pager} %}
+
+{% else %}
+
+<p>{{ 'No links found.' | trans }}</p>
+
+{% endif %}
+
+<ul id="entity_list_actions">
+    <li><a href="{{ path('backend_link_new') }}">{{ 'Add new Link' | trans }}</a></li>
+</ul>
+
+
+{% endblock %}

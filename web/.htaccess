@@ -1,0 +1,350 @@
+RewriteEngine On
+# skip "real" requests
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule .* - [QSA,L]
+
+# homepage
+RewriteCond %{REQUEST_URI} ^/wowbile$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/wowbile/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:homepage,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:indexAction]
+
+# mobile_homepage
+RewriteCond %{REQUEST_URI} ^/wowbile/m$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/wowbile/m/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:mobile_homepage,E=_ROUTING__controller:Wowbile\\Bundle\\MobileBundle\\Controller\\DefaultController\:\:indexAction]
+
+# mobile_concepts
+RewriteCond %{REQUEST_URI} ^/wowbile/m/concepts$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:mobile_concepts,E=_ROUTING__controller:Wowbile\\Bundle\\MobileBundle\\Controller\\ConceptController\:\:indexAction]
+
+# mobile_concept
+RewriteCond %{REQUEST_URI} ^/wowbile/m/concepts/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:mobile_concept,E=_ROUTING_slug:%1,E=_ROUTING__controller:Wowbile\\Bundle\\MobileBundle\\Controller\\ConceptController\:\:showAction]
+
+# mobile_customers
+RewriteCond %{REQUEST_URI} ^/wowbile/m/customers$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:mobile_customers,E=_ROUTING__controller:Wowbile\\Bundle\\MobileBundle\\Controller\\CustomerController\:\:indexAction]
+
+# mobile_customer
+RewriteCond %{REQUEST_URI} ^/wowbile/m/customer/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:mobile_customer,E=_ROUTING_slug:%1,E=_ROUTING__controller:Wowbile\\Bundle\\MobileBundle\\Controller\\CustomerController\:\:showAction]
+
+# mobile_who
+RewriteCond %{REQUEST_URI} ^/wowbile/m/who$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:mobile_who,E=_ROUTING__controller:Wowbile\\Bundle\\MobileBundle\\Controller\\DefaultController\:\:whoAction]
+
+# mobile_contact
+RewriteCond %{REQUEST_URI} ^/wowbile/m/contact$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:mobile_contact,E=_ROUTING__controller:Wowbile\\Bundle\\MobileBundle\\Controller\\DefaultController\:\:contactAction]
+
+# mobile_wowkipedia
+RewriteCond %{REQUEST_URI} ^/wowbile/m/wowkipedia$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:mobile_wowkipedia,E=_ROUTING__controller:Wowbile\\Bundle\\MobileBundle\\Controller\\WowkipediaController\:\:indexAction]
+
+# wowkipedia_entry
+RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)/wowkipedia/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:wowkipedia_entry,E=_ROUTING__locale:%1,E=_ROUTING_name:%2,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\WowkipediaController\:\:showAction]
+
+# localized_homepage
+RewriteCond %{REQUEST_URI} ^/wowbile/(..)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:localized_homepage,E=_ROUTING__locale:%1,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:indexAction]
+
+# fos_user_security_login
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/login$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fos_user_security_login,E=_ROUTING__controller:FOS\\UserBundle\\Controller\\SecurityController\:\:loginAction]
+
+# fos_user_security_check
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/login_check$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fos_user_security_check,E=_ROUTING__controller:FOS\\UserBundle\\Controller\\SecurityController\:\:checkAction]
+
+# fos_user_security_logout
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/logout$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fos_user_security_logout,E=_ROUTING__controller:FOS\\UserBundle\\Controller\\SecurityController\:\:logoutAction]
+
+# fos_user_profile_show
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/profile/$
+RewriteCond %{REQUEST_METHOD} !^(GET|HEAD)$ [NC]
+RewriteRule .* - [S=2,E=_ROUTING__allow_GET:1,E=_ROUTING__allow_HEAD:1]
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/profile$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/profile/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fos_user_profile_show,E=_ROUTING__controller:FOS\\UserBundle\\Controller\\ProfileController\:\:showAction]
+
+# fos_user_profile_edit
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/profile/edit$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fos_user_profile_edit,E=_ROUTING__controller:FOS\\UserBundle\\Controller\\ProfileController\:\:editAction]
+
+# fos_user_registration_register
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/register$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/register/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fos_user_registration_register,E=_ROUTING__controller:FOS\\UserBundle\\Controller\\RegistrationController\:\:registerAction]
+
+# fos_user_registration_check_email
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/register/check\-email$
+RewriteCond %{REQUEST_METHOD} !^(GET|HEAD)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_GET:1,E=_ROUTING__allow_HEAD:1]
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/register/check\-email$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fos_user_registration_check_email,E=_ROUTING__controller:FOS\\UserBundle\\Controller\\RegistrationController\:\:checkEmailAction]
+
+# fos_user_registration_confirm
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/register/confirm/([^/]+?)$
+RewriteCond %{REQUEST_METHOD} !^(GET|HEAD)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_GET:1,E=_ROUTING__allow_HEAD:1]
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/register/confirm/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fos_user_registration_confirm,E=_ROUTING_token:%1,E=_ROUTING__controller:FOS\\UserBundle\\Controller\\RegistrationController\:\:confirmAction]
+
+# fos_user_registration_confirmed
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/register/confirmed$
+RewriteCond %{REQUEST_METHOD} !^(GET|HEAD)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_GET:1,E=_ROUTING__allow_HEAD:1]
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/register/confirmed$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fos_user_registration_confirmed,E=_ROUTING__controller:FOS\\UserBundle\\Controller\\RegistrationController\:\:confirmedAction]
+
+# fos_user_resetting_request
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/resetting/request$
+RewriteCond %{REQUEST_METHOD} !^(GET|HEAD)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_GET:1,E=_ROUTING__allow_HEAD:1]
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/resetting/request$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fos_user_resetting_request,E=_ROUTING__controller:FOS\\UserBundle\\Controller\\ResettingController\:\:requestAction]
+
+# fos_user_resetting_send_email
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/resetting/send\-email$
+RewriteCond %{REQUEST_METHOD} !^(POST)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_POST:1]
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/resetting/send\-email$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fos_user_resetting_send_email,E=_ROUTING__controller:FOS\\UserBundle\\Controller\\ResettingController\:\:sendEmailAction]
+
+# fos_user_resetting_check_email
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/resetting/check\-email$
+RewriteCond %{REQUEST_METHOD} !^(GET|HEAD)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_GET:1,E=_ROUTING__allow_HEAD:1]
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/resetting/check\-email$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fos_user_resetting_check_email,E=_ROUTING__controller:FOS\\UserBundle\\Controller\\ResettingController\:\:checkEmailAction]
+
+# fos_user_resetting_reset
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/resetting/reset/([^/]+?)$
+RewriteCond %{REQUEST_METHOD} !^(GET|POST|HEAD)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_GET:1,E=_ROUTING__allow_POST:1,E=_ROUTING__allow_HEAD:1]
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/resetting/reset/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fos_user_resetting_reset,E=_ROUTING_token:%1,E=_ROUTING__controller:FOS\\UserBundle\\Controller\\ResettingController\:\:resetAction]
+
+# fos_user_change_password
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/password/change\-password$
+RewriteCond %{REQUEST_METHOD} !^(GET|POST|HEAD)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING__allow_GET:1,E=_ROUTING__allow_POST:1,E=_ROUTING__allow_HEAD:1]
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/user/password/change\-password$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fos_user_change_password,E=_ROUTING__controller:FOS\\UserBundle\\Controller\\ChangePasswordController\:\:changePasswordAction]
+
+# backend_concept_index
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/concept$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_concept_index,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\ConceptController\:\:indexAction]
+
+# backend_concept_new
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/concept/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_concept_new,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\ConceptController\:\:newAction]
+
+# backend_concept_edit
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/concept/edit/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_concept_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\ConceptController\:\:editAction]
+
+# backend_concept_delete
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/concept/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_concept_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\ConceptController\:\:deleteAction]
+
+# backend_concept_toggle
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/concept/toggle/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_concept_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\ConceptController\:\:toggleAction]
+
+# backend_concept_up
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/concept/up/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_concept_up,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\ConceptController\:\:upAction]
+
+# backend_concept_down
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/concept/down/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_concept_down,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\ConceptController\:\:downAction]
+
+# backend_customer_index
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/customer$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_customer_index,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\CustomerController\:\:indexAction]
+
+# backend_customer_new
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/customer/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_customer_new,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\CustomerController\:\:newAction]
+
+# backend_customer_edit
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/customer/edit/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_customer_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\CustomerController\:\:editAction]
+
+# backend_customer_delete
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/customer/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_customer_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\CustomerController\:\:deleteAction]
+
+# backend_customer_toggle
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/customer/toggle/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_customer_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\CustomerController\:\:toggleAction]
+
+# backend_customer_up
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/customer/up/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_customer_up,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\CustomerController\:\:upAction]
+
+# backend_customer_down
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/customer/down/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_customer_down,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\CustomerController\:\:downAction]
+
+# wowbile_backend_default_index
+RewriteCond %{REQUEST_URI} ^/wowbile/admin$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:wowbile_backend_default_index,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\DefaultController\:\:indexAction]
+
+# backend_link_index
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/link$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_link_index,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\LinkController\:\:indexAction]
+
+# backend_link_new
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/link/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_link_new,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\LinkController\:\:newAction]
+
+# backend_link_edit
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/link/edit/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_link_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\LinkController\:\:editAction]
+
+# backend_link_delete
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/link/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_link_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\LinkController\:\:deleteAction]
+
+# backend_link_toggle
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/link/toggle/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_link_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\LinkController\:\:toggleAction]
+
+# backend_link_homepage
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/link/homepage/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_link_homepage,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\LinkController\:\:homepageAction]
+
+# backend_platform_index
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/platform$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_index,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\PlatformController\:\:indexAction]
+
+# backend_platform_new
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/platform/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_new,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\PlatformController\:\:newAction]
+
+# backend_platform_edit
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/platform/edit/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\PlatformController\:\:editAction]
+
+# backend_platform_delete
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/platform/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\PlatformController\:\:deleteAction]
+
+# backend_platform_toggle
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/platform/toggle/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\PlatformController\:\:toggleAction]
+
+# backend_screenshot_index
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/screenshot$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_index,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\ScreenshotController\:\:indexAction]
+
+# backend_screenshot_new
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/screenshot/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_new,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\ScreenshotController\:\:newAction]
+
+# backend_screenshot_edit
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/screenshot/edit/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\ScreenshotController\:\:editAction]
+
+# backend_screenshot_delete
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/screenshot/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\ScreenshotController\:\:deleteAction]
+
+# backend_screenshot_toggle
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/screenshot/toggle/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\ScreenshotController\:\:toggleAction]
+
+# backend_testimony_index
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/testimony$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_testimony_index,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\TestimonyController\:\:indexAction]
+
+# backend_testimony_new
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/testimony/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_testimony_new,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\TestimonyController\:\:newAction]
+
+# backend_testimony_edit
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/testimony/edit/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_testimony_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\TestimonyController\:\:editAction]
+
+# backend_testimony_delete
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/testimony/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_testimony_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\TestimonyController\:\:deleteAction]
+
+# backend_testimony_toggle
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/testimony/toggle/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_testimony_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\TestimonyController\:\:toggleAction]
+
+# backend_wowkipedia_entry_index
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/wowkipedia$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_wowkipedia_entry_index,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\WowkipediaEntryController\:\:indexAction]
+
+# backend_wowkipedia_entry_new
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/wowkipedia/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_wowkipedia_entry_new,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\WowkipediaEntryController\:\:newAction]
+
+# backend_wowkipedia_entry_edit
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/wowkipedia/edit/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_wowkipedia_entry_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\WowkipediaEntryController\:\:editAction]
+
+# backend_wowkipedia_entry_delete
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/wowkipedia/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_wowkipedia_entry_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\WowkipediaEntryController\:\:deleteAction]
+
+# backend_wowkipedia_entry_toggle
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/wowkipedia/toggle/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_wowkipedia_entry_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\WowkipediaEntryController\:\:toggleAction]
+
+# backend_wowkipedia_entry_homepage
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/wowkipedia/homepage/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_wowkipedia_entry_homepage,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\WowkipediaEntryController\:\:homepageAction]
+
+# frontend_concepts
+RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)/concepts$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_concepts,E=_ROUTING__locale:%1,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\ConceptController\:\:indexAction]
+
+# frontend_concept
+RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)/concepts/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_concept,E=_ROUTING__locale:%1,E=_ROUTING_slug:%2,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\ConceptController\:\:showAction]
+
+# frontend_customers
+RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)/customers$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_customers,E=_ROUTING__locale:%1,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\CustomerController\:\:indexAction]
+
+# frontend_customer
+RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)/customers/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_customer,E=_ROUTING__locale:%1,E=_ROUTING_slug:%2,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\CustomerController\:\:showAction]
+
+# frontend_homepage
+RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_homepage,E=_ROUTING__locale:%1,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:indexAction]
+
+# frontend_who
+RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)/who$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_who,E=_ROUTING__locale:%1,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:whoAction]
+
+# frontend_contact
+RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)/contact$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_contact,E=_ROUTING__locale:%1,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:contactAction]
+
+# wowkipedia
+RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)/wowkipedia$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:wowkipedia,E=_ROUTING__locale:%1,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\WowkipediaController\:\:indexAction]
+
+# 405 Method Not Allowed
+RewriteCond %{_ROUTING__allow_GET} !-z [OR]
+RewriteCond %{_ROUTING__allow_HEAD} !-z [OR]
+RewriteCond %{_ROUTING__allow_POST} !-z
+RewriteRule .* app.php [QSA,L]
+

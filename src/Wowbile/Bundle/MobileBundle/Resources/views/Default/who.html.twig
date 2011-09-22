@@ -1,0 +1,54 @@
+{% extends "WowbileMobileBundle::layout.html.twig" %}
+
+{% block header %}
+<h1>{{ 'Who are we?' | trans }}</h1>
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+<div class="person">
+	<h2>Dionís Guzman</h2>
+	
+	<p>Los últimos años como Brand Manager en Samsung Mobile me acabaron de convencer
+	sobre el potencial de márketing mobil como un nuevo factor clave y revolucionario
+	en el márketing digital.</p>
+	
+	<div data-role="collapsible" data-theme="b">
+		<h3>{{ 'More about %name%' | trans({'%name%': 'Dionís' }) }}</h3>
+		<ul data-role="listview" data-inset="true">
+			<li>{{ 'dionis@wowbile.eu' | mailto('Send him an email', true) }}</a>
+			<li>{{ '+346375431' | callto('Call him on the phone') }}</a>
+		</ul>
+	</div>
+</div>
+
+<div class="person">
+<h2>Francisco Téllez</h2>
+	<p>Todo empezo con un ordenador de 8 bits a los 14 años, entonces programar videojuegos se convirtió en
+	mi hobby y pasión que marcarían mi trayectoria profesional.</p>
+	
+	<div data-role="collapsible" data-theme="b">
+		<h3>{{ 'More about %name%' | trans({'%name%': 'Fran' }) }}</h3>
+		<ul data-role="listview" data-inset="true">
+			<li>{{ 'fran@wowbile.eu' | mailto('Send him an email', true) }}</a>
+			<li>{{ '+346375431' | callto('Call him on the phone') }}</a>
+		</ul>
+	</div>
+</div>
+
+<div class="person">
+<h2>Toni García</h2>
+	<p>Portalmix.com, el portal de entretenimiento del grupo Gestmusic-Endemol me sirvió para
+	marcar un antes y un después en el potencial de Internet y las nuevas tecnologías.</p>
+	
+	<div data-role="collapsible" data-theme="b">
+		<h3>{{ 'More about %name%' | trans({'%name%': 'Toni' }) }}</h3>
+		<ul data-role="listview" data-inset="true">
+			<li>{{ 'toni@wowbile.eu' | mailto('Send him an email', true) }}</a>
+			<li>{{ '+346375431' | callto('Call him on the phone') }}</a>
+		</ul>
+	</div>
+</div>
+
+{% endblock %}

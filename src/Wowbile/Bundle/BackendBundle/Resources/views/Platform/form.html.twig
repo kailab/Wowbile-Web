@@ -1,0 +1,71 @@
+{% extends "WowbileBackendBundle::form.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+{% stylesheets filter='cssrewrite'
+    'bundles/wowbilebackend/css/screenshots.css'
+%}
+<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+{% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+        'bundles/wowbilebackend/js/jquery.screenshots.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block form_title %}
+{% if entity.id %}
+{{ 'Editing Platform' | trans }}
+{% else %}
+{{ 'New Platform' | trans }}
+{% endif %}
+{% endblock %}
+
+{% block form_translation %}
+    {{ form_row(trans.name, {'attr':{'size':40}}) }}
+    {{ form_row(trans.excerpt, {'attr':{'cols':40, 'rows':5}}) }}
+    {{ form_widget(trans.description, {'attr':{'class':'tinymce','rows':10,'cols':50}}) }}
+    {{ form_rest(trans) }}
+{% endblock %}
+
+{% block form_rest %}
+<div class="form_row">
+  <label>{{ 'Screen' | trans }}</label>
+  <div class="form_row_content">
+  x{{ form_widget(form.screen_x, {'attr':{'size':3}}) }}
+  y{{ form_widget(form.screen_y, {'attr':{'size':3}}) }}
+  w{{ form_widget(form.screen_w, {'attr':{'size':3}}) }}
+  h{{ form_widget(form.screen_h, {'attr':{'size':3}}) }}
+  </div>
+</div>
+{{ form_row(form.url,{'attr':{'size':40}}) }}
+{{ form_row(form.slug,{'attr':{'size':40}}) }}
+<div class="form_row">
+    {{ form_label(form.icon) }}
+    <div class="form_row_content">
+        {{ form_widget(form.icon) }}
+    </div>
+    {% if entity.icon.uri %}
+    <div class="form_row_comment">
+        <img src="{{ entity.icon.uri }}"/>
+    </div>
+    {% endif %}
+</div>
+<div class="form_row">
+    {{ form_label(form.background) }}
+    <div class="form_row_content">
+        {{ form_widget(form.background) }}
+    </div>
+    {% if entity.background('blue').uri %}
+    <div class="form_row_comment">
+        <img src="{{ entity.background('blue').uri }}"/>
+    </div>
+    {% endif %}
+</div>
+{{ parent() }}
+{% endblock %}

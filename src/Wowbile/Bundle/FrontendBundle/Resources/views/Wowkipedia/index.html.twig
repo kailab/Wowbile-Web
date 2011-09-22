@@ -1,0 +1,74 @@
+{% extends "WowbileFrontendBundle::layout.html.twig" %}
+
+{% block title %}
+{{ parent() }} - {{ 'Wöwkipedia' | trans }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+        'bundles/wowbilefrontend/js/jquery.wowkipedia.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite'
+        'bundles/wowbilefrontend/css/wowkipedia.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+
+<div id="wowkipedia_header">
+	<img class="logo" src="{{ asset('bundles/wowbilefrontend/images/logo_wowkipedia.png') }}"/>
+	
+	<div class="description">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tempor rutrum ultricies.
+		Cras hendrerit tempor est et tempus. Etiam rutrum tincidunt nisl, ut lobortis justo sagittis eget.
+		Phasellus sit amet sodales turpis. Maecenas a nunc tempus quam fringilla dignissim sit amet in tellus.</p>
+		
+		<p>Suspendisse id lectus et est aliquam tempus quis ut odio. Pellentesque habitant morbi tristique senectus
+		et netus et malesuada fames ac turpis egestas. Nam gravida dignissim nisl, quis porta diam pharetra
+		adipiscing. Donec et felis nulla. Donec volutpat tellus et mauris suscipit et ultrices dolor ornare.</p>
+	</div>
+</div>
+
+<ul id="letters">
+{% for letter in letters %}
+<li><a href="#{{ letter }}">{{ letter | upper }}{{ letter }}</a></li>
+{% endfor %}
+</ul>
+
+<div class="groups">
+	{% for letter,subentries in entries %}
+	<div class="group" style="display: none;">
+		<a name="{{ letter }}"></a>
+		<div class="letter">{{ letter ~ "!" | wowbilify }}</div>
+		<div class="columns">
+			{% for column in subentries %}
+			<div class="column">
+				{% for entry in column %}
+{% include 'WowbileFrontendBundle:Wowkipedia:_show.html.twig' with {'entry': entry} %}
+				{% endfor %}
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	{% endfor %}
+	<div class="group" id="empty_group" style="display: none;">
+		<p>{{ 'This letter has no defined terms.' | trans }}</p>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#letters a').wowkipedia();
+});
+</script>
+
+{% endblock %}

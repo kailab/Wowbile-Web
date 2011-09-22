@@ -1,0 +1,27 @@
+{% extends "WowbileFrontendBundle::layout.html.twig" %}
+
+{% block title %}
+{{ parent() }} - {{ 'Wöwkipedia' | trans }} - {{ entry.name }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+        'bundles/wowbilefrontend/js/jquery.wowkipedia.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite'
+        'bundles/wowbilefrontend/css/wowkipedia.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+{% include 'WowbileFrontendBundle:Wowkipedia:_show.html.twig' with {'entry': entry} %}
+{% endblock %}
