@@ -4,7 +4,6 @@ app/cache/*
 app/upload/*
 app/logs/*
 build/
-vendor/
 .buildpath
 .project
 .settings/
