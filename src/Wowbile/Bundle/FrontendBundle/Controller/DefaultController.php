@@ -8,24 +8,38 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DefaultController extends Controller
 {
+	protected function getHomepageTestimony()
+	{
+		$em = $this->getDoctrine()->getEntityManager();
+		$repo = $em->getRepository('WowbileEntityBundle:Testimony');
+		return $repo->findFeatured();
+	}
+	
+	protected function getHomepageWowkipedia()
+	{
+		$em = $this->getDoctrine()->getEntityManager();
+		$repo = $em->getRepository('WowbileEntityBundle:WowkipediaEntry');
+		$entries = $repo->findForHomepage();
+		return $repo->groupByLetters($entries);
+	}
+	
+	protected function getHomepageLinks()
+	{
+		$em = $this->getDoctrine()->getEntityManager();
+		$repo = $em->getRepository('WowbileEntityBundle:Link');
+		$links = $repo->findForHomepage();
+	}
+	
     /**
      * @Route("/", name="frontend_homepage")
      * @Template()
      */
     public function indexAction()
     {
-    	$em = $this->getDoctrine()->getEntityManager();
-    	$repo = $em->getRepository('WowbileEntityBundle:Testimony');
-    	$testimony = $repo->findFeatured();
-    	$repo = $em->getRepository('WowbileEntityBundle:WowkipediaEntry');
-    	$wowkipedia = $repo->findForHomepage();
-    	$wowkipedia = $repo->groupByLetters($wowkipedia);
-    	$repo = $em->getRepository('WowbileEntityBundle:Link');
-    	$links = $repo->findForHomepage();
 		return array(
-			'testimony'		=> $testimony,
-			'wowkipedia'	=> $wowkipedia,
-			'links'			=> $links,
+			'testimony'		=> $this->getHomepageTestimony(),
+			'wowkipedia'	=> $this->getHomepageWowkipedia(),
+			'links'			=> $this->getHomepageLinks(),
 		);
     }
 

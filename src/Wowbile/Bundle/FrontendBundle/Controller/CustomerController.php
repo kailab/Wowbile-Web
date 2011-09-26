@@ -2,6 +2,8 @@
 
 namespace Wowbile\Bundle\FrontendBundle\Controller;
 
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -27,7 +29,7 @@ class CustomerController extends Controller
     }
     
     /**
-    * @Route("/customers/{slug}", name="frontend_customer")
+    * @Route("/customer/{slug}", name="frontend_customer")
     * @Template()
     */
     public function showAction($slug)

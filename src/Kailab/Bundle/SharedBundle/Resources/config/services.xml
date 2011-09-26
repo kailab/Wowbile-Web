@@ -19,6 +19,10 @@
     -->
     
 	<services>
+		<service id="kernel.listener.mobile_version" class="Kailab\Bundle\SharedBundle\Listener\MobileVersion">
+			<argument>%kailab_shared.mobile_version.bundle%</argument>
+		    <tag name="kernel.event_listener" event="kernel.request" />
+		</service>
 		<service id="doctrine.listener.i18n" class="Kailab\Bundle\SharedBundle\Doctrine\I18nListener">
 			<argument type="service" id="service_container"/>
 			<tag name="doctrine.event_listener" event="postLoad"/>

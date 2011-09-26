@@ -39,13 +39,20 @@ class WowkipediaEntryRepository extends EntityRepository
 	
 	public function groupByLetters($entries, $columns=1)
 	{
-		$groups = array();
+		$names = array();
 		foreach($entries as $entry){
 			$letter = $entry->getLetter();
 			if(!isset($groups[$letter])){
-				$groups[$letter] = new ArrayCollection();
+				$groups[$letter] = array();
+				$names[$letter] = array();
 			}
-			$groups[$letter]->add($entry);
+			$groups[$letter][] = $entry;
+			$names[$letter][] = $entry->getName();
+		}
+		// sort each letter
+		foreach($groups as $k=>$entries){
+			array_multisort($names[$k], $entries);
+			$groups[$k] = new ArrayCollection($entries);
 		}
 		if($columns>1){
 			foreach($groups as $k=>$entries){

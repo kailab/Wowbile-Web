@@ -7,5 +7,19 @@
 
 {% block content %}
 
+<h2>{{ 'Our Address' | trans }}</h2>
+	<p>Pau Claris 115 Entlo 2ª</p>
+	<p>08009 Barcelona (SPAIN)</p>
+	<dl class="info">
+		<dt>@!</dt>
+		<dd>{{ 'info@wowbile.eu' | mailto(null, true) | raw }}</dd>
+		<dt>m!</dt>
+		<dd>{{ '+34 633 666 666' | callto | raw }}</dd>
+	</dl>
+	
+<ul data-role="listview" data-inset="true">
+<li><a href="http://maps.google.com/maps/place?cid=4564555432391284045">{{ 'see in google maps' | trans }}</a></li>
+<li><a href="http://maps.google.com/maps?q=wowbile&daddr=Pau+Clar%C3%ADs+115,+entlo,+2%C2%AA,+08009+Barcelona,+Espa%C3%B1a+(w%C3%B6wbile!)&hl=es&ie=UTF8&sll=41.392119,2.1679&sspn=0.071946,0.071946&view=map&geocode=CW5v0hjCMnxJFfeXdwIdXBQhACFNFUNR-45YPw&t=m&z=16&vpsrc=0">{{ 'how to arrive' | trans }}</a></li>
+</ul>
 
 {% endblock %}

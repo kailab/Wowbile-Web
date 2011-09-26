@@ -1,0 +1,16 @@
+{% extends "WowbileMobileBundle::layout.html.twig" %}
+
+{% block header %}
+<h1>{{ 'Links' | trans }}</h1>
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+<ul data-role="listview">
+{% for link in links %}
+<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

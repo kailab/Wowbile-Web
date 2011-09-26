@@ -22,6 +22,6 @@ class CustomerRepository extends EntityRepository
 	public function findActiveBySlug($slug)
 	{
 		return $this->createEntityQuery('WHERE e.active = true AND e.slug = :slug')
-		->setParameter('slug',$slug)->getOneOrNullResult();
+		->setParameter('slug', $slug)->getOneOrNullResult();
 	}
 }

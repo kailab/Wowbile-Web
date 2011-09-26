@@ -22,6 +22,8 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
         ->children()
+        	->scalarNode('mobile_version')
+        	->end()
         	->arrayNode('locales')
         		->defaultValue(array('es', 'en'))
         		->addDefaultsIfNotSet()

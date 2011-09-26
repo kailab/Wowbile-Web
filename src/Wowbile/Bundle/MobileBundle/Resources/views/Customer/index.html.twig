@@ -1,0 +1,16 @@
+{% extends "WowbileMobileBundle::layout.html.twig" %}
+
+{% block header %}
+<h1>{{ 'Our customers' | trans }}</h1>
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+<ul data-role="listview">
+{% for customer in customers %}
+<li><a href="{{ path('mobile_customer', {'slug': customer.slug}) }}">{{ customer.name }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

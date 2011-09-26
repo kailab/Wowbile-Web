@@ -36,6 +36,7 @@
         {% endblock %}
     </head>
     <body>
+    	{% block body %}
 		<div data-role="page"> 
 			<div data-role="header" data-theme="b">
 			{% block header %}
@@ -51,6 +52,7 @@
 			{% endblock %}
 			</div> 
 		</div> 
+		{% endblock %}
     </body>
 </html>
 

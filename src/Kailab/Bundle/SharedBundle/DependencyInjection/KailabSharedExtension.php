@@ -23,6 +23,7 @@ class KailabSharedExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
         
         $container->setParameter('kailab_shared.locales', $config['locales']);
+        $container->setParameter('kailab_shared.mobile_version.bundle', $config['mobile_version']);
 	
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');

@@ -15,7 +15,9 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return parent::indexAction();
+		return array(
+			'testimony'		=> $this->getHomepageTestimony(),
+		);
     }
     
     /**
@@ -34,6 +36,17 @@ class DefaultController extends Controller
     public function contactAction()
     {
     	return parent::contactAction();
+    }
+    
+    /**
+    * @Route("/links", name="mobile_links")
+    * @Template()
+    */
+    public function linksAction()
+    {
+    	return array(
+    		'links'	=> $this->getHomepageLinks(),
+    	);
     }
     
 }

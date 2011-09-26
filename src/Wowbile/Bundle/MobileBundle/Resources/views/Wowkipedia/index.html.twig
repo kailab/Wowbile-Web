@@ -12,7 +12,7 @@ data-filter-placeholder="{{ 'Search terms...'}}" data-filter-theme="b">
 {% for letter,subentries in entries %}
 <li data-role="list-divider">{{ letter | upper }}</li>
 {% for entry in subentries %}
-<li><a href="">{{ entry.name }}</a></li>
+<li><a href="{{ path('mobile_wowkipedia_entry', {'name': entry.name}) }}">{{ entry.name }}</a></li>
 {% endfor %}
 {% endfor %}
 </ul>

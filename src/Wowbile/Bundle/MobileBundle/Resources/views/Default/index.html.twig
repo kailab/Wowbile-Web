@@ -24,7 +24,6 @@
    	{% endfor %}
 </ul>
 
-<div id="boxes">
 <ul data-role="listview" data-inset="true" class="small">
 	<li data-role="list-divider" role="heading"></li>
 	<li><a href="">
@@ -32,7 +31,7 @@
 		<p>{{ 'download our powerpoint' | trans }}</p>
 	</a>
 	</li>
-	<li><a href="">
+	<li><a href="{{ path('mobile_links') }}">
 		<h3>{{ 'links' | trans | wowbilify | raw }}</h3>
 		<p>{{ 'listing of related websites' | trans }}</p> 
 	</a></li>
@@ -42,12 +41,17 @@
 	</a></li>
 </ul>
 
+<ul data-role="listview" data-inset="true">
+	<li data-role="list-divider" role="heading">{{ 'follow us on...' | trans }}</li>
+	<li><a href="{{ frontend_helper.facebookUrl }}">{{ 'facebook' | trans }}</a></li>
+	<li><a href="{{ frontend_helper.twitterUrl }}">{{ 'twitter' | trans }}</a></li>
+	<li><a href="{{ frontend_helper.slideshareUrl }}">{{ 'slideshare' | trans }}</a></li>
+</ul>
+
 <div id="bottom" class="ui-body ui-body-c">
 	<a href="http://www.mmaspain.com/">
 		<img src="{{ asset('bundles/wowbilemobile/images/logo_mma.png') }}"/>
 	</a>
 </div>
-</div>
-
 
 {% endblock %}

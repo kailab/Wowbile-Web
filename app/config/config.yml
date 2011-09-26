@@ -82,4 +82,7 @@ stfalcon_tinymce:
 wowbile_frontend:
     site_name: wöwbile
     twitter: wowbile
+    
+kailab_shared:
+    mobile_version: Wowbile\Bundle\MobileBundle
 

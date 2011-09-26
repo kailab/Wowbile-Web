@@ -1,0 +1,16 @@
+{% extends "WowbileMobileBundle::layout.html.twig" %}
+
+{% block header %}
+<h1>{{ 'What do we do?' | trans }}</h1>
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+<ul data-role="listview">
+{% for concept in concepts %}
+<li><a href="{{ path('mobile_concept', {'slug': concept.slug}) }}">{{ concept.name }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

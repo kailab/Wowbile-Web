@@ -1,0 +1,14 @@
+{% extends "WowbileMobileBundle::layout.html.twig" %}
+
+{% block header %}
+<h1>{{ 'Wöwkipedia' | trans }} - {{ entry.name }}</h1>
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+<h2>{{ entry.name }}</h2>
+
+{{ entry.description | raw }}
+ 
+{% endblock %}

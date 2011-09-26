@@ -26,4 +26,13 @@ class WowkipediaController extends Controller
 		);
     }
     
+    /**
+    * @Route("/wowkipedia/{name}", name="mobile_wowkipedia_entry")
+    * @Template()
+    */
+    public function showAction($name)
+    {
+		return parent::showAction($name);
+    }
+    
 }
