@@ -5,12 +5,16 @@
 #followus {
 	padding-top: 10px;
 	clear: both;
-	text-align: right;
 	font-family: Nunito, Arial, sans-serif;
 	font-weight: bold;
 	height: 30px;
 	line-height: 30px;
 	font-size: 12pt;
+}
+
+#followus .text {
+	float: right;
+	text-align: right;
 }
 
 #followus ul {
@@ -26,6 +30,10 @@
 	padding-left: 15px;
 	height: 30px;
 	list-style: none;
+}
+
+#blocks {
+	width: 600px;
 }
 
 .block {
@@ -148,6 +156,7 @@
 	font-size: 30pt;
 	color: #33a3c9;
 	font-family: Nunito, Arial, sans-serif;
+	line-height: normal;
 	margin: 0;
 	text-align: left;
 	float : left;
@@ -225,5 +234,6 @@
 
 .testimony .info {
 	margin: 0 0 0 190px;
+	font-size: 10pt;
 	text-transform: uppercase;
 }

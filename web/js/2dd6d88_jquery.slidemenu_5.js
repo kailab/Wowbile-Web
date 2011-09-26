@@ -10,12 +10,18 @@ $.fn[plugin_name] = function(options){
     options = getOptions.call(this,options);
     var obj = $(this);
 	var list = obj.find(options.listSelector);
-    list.delegate(options.listElementSelector,'click', function(){
+	var sel = options.listElementSelector;
+    list.delegate(sel,'click', function(){
 		selectItem.call(obj, $(this));
 	});
+    list.delegate(sel+' a','click', function(){
+    	$(this).closest(sel).click();
+    	return false;
+    });
     var next = obj.find(options.nextSelector);
     next.click(function(){
     	var item = getNextItem.call(obj);
+    	debugger;
     	if(item.length > 0){
     		selectItem.call(obj, item);
     	}
@@ -47,12 +53,24 @@ var selectItem = function(item){
 		item.addClass(options.listElementSelectedClass);
 		moveItemToCenter.call(obj, item);
 		section = getItemSection.call(obj, item);
+		setItemAnchor.call(obj, item);
 	}
 	sections.hide();
 	if(section !== undefined){
 		section.show();
 	}
-}
+};
+
+var setItemAnchor = function(item){
+	var url = item.find('a[href]').attr('href');
+	if(url !== undefined){
+		var anchor = url.split('#')[1];
+	    var elem = $('a[name="'+anchor+'"]');
+	    elem.attr('name',anchor+'-tmp');
+		window.location.hash = anchor;
+	    elem.attr('name',anchor);
+	}
+};
 
 var moveItemToCenter = function(item){
 	var obj = $(this);
@@ -68,14 +86,14 @@ var moveItemToCenter = function(item){
 		x -= $(this).outerWidth();
 	});
 	list.animate({left: x});
-}
+};
 
 var getCurrentItem = function(){
 	var obj = $(this);
     var options = getOptions.call(this);
 	var list = obj.find(options.listSelector);
 	return list.find('.'+options.listElementSelectedClass);
-}
+};
 
 var getNextItem = function(){
     var options = getOptions.call(this);
@@ -83,7 +101,7 @@ var getNextItem = function(){
 	if(item !== undefined){
 		return item.next(options.listElementSelector);
 	}
-}
+};
 
 var getPreviousItem = function(){
     var options = getOptions.call(this);
@@ -91,7 +109,7 @@ var getPreviousItem = function(){
 	if(item !== undefined){
 		return item.prev(options.listElementSelector);
 	}
-}
+};
 
 var getLocationItem = function(){
 	var obj = $(this);
@@ -101,7 +119,7 @@ var getLocationItem = function(){
 	var list = obj.find(options.listSelector);
 	var a = list.find('a[href="#'+anchor+'"]');
 	return a.closest(options.listElementSelector);
-}
+};
 
 var getItemSection = function(item){
     var options = getOptions.call(this);

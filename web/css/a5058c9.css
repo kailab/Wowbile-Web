@@ -5,12 +5,16 @@
 #followus {
 	padding-top: 10px;
 	clear: both;
-	text-align: right;
 	font-family: Nunito, Arial, sans-serif;
 	font-weight: bold;
 	height: 30px;
 	line-height: 30px;
 	font-size: 12pt;
+}
+
+#followus .text {
+	float: right;
+	text-align: right;
 }
 
 #followus ul {

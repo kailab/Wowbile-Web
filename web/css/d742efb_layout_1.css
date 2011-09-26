@@ -18,7 +18,7 @@ a img {
 
 p {
 	margin: 0 0 0.7em 0;
-	line-height: 1.2em;
+	line-height: 1.4em;
 }
 
 h1, h2, h3, h4, h5 {
@@ -35,7 +35,7 @@ ul li {
 
 #body_wrapper {
     width: 800px;
-    margin: 0 auto;
+    margin: 20px auto 0 auto;
 }
 
 ul#main_menu {
@@ -49,6 +49,7 @@ ul#main_menu {
 
 #languages {
     float: right;
+    margin: 0;
 }
 
 #languages li {

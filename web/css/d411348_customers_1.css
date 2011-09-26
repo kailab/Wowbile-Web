@@ -78,6 +78,11 @@
 
 .customer h2 {
 	margin-left: 35px;
+	color: #000000;
+}
+
+.customer h2.withimage {
+	margin-left: 170px;
 }
 
 .customer .image {
@@ -87,8 +92,10 @@
 
 .customer .excerpt {
 	color: #33A3C9;
+	font-weight: bold;
 	margin-bottom: 20px;
 	padding: 0 10px 0 35px;
+	line-height: 1.4em;
 }
 
 .customer .excerpt.withimage {
@@ -101,6 +108,7 @@
 	background-image: url(../../bundles/wowbilefrontend/images/quote_start.png);
 	background-repeat: no-repeat;
 	background-position: left top;
+	line-height: 1.4em;
 }
 
 .customer .content blockquote {

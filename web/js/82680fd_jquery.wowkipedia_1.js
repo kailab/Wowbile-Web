@@ -18,7 +18,9 @@ $.fn[plugin_name] = function(options){
 	var group = getLocationGroup.call(obj);
 	var item = getLocationItem.call(obj);
 	selectItem.call(obj, item);
-	group.show();
+	if(group !== undefined){
+		group.show();
+	}
 };
 
 var showItemGroup = function(item){
@@ -68,10 +70,13 @@ var selectItem = function(item){
 };
 
 var getGroupItem = function(group){
+	if(group === undefined){
+		return group;
+	}
 	var obj = $(this);
 	var options = getOptions.call(this);
 	var anchor = group.find('a[name]').attr('name');
-	if(anchor == undefined){
+	if(anchor === undefined){
 		return anchor;
 	}
 	return obj.filter('a[href="#'+anchor+'"]');
@@ -86,6 +91,9 @@ var getLocationGroup = function(){
 	var obj = $(this);
 	var options = getOptions.call(this);
 	var anchor = getLocationAnchor.call(obj);
+	if(anchor === undefined){
+		return anchor;
+	}
 	var sel = 'a[name="'+anchor+'"]';
 	var groups = $(options.groupSelector);
 	var group = groups.has(sel);

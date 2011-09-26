@@ -1860,7 +1860,7 @@ var getNextItem = function(){
     var options = getOptions.call(this);
 	var item = getCurrentItem.call(this);
 	if(item !== undefined){
-		return item.next(options.listElementSelector);
+		return item.nextUntil(options.listSelector, options.listElementSelector);
 	}
 };
 
@@ -1868,7 +1868,7 @@ var getPreviousItem = function(){
     var options = getOptions.call(this);
 	var item = getCurrentItem.call(this);
 	if(item !== undefined){
-		return item.prev(options.listElementSelector);
+		return item.prevUntil(options.listSelector, options.listElementSelector);
 	}
 };
 

@@ -6,8 +6,8 @@
 #concepts_list ul {
 	margin: 0;
 	padding: 0;
-	width: 999999999px;
 	position: absolute;
+	width: 100%;
 }
 
 #concepts_list .scroll {
