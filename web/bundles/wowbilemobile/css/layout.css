@@ -1,0 +1,89 @@
+
+p {
+	margin-top: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 0;
+}
+
+.ui-header {
+	background-color: #099ebc !important;
+	background-image: none !important;
+}
+
+.ui-header .ui-btn {
+	background-color: #099ebc !important;
+	background-image: none !important;
+}
+
+
+#logo {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#bottom {
+	text-align: center;
+}
+
+.testimony .text {
+	margin: 0 0 5px 0;
+}
+
+.testimony .text blockquote {
+	margin: 0;
+}
+.testimony .text blockquote:before {
+	content '"';
+}
+
+.testimony .text blockquote:after {
+	content '"';
+}
+
+.testimony .text p {
+	margin: 1em 0 0 0;
+}
+
+.testimony .text p:first-child {
+	margin: 0;
+}
+
+.testimony .text strong {
+	 color: #33A3C9;
+}
+
+.testimony .info {
+	text-transform: uppercase;
+	font-size: x-small;
+	color: #888888;
+	font-weight: bold;
+}
+
+.person {
+	margin-top: 20px;
+}
+
+.person:first-child {
+	margin-top: 0;
+}
+
+.person h2 {
+	color: #0a9eba;
+	font-size: 14pt;
+	margin: 0 0 5px 0;
+}
+
+.ui-listview.small h3 {
+	font-size: 11pt;
+}
+
+.ui-listview.small a.ui-link-inherit {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+.ui-listview.small {
+	overflow: hidden !important;
+}

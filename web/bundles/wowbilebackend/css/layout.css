@@ -1,0 +1,171 @@
+
+
+#user {
+	float: right;
+	margin-top: 40px;
+}
+
+#admin_menu {
+	margin: 0;
+	padding: 0 0 0 1.5em;
+	background-color: #d7d7d7;
+	overflow: hidden;
+	border-radius: 1em;
+	font-size: 12pt;
+}
+
+#admin_menu li:first-child {
+	border-left: 5px solid #FFFFFF;
+}
+
+#admin_menu li {
+	float: left;
+	list-style: none;
+	border-right: 5px solid #FFFFFF;
+	background-color: #d7d7d7;
+	padding: 10px;
+}
+
+#admin_menu li:hover {
+	background-color: #c6c6c6;
+}
+
+#admin_menu li a {
+	color: #FFFFFF;
+	text-decoration: none;
+	font-family: Nunito, Arial, sans-serif;
+}
+
+
+#flash_notice {
+    background-color: #E5F2F6;
+    color: #33A3C9;
+    padding: 5px;
+    margin: 0 0 10px 0;
+}
+
+#flash_error {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    padding: 5px;
+    margin: 0 0 10px 0;
+}
+
+textarea.tinymce,
+.mceLayout {
+    width: 100%;
+}
+
+.entity_list {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #E5F2F6;
+}
+
+.entity_list th {
+    background-color: #33A3C9;
+    border: 5px solid #FFFFFF;
+    color: #FFFFFF;
+    padding: 5px;
+}
+
+.entity_list td {
+    padding: 5px;
+    border: 5px solid #FFFFFF;
+}
+
+.entity_list td.actions ul {
+    margin: 0;
+    padding: 0;
+}
+
+.entity_list td.actions li {
+    display: inline;
+    list-style: none;
+    margin: 0 5px 0 0;
+}
+
+form.entity .form_row {
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+form.entity .form_row label {
+    float: left;
+    width: 30%;
+    text-align: right;
+    margin-right: 10px;
+}
+
+form.entity .form_row_content label {
+    display: inline;
+    float: none;
+    margin: 0 10px 0 0;
+    padding: 0;
+}
+
+form.entity .form_row_comment {
+    margin-left: 30%;
+    padding-left: 10px;
+}
+
+form.entity .form_row_errors {
+    background-color: #FFDDDD;
+    color: #FF0000;
+    margin: 0 0 5px 30%;
+    padding: 5px;
+}
+
+form.entity .form_row_errors li {
+    list-style: square inside;
+    margin: 0;
+    padding: 0;
+}
+
+form.entity .form_submit_row {
+    clear: both;
+    background-color: #e5f2f6;
+    padding: 5px;
+}
+
+#entity_translation_tabs {
+    margin-bottom: 10px;
+}
+
+#entity_list_actions {
+    background-color: #e5f2f6;
+    padding: 10px;
+}
+
+#entity_list_actions li {
+    display: inline;
+    list-style: none;
+    margin: 0 10px 0 0;
+    padding: 0;
+}
+
+#user {
+    margin-top: 50px;
+    float: right;
+}
+
+.links > .form_row > label {
+    display: none !important;
+}
+
+.links label {
+    display: inline !important;
+}
+
+.links input {
+    width: 18em;
+}
+
+.links .form_row_content {
+    display: inline;
+}
+
+.links .form_row .form_row {
+    display: inline;
+    padding-right: 10px;
+}
