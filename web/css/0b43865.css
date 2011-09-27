@@ -126,23 +126,19 @@
 	color: #33A3C9;
 	font-size: x-small;
 }
+.person .info dl{
+	line-height: 20px;
+}
 
 .person .info dt {
 	display: inline;
 	float: none;
+		line-height: 20px;
 }
 
 .person .info dd {
 	display: inline;
-}
-
-.person .info dd:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    margin-bottom: 2px;
-    visibility: hidden;
+		line-height: 20px;
 }
 
 .person#dguzman {
