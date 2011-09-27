@@ -11,7 +11,9 @@
 	background-color: #d7d7d7;
 	overflow: hidden;
 	border-radius: 1em;
-	font-size: 12pt;
+	font-size: 10pt;
+	overflow: hidden;
+	width: 100%;
 }
 
 #admin_menu li:first-child {

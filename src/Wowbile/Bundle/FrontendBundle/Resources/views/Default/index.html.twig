@@ -35,7 +35,7 @@
 {% endif %}
 
 <div id="blocks">
-	{% if download and download.file.uri %}
+	{% if download %}
 	<div class="block">
 	    <div class="title">
 	        <h2>{{ 'work!' | trans | wowbilify }}</h2>
@@ -43,7 +43,7 @@
 	    <div class="body">
 	        <p>{{ download.description | raw }}</p>
 	        <div class="button download">
-		        <a href="{{ download.file.uri }}">
+		        <a href="{{ path('frontend_download_file', {'id': download.id }) }}">
 		            {{ download.name | trans }}
 		        </a>
 	        </div>

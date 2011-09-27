@@ -15,13 +15,14 @@ class ConceptRepository extends EntityRepository
 			return false;
 		}
 		$em = $this->getEntityManager();
-		$q = 'delete from WowbileEntityBundle:ConceptScreenshot s where s.concept = :id';
-		return $em->createQuery($q)->setParameter('id',$id)->execute();
+		$sql = 'delete from WowbileEntityBundle:ConceptScreenshot s where s.concept = :id';
+		return $em->createQuery($sql)->setParameter('id',$id)->execute();
 	}
 	
 	public function findActiveBySlug($slug)
 	{
-		return $this->createEntityQuery('WHERE e.active = true AND e.slug = :slug')
+		$sql = 'WHERE e.active = true AND e.slug = :slug';
+		return $this->createEntityQuery($sql)
 		->setParameter('slug',$slug)->getOneOrNullResult();
 	}
 }

@@ -40,7 +40,8 @@
         {{ form_widget(form.file) }}
         {% if entity.file.uri %}
         <div class="form_row_comment">
-            <a href="{{ entity.file.uri }}">{{ 'Download current file' | trans }}</a>
+            <a href="{{ path('backend_download_file', {'id': entity.id }) }}">
+            	{{ 'Download current file' | trans }}</a>
         </div>
         {% endif %}
         {{ form_errors(form.file) }}

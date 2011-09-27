@@ -1,6 +1,8 @@
 <?php
 namespace Wowbile\Bundle\BackendBundle\Controller;
 
+use Kailab\Bundle\SharedBundle\HttpFoundation\FileResponse;
+
 use Kailab\Bundle\SharedBundle\Controller\EntityCrudController;
 use Wowbile\Bundle\BackendBundle\Form\DownloadType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -93,6 +95,16 @@ class DownloadController extends EntityCrudController
 	public function downAction($id)
 	{
 		return parent::downAction($id);
+	}
+	
+	/**
+	* @Route("/download/file/{id}", name="backend_download_file")
+	* @Template()
+	*/
+	public function fileAction($id)
+	{
+		$entity = $this->findEntity($id);
+		return $entity->getFileResponse();
 	}
 	
 }

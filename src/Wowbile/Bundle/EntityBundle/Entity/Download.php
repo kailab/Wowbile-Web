@@ -2,6 +2,10 @@
 
 namespace Wowbile\Bundle\EntityBundle\Entity;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+use Kailab\Bundle\SharedBundle\Asset\FileAsset;
+
 use Kailab\Bundle\SharedBundle\Entity\TranslatedEntity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -35,6 +39,11 @@ class Download extends TranslatedEntity
     * @ORM\Column(type="string", length="50", nullable=true)
     */
     protected $language;
+    
+    /**
+    * @ORM\Column(type="string", length="150")
+    */
+    protected $filename;
 
     /**
      * @ORM\Column(type="string", length="50", nullable=true)
@@ -89,6 +98,9 @@ class Download extends TranslatedEntity
     
     public function setFile($path)
     {
+    	if($path instanceof UploadedFile){
+    		$this->setFilename($path->getClientOriginalName());
+    	}
     	$this->loadAssets();
     	$this->file->setAsset($path);
     	$this->updated = new \DateTime('now');
@@ -112,6 +124,26 @@ class Download extends TranslatedEntity
     public function setActive($active)
     {
         $this->active = $active;
+    }
+    
+    public function getLanguage()
+    {
+    	return $this->language;
+    }
+    
+    public function setLanguage($lang)
+    {
+    	$this->language = $lang;
+    }
+    
+    public function getFilename()
+    {
+    	return $this->filename;
+    }
+    
+    public function setFilename($filename)
+    {
+    	$this->filename = $filename;
     }
 
     public function getName()
@@ -163,6 +195,13 @@ class Download extends TranslatedEntity
     {
         $this->type = $type;
     }
-
+    
+    public function getFileResponse()
+    {
+    	$response = $this->getFile()->getResponse(true);
+    	$response->headers->set('Content-Disposition',
+    	    		        		'attachment; filename="'.$this->getFilename().'"');
+    	return $response;
+    }
 }
 

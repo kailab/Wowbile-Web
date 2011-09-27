@@ -13,4 +13,11 @@ class DownloadRepository extends EntityRepository
 		$sql = "WHERE e.active = true AND e.type = 'ppt'";
 		return $this->createEntityQuery($sql)->getOneOrNullResult();
 	}
+	
+	public function findActiveById($id)
+	{
+		$sql = 'WHERE e.active = true AND e.id = :id';
+		return $this->createEntityQuery($sql)
+		->setParameter('id',$id)->getOneOrNullResult();
+	}
 }

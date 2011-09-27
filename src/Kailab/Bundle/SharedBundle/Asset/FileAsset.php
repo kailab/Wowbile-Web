@@ -3,8 +3,9 @@
 namespace Kailab\Bundle\SharedBundle\Asset;
 
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Response;
-use Kailab\FrontendBundle\HttpFoundation\FileResponse;
+use Kailab\Bundle\SharedBundle\HttpFoundation\FileResponse;
 
 class FileAsset extends AbstractAsset implements PublicAssetInterface
 {
@@ -12,47 +13,35 @@ class FileAsset extends AbstractAsset implements PublicAssetInterface
     protected $path = null;
     protected $uri = null;
     protected $content = null;
+    protected $content_type = null;
 
     public function __construct($path,$name=null)
     {
-        if(!$name){
-            $name = basename($path);
+    	if($path instanceof \SplFileInfo){
+    		$this->path = $path->__toString();
+    		if($path instanceof UploadedFile){
+	    		$this->name = $path->getClientOriginalName();
+	    		$this->content_type = $path->getClientMimeType();
+    		}
+    	}else if(is_string($path)){
+    		$this->path = $path;
+    		$this->name = basename($path);
+    	}
+        if($name){
+        	$this->name = $name;
         }
-        $this->name = $name;
-        $this->path = $path;
+    }
+    
+    public function getExtension()
+    {
+    	$name = $this->name ? $this->name : $this->path;
+    	$name = explode(".", $name);
+    	return end($name);
     }
 
     public function setUri($uri)
     {
         $this->uri = $uri;
-    }
-
-    public function serialize() {
-        $data = array(
-            'name'      => $this->getName(),
-            'path'      => $this->getPath(),
-            'uri'       => $this->getUri(),
-            'content'   => $this->getContent(),
-        );
-        return serialize($data);
-    }
-
-    public function unserialize($data) {
-        if(!is_array($data)){
-            return;
-        }
-        if(isset($data['name'])){
-            $this->name = $data['name'];
-        }
-        if(isset($data['uri'])){
-            $this->uri = $data['uri'];
-        }
-        if(isset($data['path'])){
-            $this->path = $data['path'];
-        }
-        if(isset($data['content'])){
-            $this->content = $data['content'];
-        }
     }
 
     public function getUri()
@@ -80,18 +69,21 @@ class FileAsset extends AbstractAsset implements PublicAssetInterface
 
     public function getContentType()
     {
-        $file = new File($this->path);
-        return $file->getMimeType();
+    	if(!$this->content_type){
+        	$file = new File($this->path);
+        	$this->content_type = $file->getMimeType();
+    	}
+    	return $this->content_type;
     }
 
-    public function getResponse()
+    public function getResponse($attachment=false)
     {
-        if($this->getUri()){
+        if($this->getUri() && !$attachment){
             $response = new Response();
             $response->headers->set('Location', $this->getUri());
         }else{
             $response = new FileResponse($this->getPath());
-            $response->headers->set('Content-Type',$this->getContentType());
+            $response->headers->set('Content-Type', $this->getContentType());
         }
         return $response;
     }

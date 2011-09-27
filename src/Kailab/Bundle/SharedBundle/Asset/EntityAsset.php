@@ -3,17 +3,13 @@
 namespace Kailab\Bundle\SharedBundle\Asset;
 
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\DependencyInjection\Container;
 use Doctrine\ORM\Proxy\Proxy;
 
 class EntityAsset extends File implements PublicAssetInterface
 {
-    const STATE_NONE = 0;
-    const STATE_ASSET = 1;
-    const STATE_PATH = 2;
-
-    protected $state;
     protected $entity;
     protected $asset;
     protected $property;
@@ -23,7 +19,6 @@ class EntityAsset extends File implements PublicAssetInterface
         $this->entity = $entity;
         $this->property = $property;
         $this->path = $path;
-        $this->state = self::STATE_NONE;
     }
 
     public function __toString()
@@ -31,48 +26,13 @@ class EntityAsset extends File implements PublicAssetInterface
         return (string) $this->getId();
     }
 
-    public function serialize() {
-        return serialize(array(
-            'state'     => $this->state,
-            'entity'    => $this->entity,
-            'path'      => $this->path,
-            'state'     => $this->state,
-        ));
-    }
-
-    public function unserialize($data) {
-        if(!is_array($data)){
-            return;
-        }
-        if(isset($data['state'])){
-            $this->state = $data['state'];
-        }
-        if(isset($data['entity'])){
-            $this->entity = $data['entity'];
-        }
-        if(isset($data['path'])){
-            $this->path = $data['path'];
-        }
-        if(isset($data['state'])){
-            $this->state = $data['state'];
-        }
-    }
-
     public function getId()
     {
         return $this->getNamespace().'/'.$this->getName();
     }
 
-    public function getResponse()
-    {
-        return $this->getAsset()->getResponse();
-    }
-
     public function getPath()
     {
-        if($this->state == self::STATE_PATH){
-            return $this->path;
-        }
         if($this->asset instanceof FileAsset){
             return $this->asset->getPath();
         }else if($this->asset instanceof AssetInterface){
@@ -92,16 +52,6 @@ class EntityAsset extends File implements PublicAssetInterface
         }
     }
 
-    public function setState($state)
-    {
-        $this->state = $state;
-    }
-
-    public function getState()
-    {
-        return $this->state;
-    }
-
     public function getUri()
     {
         $asset = $this->getAsset();
@@ -110,23 +60,9 @@ class EntityAsset extends File implements PublicAssetInterface
         }
     }
 
-    public function loadPath($path)
-    {
-        $path = strval($path);
-        if($this->path != $path){
-            $this->state = self::STATE_PATH;
-            $this->path = $path;
-        }
-    }
-
     public function getAsset()
     {
-        if($this->state == self::STATE_ASSET && $this->asset instanceof AssetInterface){
-            return $this->asset;
-        }else if($this->state == self::STATE_PATH){
-            return $this->getPathAsset();
-        }
-        return null;
+    	return $this->asset;
     }
 
     public function setAsset($asset)
@@ -137,34 +73,36 @@ class EntityAsset extends File implements PublicAssetInterface
                 'content'       => $asset->getContent(),
                 'content_type'  => $asset->getContentType(),
             ));
-            $this->state = self::STATE_ASSET;
-        }else if(is_string($asset) || $asset instanceof File){
-            $this->loadPath($asset);
+        }else if($asset instanceof \SplFileInfo || is_string($asset)){
+        	$this->asset = new FileAsset($asset);
         }
     }
-
-    public function getPathAsset()
+    
+    public function getResponse()
     {
-        if(!is_readable($this->path)){
-            throw new \RuntimeException('Could not read path '.$this->path);
-        }
-        return new FileAsset($this->path, $this->getName());
+    	$asset = $this->getAsset();
+    	if($asset instanceof AssetInterface){
+    		return call_user_func_array(array($asset,'getResponse'),
+    		func_get_args());
+    	}
     }
 
     public function getContentType()
     {
-        $asset =  $this->getAsset();
-        if($asset instanceof AssetInterface){
-            return $asset->getContentType();
-        }
+       	$asset = $this->getAsset();
+    	if($asset instanceof AssetInterface){
+    		return call_user_func_array(array($asset,'getContentType'),
+    		func_get_args());
+    	}
     }
 
     public function getContent()
     {
-        $asset =  $this->getAsset();
-        if($asset instanceof AssetInterface){
-            return $asset->getContent();
-        }
+        $asset = $this->getAsset();
+    	if($asset instanceof AssetInterface){
+    		return call_user_func_array(array($asset,'getContent'),
+    		func_get_args());
+    	}
     }
 
     public function getName()
@@ -193,7 +131,6 @@ class EntityAsset extends File implements PublicAssetInterface
         if(!$this->asset instanceof AssetInterface){
             return false;
         }
-        $this->state = self::STATE_ASSET;
         return true;
     }
 
@@ -203,13 +140,9 @@ class EntityAsset extends File implements PublicAssetInterface
         if(!$asset instanceof AssetInterface){
             return false;
         }
-        $asset = new ParameterAsset(array(
-            'name'          => $this->getName(),
-            'content'       => $asset->getContent(),
-            'content_type'  => $asset->getContentType(),
-        ));
+		$name = $this->getName();
         $ns = $this->getNamespace();
-        if(!$storage->writeAsset($asset,$ns)){
+        if(!$storage->writeAsset($asset,$ns,$name)){
             return false;
         }
         return true;
@@ -217,9 +150,10 @@ class EntityAsset extends File implements PublicAssetInterface
 
     public function delete(AssetStorageInterface $storage)
     {
-        if($this->state != self::STATE_ASSET){
-            return false;
-        }
+    	$asset = $this->getAsset();
+    	if(!$asset instanceof AssetInterface){
+    		return false;
+    	}
         $class = get_class($this->entity);
         $asset = $this->getAsset();
         $ns = $this->getNamespace();

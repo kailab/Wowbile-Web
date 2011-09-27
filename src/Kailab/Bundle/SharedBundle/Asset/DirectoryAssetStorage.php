@@ -36,23 +36,37 @@ class DirectoryAssetStorage implements AssetStorageInterface
         }
         return is_file($path);
     }
-
-    public function getAssetFileName(AssetInterface $asset)
+    
+    public function getAssetExtension(AssetInterface $asset)
     {
-        $file = new FakeFile($asset->getContentType());
-        $ext = $file->guessExtension();
-        $name = $asset->getName();
+    	$ext = null;
+    	if($asset instanceof FileAsset){
+    		$ext = $asset->getExtension();
+    	}
+    	if(!$ext){
+	    	$file = new FakeFile($asset->getContentType());
+	    	$ext = $file->guessExtension();
+    	}
+    	return $ext;
+    }
+
+    public function getAssetFileName(AssetInterface $asset, $name=null)
+    {
+    	$ext = $this->getAssetExtension($asset);
+        $name = $name ? $name : $asset->getName();
         $name .= $ext ? '.'.$ext : '';
         return $name;
     }
 
-    public function writeAsset(AssetInterface $asset, $namespace)
+    public function writeAsset(AssetInterface $asset, $namespace, $name=null)
     {
         $dir = $this->getDirectory($namespace);
-        $path = $dir.'/'.$this->getAssetFileName($asset);
+        $path = $dir.'/'.$this->getAssetFileName($asset, $name);
 
         $content = $asset->getContent();
-
+		if(mb_strlen($content)==0){
+			return false;
+		}
         if (!is_dir($dir) && false === @mkdir($dir, 0777, true)) {
             throw new \RuntimeException('Unable to create directory '.$dir);
         }
