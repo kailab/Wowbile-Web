@@ -45,13 +45,17 @@ RewriteRule .* app.php [QSA,L,E=_ROUTING__route:mobile_who,E=_ROUTING__controlle
 RewriteCond %{REQUEST_URI} ^/wowbile/m/contact$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:mobile_contact,E=_ROUTING__controller:Wowbile\\Bundle\\MobileBundle\\Controller\\DefaultController\:\:contactAction]
 
+# mobile_links
+RewriteCond %{REQUEST_URI} ^/wowbile/m/links$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:mobile_links,E=_ROUTING__controller:Wowbile\\Bundle\\MobileBundle\\Controller\\DefaultController\:\:linksAction]
+
 # mobile_wowkipedia
 RewriteCond %{REQUEST_URI} ^/wowbile/m/wowkipedia$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:mobile_wowkipedia,E=_ROUTING__controller:Wowbile\\Bundle\\MobileBundle\\Controller\\WowkipediaController\:\:indexAction]
 
-# wowkipedia_entry
-RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)/wowkipedia/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:wowkipedia_entry,E=_ROUTING__locale:%1,E=_ROUTING_name:%2,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\WowkipediaController\:\:showAction]
+# mobile_wowkipedia_entry
+RewriteCond %{REQUEST_URI} ^/wowbile/m/wowkipedia/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:mobile_wowkipedia_entry,E=_ROUTING_name:%1,E=_ROUTING__controller:Wowbile\\Bundle\\MobileBundle\\Controller\\WowkipediaController\:\:showAction]
 
 # localized_homepage
 RewriteCond %{REQUEST_URI} ^/wowbile/(..)$
@@ -206,6 +210,38 @@ RewriteRule .* $0/ [QSA,L,R=301]
 RewriteCond %{REQUEST_URI} ^/wowbile/admin/$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:wowbile_backend_default_index,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\DefaultController\:\:indexAction]
 
+# backend_download_index
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/download$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_download_index,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\DownloadController\:\:indexAction]
+
+# backend_download_new
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/download/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_download_new,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\DownloadController\:\:newAction]
+
+# backend_download_edit
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/download/edit/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_download_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\DownloadController\:\:editAction]
+
+# backend_download_delete
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/download/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_download_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\DownloadController\:\:deleteAction]
+
+# backend_download_toggle
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/download/toggle/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_download_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\DownloadController\:\:toggleAction]
+
+# backend_download_up
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/download/up/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_download_up,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\DownloadController\:\:upAction]
+
+# backend_download_down
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/download/down/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_download_down,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\DownloadController\:\:downAction]
+
+# backend_download_file
+RewriteCond %{REQUEST_URI} ^/wowbile/admin/download/file/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_download_file,E=_ROUTING_id:%1,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\DownloadController\:\:fileAction]
+
 # backend_link_index
 RewriteCond %{REQUEST_URI} ^/wowbile/admin/link$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_link_index,E=_ROUTING__controller:Wowbile\\Bundle\\BackendBundle\\Controller\\LinkController\:\:indexAction]
@@ -327,7 +363,7 @@ RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)/customers$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_customers,E=_ROUTING__locale:%1,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\CustomerController\:\:indexAction]
 
 # frontend_customer
-RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)/customers/([^/]+?)$
+RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)/customer/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_customer,E=_ROUTING__locale:%1,E=_ROUTING_slug:%2,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\CustomerController\:\:showAction]
 
 # frontend_homepage
@@ -344,9 +380,17 @@ RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_who,E=_ROUTING__locale:
 RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)/contact$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_contact,E=_ROUTING__locale:%1,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:contactAction]
 
+# frontend_download_file
+RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)/download/file/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_download_file,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\DownloadController\:\:fileAction]
+
 # wowkipedia
 RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)/wowkipedia$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:wowkipedia,E=_ROUTING__locale:%1,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\WowkipediaController\:\:indexAction]
+
+# wowkipedia_entry
+RewriteCond %{REQUEST_URI} ^/wowbile/([^/]+?)/wowkipedia/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:wowkipedia_entry,E=_ROUTING__locale:%1,E=_ROUTING_name:%2,E=_ROUTING__controller:Wowbile\\Bundle\\FrontendBundle\\Controller\\WowkipediaController\:\:showAction]
 
 # 405 Method Not Allowed
 RewriteCond %{_ROUTING__allow_GET} !-z [OR]

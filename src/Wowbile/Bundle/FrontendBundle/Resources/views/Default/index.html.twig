@@ -35,7 +35,7 @@
 {% endif %}
 
 <div id="blocks">
-	{% if download %}
+	{% if download and download.file.uri %}
 	<div class="block">
 	    <div class="title">
 	        <h2>{{ 'work!' | trans | wowbilify }}</h2>
