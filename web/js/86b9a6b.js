@@ -1783,14 +1783,14 @@ $.fn[plugin_name] = function(options){
     var next = obj.find(options.nextSelector);
     next.click(function(){
     	var item = getNextItem.call(obj);
-    	if(item.length > 0){
+    	if(item !== undefined && item.length > 0){
     		selectItem.call(obj, item);
     	}
     });
     var prev = obj.find(options.previousSelector);
     prev.click(function(){
     	var item = getPreviousItem.call(obj);
-    	if(item.length > 0){
+    	if(item !== undefined && item.length > 0){
     		selectItem.call(obj,item);
     	}
     });
@@ -1859,17 +1859,19 @@ var getCurrentItem = function(){
 var getNextItem = function(){
     var options = getOptions.call(this);
 	var item = getCurrentItem.call(this);
-	if(item !== undefined){
-		return item.nextUntil(options.listSelector, options.listElementSelector);
+	if(item === undefined){
+		return item;
 	}
+	return item.next(options.listElementSelector);
 };
 
 var getPreviousItem = function(){
     var options = getOptions.call(this);
 	var item = getCurrentItem.call(this);
-	if(item !== undefined){
-		return item.prevUntil(options.listSelector, options.listElementSelector);
+	if(item === undefined){
+		return item;
 	}
+	return item.prev(options.listElementSelector);
 };
 
 var getLocationItem = function(){

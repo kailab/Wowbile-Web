@@ -8,6 +8,7 @@
     {{ parent() }}
     {% stylesheets filter='cssrewrite'
         'bundles/wowbilefrontend/css/customers.css'
+        'bundles/wowbilefrontend/css/slidemenu.css'
         'bundles/wowbilefrontend/css/fancybox_theme/jquery.fancybox.css'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
@@ -32,7 +33,7 @@
 
 {% if customers %}
 
-<div id="customers_list">
+<div id="customers_list" class="slidemenu">
 <div class="left"></div>
 <div class="right"></div>
 <div class="scroll">
