@@ -32,3 +32,5 @@ php_extensions:
 php_session_autostart: Off
 php_short_open_tag: Off
 magic_quotes_gpc: Off
+php_post_max_size: 4M
+php_file_uploads: On

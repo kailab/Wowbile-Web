@@ -758,7 +758,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 	background-color: #d7d7d7;
 	overflow: hidden;
 	border-radius: 1em;
-	font-size: 12pt;
+	font-size: 10pt;
 }
 
 #admin_menu li:first-child {
