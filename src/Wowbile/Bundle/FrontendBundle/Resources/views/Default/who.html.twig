@@ -32,9 +32,16 @@
 	<h2>Dionis Guzman</h2>
 	
 	<div class="excerpt">
+{% if locale_helper.code == "es" %}
 	<p>Los últimos años como Brand Manager en Samsung Mobile me acabaron de convencer
 	sobre el potencial de márketing mobil como un nuevo factor clave y revolucionario
 	en el márketing digital.</p>
+{% endif %}
+{% if locale_helper.code == "en" %}
+	<p>The previous years working as Brand Manager for Samsung Mobile ended up convincing
+	me of the potential mobile marketing had to become a key revolutionary factor in
+	global marketing.</p> 
+{% endif %}
 	</div>
 	
 	<img src="{{ asset('bundles/wowbilefrontend/images/btn_moreinfo.png') }}" class="more"/>
@@ -51,14 +58,28 @@
 	<div class="close"></div>
 	<div class="content">
 		<h2>Dionis Guzman</h2>
+{% if locale_helper.code == "es" %}
 		<p>La combinación de comunicación, marketing y tecnología siempre ha sido la fórmula
 		en la que me he sentido más cómodo a nivel profesional en empresas de tecnología como
 		ASUS o BenQ o en editoriales como Grupo Zeta.</p>
 		<p>La pasión por la comunicación me licenció en publicidad y relaciones públicas en la
 		<acronym title="Universidad Autónoma de Barcelona">UAB</acronym>  y la parte de tecnología la complementé en
 		La Salle (Master en Diseño de Contenidos Multimedia) y en el
-		<acronym title=" Instituto Superior para el Desarrollo de Internet">ISDI</acronym> con un 
-		<acronym title="Master en Internet Business">MIB</acronym>.</p> 
+		<acronym title="Instituto Superior para el Desarrollo de Internet">ISDI</acronym> con un 
+		<acronym title="Master en Internet Business">MIB</acronym>.</p>
+{% endif %}
+
+{% if locale_helper.code == "en" %}
+		<p>A combination of communication, marketing and technology has always been the formula
+		that best has suited me on a professional level working for tech companies such as ASUS
+		or BenQ and on publishers of the Zeta group.</p>
+		
+		<p>My pasion for communicating got me graduated in advertising and public relations at
+		<acronym title="Universidad Autónoma de Barcelona">UAB</acronym> and my tech part I
+		completed at La Salle (Master in Multimedia Content Design) and
+		<acronym title="Instituto Superior para el Desarrollo de Internet">ISDI</acronym> with a 
+		<acronym title="Master en Internet Business">MIB</acronym>.</p>
+{% endif %} 
 	</div>
 </div>
 
@@ -66,8 +87,14 @@
 	<h2>Francisco Téllez</h2>
 	
 	<div class="excerpt">
+{% if locale_helper.code == "es" %}
 	<p>Todo empezo con un ordenador de 8 bits a los 14 años, entonces programar videojuegos se convirtió en
 	mi hobby y pasión que marcarían mi trayectoria profesional.</p>
+{% endif %}
+{% if locale_helper.code == "en" %}
+	<p>Everything started with a 8 bit computer when I was 14 years old, programming videogames became my hobby
+	and a pasion that would define my professional career.</p>
+{% endif %}
 	</div>
 	
 	<img src="{{ asset('bundles/wowbilefrontend/images/btn_moreinfo.png') }}" class="more"/>
@@ -84,6 +111,8 @@
 	<div class="close"></div>
 	<div class="content">
 		<h2>Francisco Téllez</h2>
+
+{% if locale_helper.code == "es" %}
 		<p>Tras acabar ingeniería informática en la
 		<acronym title="Universidad Politécnica de Cataluña">UPC</acronym> empecé a
 		trabajar en Ubisoft España creando videojuegos para PC y
@@ -93,6 +122,19 @@
 		<p>5 años más tarde y con mucha experiencia en el mundo de
 		los videjuegos y dirección de equipos dejé Ubisoft para crear
 		Kailab de la que hoy en día soy director de producción.</p>
+{% endif %}
+
+{% if locale_helper.code == "en" %}
+		<p>After finishing Computer Engineering at 
+		<acronym title="Universidad Politécnica de Cataluña">UPC</acronym>
+		I started working for Ubisoft Spain creating PC and console
+		videogames. I learned the secrets of new technologies and
+		in no time I became chief programmer and project manager.</p>
+		
+		<p>5 years later and with lots of experience in the
+		videogames wolrd and directing teams I left Ubisoft to
+		start Kailab, a company of which I am now production director.</p>
+{% endif %}
 	</div>
 </div>
 
@@ -100,8 +142,17 @@
 	<h2>Toni García</h2>
 	
 	<div class="excerpt">
+	
+{% if locale_helper.code == "es" %}
 	<p>Portalmix.com, el portal de entretenimiento del grupo Gestmusic-Endemol me sirvió para
 	marcar<br/> un antes y un después en el potencial de<br/> Internet y las<br/> nuevas tecnologías.</p>
+{% endif %}
+	
+{% if locale_helper.code == "en" %}
+	<p>Portalmix.com, the entertainment portal of the Gestmusic-Endemol group was<br/>
+	a milestone that proved the<br/> potential of<br/> Internet and new technologies.</p>
+{% endif %}
+
 	</div>
 	
 	<img src="{{ asset('bundles/wowbilefrontend/images/btn_moreinfo.png') }}" class="more"/>
@@ -118,6 +169,8 @@
 	<div class="close"></div>
 	<div class="content">
 		<h2>Toni García</h2>
+		
+{% if locale_helper.code == "es" %}
 		<p>Como buen ingeniero informático por la
 		<acronym title="Universidad Politécnica de Cataluña">UPC</acronym>
 		había que entender mejor qué llevaba a los usuarios a interactuar con una marca
@@ -126,6 +179,20 @@
 		<p>Desde el 2005 dirijo Kailab, un estudio especializado en la
 		producción de videojuegos y aplicaciones para terminales portátiles,
 		tanto teléfonos como smartphones, consolas o tablets como iPad.</p>
+{% endif %}
+
+{% if locale_helper.code == "en" %}
+		<p>As a good computer engineer (<acronym title="Universidad Politécnica de Cataluña">UPC</acronym>)
+		I needed to understand what drives users to interact with a brand
+		and feel it as theirs, and a master in marketing at
+		<acronym title="Escuela de Alta Dirección y Administración">EADA</acronym>
+		helped wake up the marketing guy in me.</p>
+		 
+		<p>Since 2005 I manage Kailab, a studio specializing in videogames
+		and mobile apps production, for mobile phones, smartphones,
+		videogames consoles or tablets like iPad.</p>
+{% endif %}
+
 	</div>
 </div>
 

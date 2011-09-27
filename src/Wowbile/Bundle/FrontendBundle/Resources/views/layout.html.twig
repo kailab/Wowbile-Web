@@ -25,11 +25,7 @@
                 <div id="header">
                     <ul id="languages">
                         {% for code,name in locale_helper.locales %}
-                        {% if code == locale_helper.code %}
-                        <li class="selected">
-                        {% else %}
-                        <li>
-                        {% endif %}
+                        <li {% if code == locale_helper.code %}class="selected"{% endif %}>
                         <a href="{{ locale_helper.path(code) }}">{{ name | lower }}</a></li>
                         {% endfor %}
                     </ul>
@@ -64,7 +60,10 @@
         <div id="footer_wrapper">
             <div id="footer">
                 {% block footer %}
-                <img src="{{ asset('bundles/wowbilefrontend/images/logo_footer.png') }}" alt="{{ frontend_helper.configuration.site_name }}"/>
+                <ul>
+                <li><a href="{{ path('mobile_homepage') }}">{{ 'mobile version' | trans }}</a></li>
+                </ul>
+                                <img src="{{ asset('bundles/wowbilefrontend/images/logo_footer.png') }}" alt="{{ frontend_helper.configuration.site_name }}"/>
                 {% endblock %}
             </div>
         </div>

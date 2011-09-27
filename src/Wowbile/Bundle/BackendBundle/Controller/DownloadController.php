@@ -2,38 +2,38 @@
 namespace Wowbile\Bundle\BackendBundle\Controller;
 
 use Kailab\Bundle\SharedBundle\Controller\EntityCrudController;
-use Wowbile\Bundle\BackendBundle\Form\ConceptType;
+use Wowbile\Bundle\BackendBundle\Form\DownloadType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class ConceptController extends EntityCrudController
+class DownloadController extends EntityCrudController
 {
 	// implement abstract methods
 	
 	protected function getFormType()
 	{
-		return new ConceptType();
+		return new DownloadType();
 	}
 	
 	protected function getViewPrefix()
 	{
-		return 'WowbileBackendBundle:Concept';
+		return 'WowbileBackendBundle:Download';
 	}
 	
 	protected function getRoutePrefix()
 	{
-		return 'backend_concept_';
+		return 'backend_download_';
 	}
 	
 	protected function getEntityName()
 	{
-		return 'WowbileEntityBundle:Concept';
+		return 'WowbileEntityBundle:Download';
 	}
 	
 	// overwrite actions to set templates
 	
 	/**
-	* @Route("/concept", name="backend_concept_index")
+	* @Route("/download", name="backend_download_index")
 	* @Template()
 	*/
 	public function indexAction()
@@ -42,7 +42,7 @@ class ConceptController extends EntityCrudController
 	}
 	
 	/**
-	* @Route("/concept/new", name="backend_concept_new")
+	* @Route("/download/new", name="backend_download_new")
 	* @Template()
 	*/
 	public function newAction()
@@ -51,7 +51,7 @@ class ConceptController extends EntityCrudController
 	}
 	
 	/**
-	* @Route("/concept/edit/{id}", name="backend_concept_edit")
+	* @Route("/download/edit/{id}", name="backend_download_edit")
 	* @Template()
 	*/
 	public function editAction()
@@ -60,7 +60,7 @@ class ConceptController extends EntityCrudController
 	}
 	
 	/**
-	* @Route("/concept/delete/{id}", name="backend_concept_delete")
+	* @Route("/download/delete/{id}", name="backend_download_delete")
 	* @Template()
 	*/
 	public function deleteAction()
@@ -69,7 +69,7 @@ class ConceptController extends EntityCrudController
 	}
 	
 	/**
-	* @Route("/concept/toggle/{id}", name="backend_concept_toggle")
+	* @Route("/download/toggle/{id}", name="backend_download_toggle")
 	* @Template()
 	*/
 	public function toggleAction()
@@ -78,7 +78,7 @@ class ConceptController extends EntityCrudController
 	}
 	
 	/**
-	* @Route("/concept/up/{id}", name="backend_concept_up")
+	* @Route("/download/up/{id}", name="backend_download_up")
 	* @Template()
 	*/
 	public function upAction($id)
@@ -87,21 +87,12 @@ class ConceptController extends EntityCrudController
 	}
 	
 	/**
-	 * @Route("/concept/down/{id}", name="backend_concept_down")
+	 * @Route("/download/down/{id}", name="backend_download_down")
 	 * @Template()
 	 */
 	public function downAction($id)
 	{
 		return parent::downAction($id);
-	}
-	
-	protected function saveEntity($entity)
-	{
-		$repo = $this->getRepository();
-		// remove old screenshots
-		$repo->deleteScreenshots($entity);
-		
-		return parent::saveEntity($entity);
 	}
 	
 }

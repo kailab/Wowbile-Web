@@ -42,7 +42,7 @@ class DirectoryAssetStorage implements AssetStorageInterface
         $file = new FakeFile($asset->getContentType());
         $ext = $file->guessExtension();
         $name = $asset->getName();
-        $name .= $ext ? '.'.$ext : $name;
+        $name .= $ext ? '.'.$ext : '';
         return $name;
     }
 

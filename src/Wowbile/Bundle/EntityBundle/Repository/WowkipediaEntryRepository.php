@@ -40,6 +40,7 @@ class WowkipediaEntryRepository extends EntityRepository
 	public function groupByLetters($entries, $columns=1)
 	{
 		$names = array();
+		$groups = array();
 		foreach($entries as $entry){
 			$letter = $entry->getLetter();
 			if(!isset($groups[$letter])){

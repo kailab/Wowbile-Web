@@ -35,19 +35,21 @@
 {% endif %}
 
 <div id="blocks">
+	{% if download and download.file.uri %}
 	<div class="block">
 	    <div class="title">
 	        <h2>{{ 'work!' | trans | wowbilify }}</h2>
 	    </div>
 	    <div class="body">
-	        <p>{{ 'Download this file to get more detailed information about wowbile' | trans }}</p>
+	        <p>{{ download.description | raw }}</p>
 	        <div class="button download">
-		        <a href="http://www.google.com">
-		            {{ 'Download PPT' | trans }}
+		        <a href="{{ download.file.uri }}">
+		            {{ download.name | trans }}
 		        </a>
 	        </div>
 	    </div>
 	</div>
+	{% endif %}
 	
 	{% if links %}
 	<div class="block">

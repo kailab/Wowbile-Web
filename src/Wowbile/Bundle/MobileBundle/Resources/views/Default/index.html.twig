@@ -8,6 +8,10 @@
 	<img src="{{ asset('bundles/wowbilemobile/images/logo.png') }}"/>
 </div>
 
+<a href="{{ path('frontend_homepage') }}" rel="external" data-role="button" data-icon="back">
+{{ 'go to full website version' | trans }}
+</a>
+
 {% if testimony %}
 <div class="testimony">
 <div class="text">
@@ -43,9 +47,9 @@
 
 <ul data-role="listview" data-inset="true">
 	<li data-role="list-divider" role="heading">{{ 'follow us on...' | trans }}</li>
-	<li><a href="{{ frontend_helper.facebookUrl }}">{{ 'facebook' | trans }}</a></li>
-	<li><a href="{{ frontend_helper.twitterUrl }}">{{ 'twitter' | trans }}</a></li>
-	<li><a href="{{ frontend_helper.slideshareUrl }}">{{ 'slideshare' | trans }}</a></li>
+	<li><a href="{{ frontend_helper.facebookUrl }}" rel="external">{{ 'facebook' | trans }}</a></li>
+	<li><a href="{{ frontend_helper.twitterUrl }}" rel="external">{{ 'twitter' | trans }}</a></li>
+	<li><a href="{{ frontend_helper.slideshareUrl }}" rel="external">{{ 'slideshare' | trans }}</a></li>
 </ul>
 
 <div id="bottom" class="ui-body ui-body-c">

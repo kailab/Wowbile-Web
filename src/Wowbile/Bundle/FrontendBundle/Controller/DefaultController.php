@@ -15,6 +15,13 @@ class DefaultController extends Controller
 		return $repo->findFeatured();
 	}
 	
+	protected function getHomepageDownload()
+	{
+		$em = $this->getDoctrine()->getEntityManager();
+		$repo = $em->getRepository('WowbileEntityBundle:Download');
+		return $repo->findForHomepage();
+	}
+	
 	protected function getHomepageWowkipedia()
 	{
 		$em = $this->getDoctrine()->getEntityManager();
@@ -38,6 +45,7 @@ class DefaultController extends Controller
     {
 		return array(
 			'testimony'		=> $this->getHomepageTestimony(),
+			'download'		=> $this->getHomepageDownload(),
 			'wowkipedia'	=> $this->getHomepageWowkipedia(),
 			'links'			=> $this->getHomepageLinks(),
 		);

@@ -1,0 +1,60 @@
+{% extends "WowbileBackendBundle::form.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+{% stylesheets filter='cssrewrite'
+    'bundles/wowbilebackend/css/screenshots.css'
+%}
+<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+{% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+        'bundles/wowbilebackend/js/jquery.screenshots.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block form_title %}
+{% if entity.id %}
+{{ 'Editing Download' | trans }}
+{% else %}
+{{ 'New Download' | trans }}
+{% endif %}
+{% endblock %}
+
+{% block form_translation %}
+    {{ form_row(trans.name, {'attr':{'size':40}}) }}
+    <div class="form_row">
+    {{ form_widget(trans.description, {'attr':{'class':'tinymce','rows':10,'cols':50}}) }}
+    </div>
+    {{ form_rest(trans) }}
+{% endblock %}
+
+{% block form_rest %}
+    <div class="form_row">
+        {{ form_label(form.file) }}
+        {{ form_widget(form.file) }}
+        {% if entity.file.uri %}
+        <div class="form_row_comment">
+            <a href="{{ entity.file.uri }}">{{ 'Download current file' | trans }}</a>
+        </div>
+        {% endif %}
+        {{ form_errors(form.file) }}
+    </div>
+{{ parent() }}
+{% endblock %}
+
+{% block footer %}
+{{ parent() }}
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.screenshots').screenshots({
+    });
+});
+</script>
+{% endblock %}
