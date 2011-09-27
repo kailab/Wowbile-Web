@@ -25,12 +25,14 @@ class MobileVersion
 			return true;
 		}
 		
-		$op = $request->headers->get('X-Operamini-Phone');
-		$ua = $request->headers->get('User-Agent');
-		$ac = $request->headers->get('Accept');
-		
-		$isMobile = strpos($ac, 'application/vnd.wap.xhtml+xml') !== false
+		$op = $request->headers->get('x-operamini-phone');
+		$ua = mb_strtolower($request->headers->get('user-agent'));
+		$ac = $request->headers->get('accept');
+
+		return strpos($ac, 'application/vnd.wap.xhtml+xml') !== false
 		|| $op != ''
+		|| strpos($ua, 'android') !== false
+		|| strpos($ua, 'iphone') !== false
 		|| strpos($ua, 'sony') !== false
 		|| strpos($ua, 'symbian') !== false
 		|| strpos($ua, 'nokia') !== false
@@ -77,9 +79,9 @@ class MobileVersion
 	
 	public function isMobileBot(Request $request)
 	{
-		$ua = $request->headers->get('User-Agent');
+		$ua = mb_strtolower($request->headers->get('user-agent'));
 		$ip = $request->headers->get('Remote-Address');
-		$isBot =  $ip == '66.249.65.39'
+		return  $ip == '66.249.65.39'
 		|| strpos($ua, 'googlebot') !== false
 		|| strpos($ua, 'mediapartners') !== false
 		|| strpos($ua, 'yahooysmcm') !== false
