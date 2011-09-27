@@ -34,7 +34,7 @@ class DefaultController extends Controller
 	{
 		$em = $this->getDoctrine()->getEntityManager();
 		$repo = $em->getRepository('WowbileEntityBundle:Link');
-		$links = $repo->findForHomepage();
+		return $repo->findForHomepage();
 	}
 	
     /**
