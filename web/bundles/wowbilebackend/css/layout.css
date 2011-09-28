@@ -12,6 +12,8 @@
 	overflow: hidden;
 	border-radius: 1em;
 	font-size: 10pt;
+	overflow: hidden;
+	width: 100%;
 }
 
 #admin_menu li:first-child {
@@ -168,4 +170,37 @@ form.entity .form_submit_row {
 .links .form_row .form_row {
     display: inline;
     padding-right: 10px;
+}
+
+.pagination {
+	height: 2em;
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+
+.pagination ul {
+	padding: 5px;
+	text-align: center;
+	margin: 0;
+	width: 100%;
+	background-color: #EEEEEE;
+}
+
+.pagination ul li {
+	display: inline;
+	margin: 0 5px 0 0;
+	padding: 0;
+}
+
+.pagination .previous {
+	float: left;
+}
+
+.pagination .next {
+	float: right;
+}
+
+.pagination a {
+	background-color: #E5F2F6;
+	padding: 5px;
 }

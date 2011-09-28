@@ -19,8 +19,8 @@
 }
 .concept .content ul li {
 	margin: 0;
-	padding: 0;
-	list-style: url(../images/bullet.png) square;
+	padding: 0 0 0 10px;
+	list-style: inside url(../images/bullet.png);
 }
 
 .screenshots {
