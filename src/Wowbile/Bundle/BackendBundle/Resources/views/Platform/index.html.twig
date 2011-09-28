@@ -7,7 +7,7 @@
 {% block content_body %}
 {% if entities %}
 
-{% include 'WowbileBackendBundle::_pagination.html.twig' with {'route': 'backend_platform_list', 'pager': pager} %}
+{% include 'WowbileBackendBundle::_pagination.html.twig' with {'route': 'backend_platform_index', 'pager': pager} %}
 
 <table class="entity_list">
 <thead>
@@ -37,7 +37,7 @@
 </tbody>
 </table>
 
-{% include 'WowbileBackendBundle::_pagination.html.twig' with {'route': 'backend_platform_list', 'pager': pager} %}
+{% include 'WowbileBackendBundle::_pagination.html.twig' with {'route': 'backend_platform_index', 'pager': pager} %}
 
 {% else %}
 

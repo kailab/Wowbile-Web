@@ -65,7 +65,7 @@
 	</div>
 	{% endif %}
 	
-	{% if wowkipedia %}
+	{% if wowkipedia and locale_helper.code == 'es' %}
 	<div class="block wowkipedia">
 	    <div class="title">
 	        <h2><a href="{{ path('wowkipedia') }}">{{ 'wowkipedia' | trans | wowbilify }}</a></h2>
@@ -85,6 +85,12 @@
 				</dt>
 				{% endfor %}
 			</dl>
+	</div>
+	{% else %}
+	<div class="block">
+	    <div class="title">
+	        <h2><a href="{{ path('frontend_contact') }}">{{ 'contact' | trans | wowbilify }}</a></h2>
+	    </div>
 	</div>
 	{% endif %}
 </div>
