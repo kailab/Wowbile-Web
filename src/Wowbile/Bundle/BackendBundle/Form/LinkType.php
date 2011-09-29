@@ -19,9 +19,8 @@ class LinkType extends BaseType
         	'required'	=> false,
             'choices'   => array(
             	'es'    => 'Español',
-               	'en'    => 'Englush',
-                ''   	=> 'Any language',
-        )
+               	'en'    => 'English',
+        	)
         ));
         $builder->add('image','file',array(
                     	    	    'required'  => false,

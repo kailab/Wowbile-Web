@@ -52,14 +52,14 @@
 	{% endif %}
 	
 	{% if links %}
-	<div class="block">
+	<div class="block links">
 	    <div class="title">
 	        <h2>{{ 'links!' | trans | wowbilify }}</h2>
 	    </div>
 	    	{# <p class="explain">Texto de prueba</p> #}
 			<ul>
 				{% for link in links %}
-				<li>{{ link | raw }}</li>
+				<li {% if not link.image.uri %}class="textlink"{% endif %}>{{ link | raw }}</li>
 				{% endfor %}
 			</ul>
 	</div>
@@ -70,7 +70,10 @@
 	    <div class="title">
 	        <h2><a href="{{ path('wowkipedia') }}">{{ 'wowkipedia' | trans | wowbilify }}</a></h2>
 	    </div>
-	    	<p class="explain">Texto de prueba</p>
+	    	<p class="explain">
+	    		{{ 'Learn new terms related to mobile marketing.' | trans }}
+	    		<a href="http://twitter.com/#!/search/realtime/%23wowkipedia">#wowkipedia</a>
+	    	</p>
 			<dl>
 				{% for letter,entries in wowkipedia %}
 				<dd>{{ letter | wowbilify }}!</dd>
@@ -103,13 +106,15 @@
 
 {% include 'WowbileFrontendBundle:Default:_followus.html.twig' %}
 
+{#
 <a href="http://www.mmaspain.com/">
     <img src="{{ asset('bundles/wowbilefrontend/images/logo_mma.png') }}"/>
 </a>
+#}
 
 <script type="text/javascript">
 $(document).ready(function(){
-	var h = $('#main').innerHeight()-155;
+	var h = $('#main').innerHeight()-130;
 	var user = {{ frontend_helper.configuration.twitter | json_encode | raw }};
     new TWTR.Widget({
       id: 'twitter_widget',

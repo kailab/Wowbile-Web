@@ -20,11 +20,10 @@ class DownloadType extends BaseType
         ));
         $builder->add('language', 'choice', array(
         	'required'	=> false,
-             'choices'   => array(
+            'choices'   => array(
              	'es'    => 'Español',
-        		'en'    => 'Englush',
-                ''   	=> 'Any language',
-        )
+        		'en'    => 'English',
+        	)
         ));
         $builder->add('file','file',array(
             'required'  => false,

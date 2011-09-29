@@ -119,19 +119,22 @@
 	font-weight: bold;
 }
 
-.block ul {
+.block.links ul {
 	margin: 0;
 	padding: 0;
 }
 
-.block ul li {
+.block.links ul li:first-child {
 	margin: 0;
+}
+
+.block.links ul li {
+	margin: 10px 0 0 0;
 	padding: 0;
 	list-style: none;
 }
 
-.block ul li.textlink {
-	border-bottom: 1px solid #FFFFFF;
+.block.links ul li.textlink {
 	padding: 2px;
 }
 
@@ -139,11 +142,8 @@
 	text-decoration: none;
 	color: #777;
 	font-weight: bold;
-	display: block;
-	background-image: url(../bundles/wowbilefrontend/images/block_li_a_bg.png);
-	background-position: right center;
-	background-repeat: no-repeat;
-	margin-right: 5px;
+	font-family: Nunito, Arial, sans-serif;
+	font-size: 12pt;
 }
 
 .block ul li a:hover {
