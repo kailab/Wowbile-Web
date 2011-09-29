@@ -30,19 +30,23 @@
 
 <ul data-role="listview" data-inset="true" class="small">
 	<li data-role="list-divider" role="heading"></li>
-	<li><a href="">
-		<h3>{{ 'work' | trans | wowbilify | raw }}</h3>
-		<p>{{ 'download our powerpoint' | trans }}</p>
+	{% if download and download.file.uri %}
+	<li><a rel="external" href="{{ path('frontend_download_file', {'id': download.id }) }}">
+		<h3>{{ download.name }}</h3>
+		<p>{{ download.description | striptags | truncate(40) }}</p>
 	</a>
 	</li>
+	{% endif %}
 	<li><a href="{{ path('mobile_links') }}">
 		<h3>{{ 'links' | trans | wowbilify | raw }}</h3>
 		<p>{{ 'listing of related websites' | trans }}</p> 
 	</a></li>
+{% if locale_helper.code == "es" %}
 	<li><a href="{{ path('mobile_wowkipedia') }}">
 		<h3>{{ 'wowkipedia' | trans | wowbilify | raw }}</h3>
 		<p>{{ 'learn new words' | trans }}</p> 
 	</a></li>
+{% endif %}
 </ul>
 
 <ul data-role="listview" data-inset="true">

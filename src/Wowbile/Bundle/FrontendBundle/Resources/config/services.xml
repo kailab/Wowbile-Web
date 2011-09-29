@@ -12,6 +12,8 @@
                 <argument key="twitter">wowbile</argument>
                 <argument key="facebook">Wowbile/134570826606044</argument>
                 <argument key="slideshare">mmaspain</argument>
+                <argument key="contact_email">info@wowbile.eu</argument>
+                <argument key="contact_phone">+34 668 818 238</argument>
                 <argument type="collection" key="main_menu">
                 	<argument key="frontend_homepage">home</argument>
                 	<argument key="frontend_who">who we are</argument>
@@ -36,7 +38,7 @@
             <argument type="service" id="request" />
         </service>
        
-        <service id="ltwig.extension.helper.locale" class="Kailab\Bundle\SharedBundle\Templating\Twig\Extension\HelperExtension">
+        <service id="twig.extension.helper.locale" class="Kailab\Bundle\SharedBundle\Templating\Twig\Extension\HelperExtension">
             <tag name="twig.extension" />
             <argument>helper.wowbile.locale</argument>
             <argument type="service" id="service_container" />

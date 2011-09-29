@@ -2,9 +2,9 @@
 
 {% block form_title %}
 {% if entity.id %}
-{{ 'Editing Wöwkipedia Entry' | trans }}
+{{ 'Editing Link' | trans }}
 {% else %}
-{{ 'New Wöwkipedia Entry' | trans }}
+{{ 'New Link' | trans }}
 {% endif %}
 {% endblock %}
 
@@ -18,5 +18,15 @@
 
 {% block form_rest %}
 	{{ form_row(form.url,{'attr':{'size':40}}) }}
+	<div class="form_row">
+        {{ form_label(form.image) }}
+        {{ form_widget(form.image) }}
+        {% if entity.image.uri %}
+        <div class="form_row_comment">
+            <img src="{{ entity.image.uri }}"/>
+        </div>
+        {% endif %}
+        {{ form_errors(form.image) }}
+    </div>
 	{{ form_rest(form) }}
 {% endblock %}

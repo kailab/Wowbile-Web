@@ -88,6 +88,30 @@ h1, h2, h3, h4, h5, h6 {
 	overflow: hidden !important;
 }
 
+.description p {
+	padding: 0;
+	margin: 0 0 0.5em 0;
+}
+
+.description * {
+	font-family: Verdana,Arial,Helvetica,sans-serif !important;
+	font-size: 10pt !important;
+}
+
+.description ul {
+	margin: 0 0 1em 0;
+	padding: 0;
+}
+
+.description ul li ul {
+	margin-left: 10px;
+}
+.description ul li {
+	margin: 0;
+	padding: 0 0 0 10px;
+	list-style: inside url(../bundles/wowbilemobile/images/bullet.png);
+}
+
 /*!
  * jQuery Mobile v1.0b3
  * http://jquerymobile.com/

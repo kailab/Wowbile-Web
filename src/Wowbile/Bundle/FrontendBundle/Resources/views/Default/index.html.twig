@@ -56,7 +56,7 @@
 	    <div class="title">
 	        <h2>{{ 'links!' | trans | wowbilify }}</h2>
 	    </div>
-	    	<p class="explain">Texto de prueba</p>
+	    	{# <p class="explain">Texto de prueba</p> #}
 			<ul>
 				{% for link in links %}
 				<li>{{ link | raw }}</li>
@@ -91,6 +91,12 @@
 	    <div class="title">
 	        <h2><a href="{{ path('frontend_contact') }}">{{ 'contact' | trans | wowbilify }}</a></h2>
 	    </div>
+	    <dl class="contact">
+	    	<dt><img src="{{ asset('bundles/wowbilefrontend/images/contact_ico_email.png') }}" alt="{{ 'Email' | trans }}"/></dt>
+	    	<dd>{{ frontend_helper.configuration.contact_email | mailto | raw }}</dd>
+	    	<dt><img src="{{ asset('bundles/wowbilefrontend/images/contact_ico_phone.png') }}" alt="{{ 'Telephone' | trans }}"/></dt>
+	    	<dd>{{ frontend_helper.configuration.contact_phone | mailto | raw }}</dd>
+    	</dl>
 	</div>
 	{% endif %}
 </div>

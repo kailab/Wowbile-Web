@@ -82,7 +82,7 @@ class Customer extends TranslatedEntity
 
     /**
      * @ORM\ManyToMany(targetEntity="Platform", inversedBy="customers")
-     * @ORM\JoinTable(name="customer_platforms",
+     * @ORM\JoinTable(name="customer_platform",
      *      joinColumns={@ORM\JoinColumn(name="customer_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="platform_id", referencedColumnName="id")}
      *      )
@@ -91,7 +91,7 @@ class Customer extends TranslatedEntity
 
     /**
      * @ORM\ManyToMany(targetEntity="Customer")
-     * @ORM\JoinTable(name="customer_relations",
+     * @ORM\JoinTable(name="customer_relation",
      *      joinColumns={@ORM\JoinColumn(name="customer_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="related_id", referencedColumnName="id")}
      *      )

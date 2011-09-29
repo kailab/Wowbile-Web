@@ -1799,6 +1799,9 @@ $.fn[plugin_name] = function(options){
     	item = getCurrentItem.call(obj);
     }
     selectItem.call(obj, item);
+    if(options.mode == "center"){
+    	centerList.call(obj);
+    }
     return this;
 };
 
@@ -1812,7 +1815,9 @@ var selectItem = function(item){
 	items.removeClass(options.listElementSelectedClass);
 	if(item !== undefined && item.length > 0){
 		item.addClass(options.listElementSelectedClass);
-		moveItemToCenter.call(obj, item);
+		if(options.mode == 'slide'){
+			moveItemToCenter.call(obj, item);	
+		}
 		section = getItemSection.call(obj, item);
 		setItemAnchor.call(obj, item);
 	}
@@ -1831,6 +1836,18 @@ var setItemAnchor = function(item){
 		window.location.hash = anchor;
 	    elem.attr('name',anchor);
 	}
+};
+
+var centerList = function(){
+	var obj = $(this);
+    var options = getOptions.call(this);
+	var list = obj.find(options.listSelector);
+	var wrapper = list.parent();
+	var x = wrapper.innerWidth()/2;;
+	list.find(options.listElementSelector).each(function(){
+		x -= $(this).outerWidth()/2;
+	});
+	list.css({left: x});
 };
 
 var moveItemToCenter = function(item){
@@ -1908,7 +1925,8 @@ $.fn[plugin_name].defaults = {
 	listElementSelector: 'li',
 	listElementSelectedClass: 'selected',
 	previousSelector: '.previous',
-	nextSelector: '.next'
+	nextSelector: '.next',
+	mode: 'center'
 };
  
 var getOptions = function(options){

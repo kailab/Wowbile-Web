@@ -17,6 +17,7 @@ class DefaultController extends Controller
     {
 		return array(
 			'testimony'		=> $this->getHomepageTestimony(),
+			'download'		=> $this->getHomepageDownload()
 		);
     }
     

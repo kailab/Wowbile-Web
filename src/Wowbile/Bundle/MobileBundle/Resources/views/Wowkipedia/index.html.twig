@@ -8,7 +8,7 @@
 {% block content %}
 
 <ul data-role="listview" data-filter="true"
-data-filter-placeholder="{{ 'Search terms...'}}" data-filter-theme="b">
+data-filter-placeholder="{{ 'Search terms...' | trans }}" data-filter-theme="b">
 {% for letter,subentries in entries %}
 <li data-role="list-divider">{{ letter | upper }}</li>
 {% for entry in subentries %}

@@ -40,6 +40,17 @@
 	line-height: 1.4em;
 }
 
+.customer .content * {
+	font-family: Arial, sans-serif !important;
+	font-size: 10pt !important;
+	line-height: 1.4em !important;
+}
+
+.customer .content strong,
+.customer .content b {
+	 color: #33A3C9;
+}
+
 .customer .content blockquote {
 	margin: 0;
 	background-image: url(../images/quote_end.png);
@@ -55,10 +66,11 @@
 .customer .content ul li ul {
 	margin-left: 10px;
 }
-.customer .content ul li {
+
+.concept .content ul li {
 	margin: 0;
-	padding: 0;
-	list-style: url(../images/bullet.png) square;
+	padding: 0 0 0 10px;
+	list-style: inside url(../images/bullet.png);
 }
 
 .screenshots {

@@ -10,9 +10,16 @@
 <div class="person">
 	<h2>Dionís Guzman</h2>
 	
+{% if locale_helper.code == "es" %}
 	<p>Los últimos años como Brand Manager en Samsung Mobile me acabaron de convencer
 	sobre el potencial de márketing mobil como un nuevo factor clave y revolucionario
 	en el márketing digital.</p>
+{% endif %}
+{% if locale_helper.code == "en" %}
+	<p>The previous years working as Brand Manager for Samsung Mobile ended up convincing
+	me of the potential mobile marketing had to become a key revolutionary factor in
+	global marketing.</p> 
+{% endif %}
 	
 	<div data-role="collapsible" data-theme="b">
 		<h3>{{ 'More about %name%' | trans({'%name%': 'Dionís' }) }}</h3>
@@ -25,8 +32,14 @@
 
 <div class="person">
 <h2>Francisco Téllez</h2>
+{% if locale_helper.code == "es" %}
 	<p>Todo empezo con un ordenador de 8 bits a los 14 años, entonces programar videojuegos se convirtió en
 	mi hobby y pasión que marcarían mi trayectoria profesional.</p>
+{% endif %}
+{% if locale_helper.code == "en" %}
+	<p>Everything started with a 8 bit computer when I was 14 years old, programming videogames became my hobby
+	and a pasion that would define my professional career.</p>
+{% endif %}
 	
 	<div data-role="collapsible" data-theme="b">
 		<h3>{{ 'More about %name%' | trans({'%name%': 'Fran' }) }}</h3>
@@ -39,8 +52,16 @@
 
 <div class="person">
 <h2>Toni García</h2>
+	
+{% if locale_helper.code == "es" %}
 	<p>Portalmix.com, el portal de entretenimiento del grupo Gestmusic-Endemol me sirvió para
 	marcar un antes y un después en el potencial de Internet y las nuevas tecnologías.</p>
+{% endif %}
+	
+{% if locale_helper.code == "en" %}
+	<p>Portalmix.com, the entertainment portal of the Gestmusic-Endemol group was<br/>
+	a milestone that proved the potential of Internet and new technologies.</p>
+{% endif %}
 	
 	<div data-role="collapsible" data-theme="b">
 		<h3>{{ 'More about %name%' | trans({'%name%': 'Toni' }) }}</h3>

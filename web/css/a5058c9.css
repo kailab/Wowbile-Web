@@ -127,12 +127,15 @@
 .block ul li {
 	margin: 0;
 	padding: 0;
-	border-bottom: 1px solid #FFFFFF;
 	list-style: none;
+}
+
+.block ul li.textlink {
+	border-bottom: 1px solid #FFFFFF;
 	padding: 2px;
 }
 
-.block ul li a {
+.block ul li.textlink a {
 	text-decoration: none;
 	color: #777;
 	font-weight: bold;
@@ -197,6 +200,26 @@
 	display: inline;
 }
 
+.block dl.contact {
+
+}
+
+.block dl.contact dt {
+	float: left;
+	height: 60px;
+	line-height: 60px;
+	margin: 0 10px 10px 10px;
+	clear: left;
+}
+
+.block dl.contact dd {
+	float: left;
+	display: inline;
+	height: 60px;
+	margin: 0 0 10px 0;
+	line-height: 60px;
+}
+
 .testimony {
 	border-bottom: 1px solid #cce8f3;
 	padding-bottom: 30px;
@@ -220,6 +243,11 @@
 	background-position: left top;
 }
 
+.testimony .text * {
+	font-family: Nunito, Arial, sans-serif !important;
+	font-size: 12pt !important;
+}
+
 .testimony .text blockquote {
 	margin: 0;
 	background-image: url(../bundles/wowbilefrontend/images/quote_end.png);
@@ -227,7 +255,8 @@
 	background-position: right bottom;
 }
 
-.testimony .text strong {
+.testimony .text strong,
+.testimony .text b {
 	font-size: 120%;
 	color: #33a3c9;
 }

@@ -9,6 +9,17 @@
 	line-height: 1.4em;
 }
 
+.concept .content * {
+	font-family: Arial, sans-serif !important;
+	font-size: 10pt !important;
+	line-height: 1.4em !important;
+}
+
+.concept .content strong,
+.concept .content b {
+	 color: #33A3C9;
+}
+
 .concept .content ul {
 	margin: 0 0 1em 0;
 	padding: 0;

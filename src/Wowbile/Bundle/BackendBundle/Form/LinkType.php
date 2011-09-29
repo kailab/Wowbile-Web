@@ -15,6 +15,17 @@ class LinkType extends BaseType
         $builder->add('url', 'url', array(
         	'required'	=> true,
         ));
+        $builder->add('language', 'choice', array(
+        	'required'	=> false,
+            'choices'   => array(
+            	'es'    => 'Español',
+               	'en'    => 'Englush',
+                ''   	=> 'Any language',
+        )
+        ));
+        $builder->add('image','file',array(
+                    	    	    'required'  => false,
+        ));
     }
 
 }

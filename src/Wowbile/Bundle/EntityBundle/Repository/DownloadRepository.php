@@ -7,11 +7,15 @@ use Wowbile\Bundle\EntityBundle\Entity\Concept;
 use Kailab\Bundle\SharedBundle\Repository\EntityRepository;
 
 class DownloadRepository extends EntityRepository
-{
-	public function findForHomepage()
+{	
+	public function findForHomepage($locale=null)
 	{
 		$sql = "WHERE e.active = true AND e.type = 'ppt'";
-		return $this->createEntityQuery($sql)->getOneOrNullResult();
+		if($locale){
+			$sql .= " AND ( e.language IS NULL OR e.language = '' OR e.language = :language )";
+		}
+		return $this->createEntityQuery($sql)
+		->setParameter('language', $locale)->getOneOrNullResult();
 	}
 	
 	public function findActiveById($id)

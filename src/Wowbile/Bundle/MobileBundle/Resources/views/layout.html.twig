@@ -14,7 +14,8 @@
 	   	<script type="text/javascript">
 		$(document).bind("mobileinit", function(){
 		  	$.extend($.mobile, {
-				defaultPageTransition: 'slide'
+				defaultPageTransition: 'slide',
+				loadingMessage: {{ "Loading..." | trans | json_encode | raw }}
 		  	});
 		});  
 	    </script>

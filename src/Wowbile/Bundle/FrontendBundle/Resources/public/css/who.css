@@ -14,9 +14,17 @@
 
 .person h2 {
 	font-size: 120%;
+	margin: 0;
+}
+
+.person .position {
+	color: #c4c4c4;
+	margin: 0 0 2px 0;
+	font-weight: bold;
 }
 
 .person .excerpt {
+	margin-top: 15px;
 	width: 50%;
 }
 

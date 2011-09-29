@@ -78,7 +78,7 @@ abstract class EntityRepository extends BaseEntityRepository
     public function findActive($id)
     {
         return $this->createEntityQuery('WHERE e.active = true AND e.id = :id')
-            ->setParameter('id', intval($id))->getSingleResult();
+            ->setParameter('id', intval($id))->getOneOrNullResult();
     }
 
 }

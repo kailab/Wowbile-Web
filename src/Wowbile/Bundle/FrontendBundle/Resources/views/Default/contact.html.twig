@@ -33,9 +33,9 @@
 		<p>08009 Barcelona (SPAIN)</p>
 		<dl class="info">
 			<dt>@!</dt>
-			<dd>{{ 'info@wowbile.eu' | mailto | raw }}</dd>
+			<dd>{{ frontend_helper.configuration.contact_email | mailto | raw }}</dd>
 			<dt>m!</dt>
-			<dd>{{ '+34 668 818 238' | callto | raw }}</dd>
+			<dd>{{ frontend_helper.configuration.contact_phone | callto | raw }}</dd>
 		</dl>
 	</div>
 	
@@ -125,29 +125,14 @@ $(document).ready(function(){
     info.setContent($('#map_info').html());
     info.setPosition(marker.position);
 
-    var resize_map = function(h, callback){
-        if(canvas.height() == h){
-            return;
-        }
-    	canvas.animate({height:h}, function(){
-    		google.maps.event.trigger(map, "resize");
-    		map.panTo(options.center);
-    		if($.isFunction(callback)){
-        		callback.call(this);
-    		}
-    	});
-    };
-
     var h = canvas.outerHeight();
     canvas.mouseenter(function(){
-    	resize_map(h*2, function(){
-        	info.open(map);
-    	});
+    	info.open(map)
+        marker.setVisible(false);
     });
     canvas.mouseleave(function(){
-    	resize_map(h, function(){
-        	info.close(map);
-    	});
+        info.close(map);
+        marker.setVisible(true);
     });
     
 });

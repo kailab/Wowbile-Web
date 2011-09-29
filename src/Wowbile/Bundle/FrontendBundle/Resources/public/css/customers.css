@@ -40,6 +40,17 @@
 	line-height: 1.4em;
 }
 
+.customer .content * {
+	font-family: Arial, sans-serif !important;
+	font-size: 10pt !important;
+	line-height: 1.4em !important;
+}
+
+.customer .content strong,
+.customer .content b {
+	 color: #33A3C9;
+}
+
 .customer .content blockquote {
 	margin: 0;
 	background-image: url(../images/quote_end.png);

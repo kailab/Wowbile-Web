@@ -28,13 +28,12 @@
 	<img class="logo" src="{{ asset('bundles/wowbilefrontend/images/logo_wowkipedia.png') }}"/>
 	
 	<div class="description">
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tempor rutrum ultricies.
-		Cras hendrerit tempor est et tempus. Etiam rutrum tincidunt nisl, ut lobortis justo sagittis eget.
-		Phasellus sit amet sodales turpis. Maecenas a nunc tempus quam fringilla dignissim sit amet in tellus.</p>
+		{% if locale_helper.code == "es" %}
+		<p>La wöwkipedia es un compendio de conceptos relacionados con el mundo del marketing móvil.</p>
 		
-		<p>Suspendisse id lectus et est aliquam tempus quis ut odio. Pellentesque habitant morbi tristique senectus
-		et netus et malesuada fames ac turpis egestas. Nam gravida dignissim nisl, quis porta diam pharetra
-		adipiscing. Donec et felis nulla. Donec volutpat tellus et mauris suscipit et ultrices dolor ornare.</p>
+		<p>Puedes ayudarnos a completar este diccionario enviando tus definicions via twitter añadiendo 
+		el hashtag <a href="http://twitter.com/#!/search/realtime/%23wowkipedia">#wowkipedia</a>. Estaremos encantados de que participes.</p>
+		{% endif %}
 	</div>
 </div>
 

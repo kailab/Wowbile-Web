@@ -19,7 +19,7 @@ class DefaultController extends Controller
 	{
 		$em = $this->getDoctrine()->getEntityManager();
 		$repo = $em->getRepository('WowbileEntityBundle:Download');
-		return $repo->findForHomepage();
+		return $repo->findForHomepage($this->getLocaleCode());
 	}
 	
 	protected function getHomepageWowkipedia()
@@ -34,7 +34,17 @@ class DefaultController extends Controller
 	{
 		$em = $this->getDoctrine()->getEntityManager();
 		$repo = $em->getRepository('WowbileEntityBundle:Link');
-		return $repo->findForHomepage();
+		return $repo->findForHomepage($this->getLocaleCode());
+	}
+	
+	protected function getLocaleCode()
+	{
+		try{
+			$locale = $this->get('helper.wowbile.locale');
+			return $locale->code();
+		}catch(ServiceNotFoundException $e){
+			return null;
+		}
 	}
 	
     /**
