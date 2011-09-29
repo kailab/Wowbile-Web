@@ -98,7 +98,7 @@ class Link extends TranslatedEntity
     	}
     	$imagine = new Imagine();
     	$img= $imagine->load($content);
-    	$resize = new Resize(new Box(155,50));
+    	$resize = new Resize(new Box(155,25));
     	$img = $resize->apply($img);
     
     	$this->setImage(new ParameterAsset(array(
