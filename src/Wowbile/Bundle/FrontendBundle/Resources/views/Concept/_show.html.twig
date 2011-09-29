@@ -5,7 +5,7 @@
 	{% if concept.screenshots.count > 0 %}
 	<ul class="screenshots {% if concept.screenshots.count > 1 %}cycle{% endif %}">
 	{% for screen in concept.screenshots %}
-	<li style="display:{% if loop.first %}none{% else %}block{% endif %};">
+	<li style="display:{% if loop.first %}block{% else %}none{% endif %};">
 	<a href="{{ screen.uri }}" rel="{{ concept.slug }}-screenshots">
 		{% if concept.orientation == 'both' %}
 		<img src="{{ screen.uri('bigcenter') }}" alt="screenshot"/>

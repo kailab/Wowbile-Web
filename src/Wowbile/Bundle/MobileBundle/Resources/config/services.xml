@@ -23,24 +23,7 @@
         <service id="twig.extension.helper.mobile" class="Wowbile\Bundle\FrontendBundle\Templating\Twig\Extension\FrontendExtension">
             <tag name="twig.extension" />
             <argument type="service" id="helper.wowbile.mobile" />
-        </service>
-        <service id="helper.wowbile.locale" class="Wowbile\Bundle\FrontendBundle\Templating\Helper\LocaleHelper" scope="request">
-            <tag name="templating.helper" alias="locale" />
-            <argument type="collection">
-                <argument>es</argument>
-                <argument>en</argument>
-            </argument>
-            <argument type="service" id="session" />
-            <argument type="service" id="router" />
-            <argument type="service" id="request" />
-        </service>
-       
-        <service id="ltwig.extension.helper.locale" class="Kailab\Bundle\SharedBundle\Templating\Twig\Extension\HelperExtension">
-            <tag name="twig.extension"/>
-            <argument>helper.wowbile.locale</argument>
-            <argument type="service" id="service_container" />
-        </service>
-        
+        </service>        
         <service id="twig.extension.text" class="Twig_Extensions_Extension_Text">
             <tag name="twig.extension"/>
         </service>

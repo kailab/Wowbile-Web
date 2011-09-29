@@ -1,6 +1,6 @@
 <?php
 
-namespace Wowbile\Bundle\FrontendBundle\Templating\Helper;
+namespace Kailab\Bundle\SharedBundle\Templating\Helper;
 
 use Symfony\Component\Templating\Helper\Helper;
 use Symfony\Component\Locale\Locale;

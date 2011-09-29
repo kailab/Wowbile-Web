@@ -65,29 +65,18 @@
 	</div>
 	{% endif %}
 	
-	{% if wowkipedia and locale_helper.code == 'es' %}
+	{% if locale_helper.code == 'es' %}
 	<div class="block wowkipedia">
+		<a href="{{ path('wowkipedia') }}">
 	    <div class="title">
-	        <h2><a href="{{ path('wowkipedia') }}">{{ 'wowkipedia' | trans | wowbilify }}</a></h2>
+	        <h2>{{ 'wowkipedia' | trans | wowbilify }}</h2>
 	    </div>
-	    	<p class="explain">
-	    		{{ 'Learn new terms related to mobile marketing.' | trans }}
-	    		<a href="http://twitter.com/#!/search/realtime/%23wowkipedia">#wowkipedia</a>
-	    	</p>
-			<dl>
-				{% for letter,entries in wowkipedia %}
-				<dd>{{ letter | wowbilify }}!</dd>
-				<dt>{% for entry in entries %}
-				<div class="entry">
-					<a href="{{ path('wowkipedia') }}#{{ entry.anchor }}">
-						<div class="name">{{ entry.name }}:</div>
-						<div class="description">{{ entry.excerpt | raw }}</div>
-					</a>
-				</div>
-				{% endfor %}
-				</dt>
-				{% endfor %}
-			</dl>
+	    <img class="ico" src="{{ asset('bundles/wowbilefrontend/images/wowkipedia_ico.png') }}" alt="wöwkipedia"/>
+    	<p>¿Qué es <em>Android</em>? ¿y una <em>app</em>?
+    		Nuestra wöwkipedia te ayudará a entender
+    		mejor los conceptos clave del marketing móvil.
+    	</p>
+    	</a>
 	</div>
 	{% else %}
 	<div class="block">

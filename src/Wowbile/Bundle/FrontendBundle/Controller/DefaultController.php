@@ -40,8 +40,7 @@ class DefaultController extends Controller
 	protected function getLocaleCode()
 	{
 		try{
-			$locale = $this->get('helper.wowbile.locale');
-			return $locale->code();
+			return $this->get('session')->getLocale();
 		}catch(ServiceNotFoundException $e){
 			return null;
 		}
