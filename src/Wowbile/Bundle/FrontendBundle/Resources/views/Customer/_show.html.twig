@@ -4,7 +4,7 @@
 	<a name="{{ customer.slug }}"></a>
 	<ul class="screenshots {% if customer.screenshots.count > 1 %}cycle{% endif %}">
 	{% for screen in customer.screenshots %}
-	<li style="display:{% if loop.first %}none{% else %}block{% endif %};">
+	<li style="display:{% if loop.first %}block{% else %}none{% endif %};">
 	<a href="{{ screen.uri }}" rel="{{ customer.slug }}-screenshots">
 		{% if customer.orientation == 'both' %}
 		<img src="{{ screen.uri('bigcenter') }}" alt="screenshot"/>
