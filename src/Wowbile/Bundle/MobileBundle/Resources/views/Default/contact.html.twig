@@ -12,9 +12,9 @@
 	<p>08009 Barcelona (SPAIN)</p>
 	<dl class="info">
 		<dt>@!</dt>
-		<dd>{{ 'info@wowbile.eu' | mailto(null, true) | raw }}</dd>
+		<dd>{{ mobile_helper.configuration.contact_email | mailto(null, true) | raw }}</dd>
 		<dt>m!</dt>
-		<dd>{{ '+34 633 666 666' | callto | raw }}</dd>
+		<dd>{{ mobile_helper.configuration.contact_phone | callto | raw }}</dd>
 	</dl>
 	
 <ul data-role="listview" data-inset="true">

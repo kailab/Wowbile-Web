@@ -24,7 +24,7 @@
 <ul data-role="listview" data-inset="true">
 	<li data-role="list-divider" role="heading"></li>
 	{% for route,text in mobile_helper.mainMenuItems %}
-	<li><a href="{{ path(route) }}">{{ text | trans }}</a></li>
+	<li><a href="{{ path(route) }}">{{ text | trans | wowbilify }}</a></li>
    	{% endfor %}
 </ul>
 
@@ -32,32 +32,32 @@
 	<li data-role="list-divider" role="heading"></li>
 	{% if download and download.file.uri %}
 	<li><a rel="external" href="{{ path('frontend_download_file', {'id': download.id }) }}">
-		<h3>{{ download.name }}</h3>
-		<p>{{ download.description | striptags | truncate(40) }}</p>
+		<h3>{{ 'work!' | wowbilify }}</h3>
+		<p>{{ 'Download our corporate presentation.' | trans }}</p>
 	</a>
 	</li>
 	{% endif %}
 	<li><a href="{{ path('mobile_links') }}">
 		<h3>{{ 'links' | trans | wowbilify | raw }}</h3>
-		<p>{{ 'listing of related websites' | trans }}</p> 
+		<p>{{ 'Listing of related websites' | trans }}</p> 
 	</a></li>
 {% if locale_helper.code == "es" %}
 	<li><a href="{{ path('mobile_wowkipedia') }}">
 		<h3>{{ 'wowkipedia' | trans | wowbilify | raw }}</h3>
-		<p>{{ 'learn new words' | trans }}</p> 
+		<p>Nuestra wöwkipedia te ayudará a entender mejor los conceptos clave del marketing móvil.</p> 
 	</a></li>
 {% endif %}
 </ul>
 
-<ul data-role="listview" data-inset="true">
-	<li data-role="list-divider" role="heading">{{ 'follow us on...' | trans }}</li>
-	<li><a href="{{ frontend_helper.facebookUrl }}" rel="external">{{ 'facebook' | trans }}</a></li>
-	<li><a href="{{ frontend_helper.twitterUrl }}" rel="external">{{ 'twitter' | trans }}</a></li>
-	<li><a href="{{ frontend_helper.slideshareUrl }}" rel="external">{{ 'slideshare' | trans }}</a></li>
+<ul data-role="listview" data-inset="true" class="small">
+	<li data-role="list-divider" role="heading">{{ 'Follow us' | trans }}</li>
+	<li><a href="{{ frontend_helper.facebookUrl }}" rel="external"><h3>{{ 'facebook' | trans }}</h3></a></li>
+	<li><a href="{{ frontend_helper.twitterUrl }}" rel="external"><h3>{{ 'twitter' | trans }}</h3></a></li>
+{#	<li><a href="{{ frontend_helper.slideshareUrl }}" rel="external"><h3>{{ 'slideshare' | trans }}</h3></a></li> #}
 </ul>
 
 <div id="bottom" class="ui-body ui-body-c">
-	<a href="http://www.mmaspain.com/">
+	<a href="http://www.mmaspain.com/" rel="external">
 		<img src="{{ asset('bundles/wowbilemobile/images/logo_mma.png') }}"/>
 	</a>
 </div>

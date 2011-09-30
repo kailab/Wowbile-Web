@@ -8,7 +8,7 @@
 {% block content %}
 
 <div class="person">
-	<h2>Dionís Guzman</h2>
+	<h2>Dionís Guzmán</h2>
 	
 {% if locale_helper.code == "es" %}
 	<p>Los últimos años como Brand Manager en Samsung Mobile me acabaron de convencer
@@ -22,10 +22,10 @@
 {% endif %}
 	
 	<div data-role="collapsible" data-theme="b">
-		<h3>{{ 'More about %name%' | trans({'%name%': 'Dionís' }) }}</h3>
+		<h3>{{ 'Contact %name%' | trans({'%name%': 'Dionís' }) }}</h3>
 		<ul data-role="listview" data-inset="true">
-			<li>{{ 'dionis@wowbile.eu' | mailto('Send him an email', true) }}</a>
-			<li>{{ '+346375431' | callto('Call him on the phone') }}</a>
+			<li>{{ 'dionis@wowbile.eu' | mailto('Send him an email' | trans, true) }}</a>
+			<li>{{ '+346375431' | callto('Call him on the phone' | trans) }}</a>
 		</ul>
 	</div>
 </div>
@@ -42,10 +42,10 @@
 {% endif %}
 	
 	<div data-role="collapsible" data-theme="b">
-		<h3>{{ 'More about %name%' | trans({'%name%': 'Fran' }) }}</h3>
+		<h3>{{ 'Contact %name%' | trans({'%name%': 'Fran' }) }}</h3>
 		<ul data-role="listview" data-inset="true">
-			<li>{{ 'fran@wowbile.eu' | mailto('Send him an email', true) }}</a>
-			<li>{{ '+346375431' | callto('Call him on the phone') }}</a>
+			<li>{{ 'fran@wowbile.eu' | mailto('Send him an email' | trans, true) }}</a>
+			<li>{{ '+346375431' | callto('Call him on the phone' | trans) }}</a>
 		</ul>
 	</div>
 </div>
@@ -64,10 +64,10 @@
 {% endif %}
 	
 	<div data-role="collapsible" data-theme="b">
-		<h3>{{ 'More about %name%' | trans({'%name%': 'Toni' }) }}</h3>
+		<h3>{{ 'Contact %name%' | trans({'%name%': 'Toni' }) }}</h3>
 		<ul data-role="listview" data-inset="true">
-			<li>{{ 'toni@wowbile.eu' | mailto('Send him an email', true) }}</a>
-			<li>{{ '+346375431' | callto('Call him on the phone') }}</a>
+			<li>{{ 'toni@wowbile.eu' | mailto('Send him an email' | trans, true) }}</a>
+			<li>{{ '+346375431' | callto('Call him on the phone' | trans) }}</a>
 		</ul>
 	</div>
 </div>

@@ -12,6 +12,8 @@
                 <argument key="twitter">wowbile</argument>
                 <argument key="facebook">Wowbile/134570826606044</argument>
                 <argument key="slideshare">mmaspain</argument>
+                <argument key="contact_email">info@wowbile.eu</argument>
+                <argument key="contact_phone">+34 668 818 238</argument>
                 <argument type="collection" key="main_menu">
                 	<argument key="mobile_who">Who we are</argument>
                 	<argument key="mobile_concepts">What we do</argument>

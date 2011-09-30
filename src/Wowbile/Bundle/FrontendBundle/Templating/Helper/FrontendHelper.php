@@ -64,7 +64,8 @@ class FrontendHelper extends Helper
     public function wowbilify($str)
     {
 		$words = mb_split(" ", $str);
-		$letters = array('o'=>'ö', 'i'=>'ï', 'a'=>'ä', 'e'=>'ë', 'u' => 'ü');
+		// $letters = array('o'=>'ö', 'i'=>'ï', 'a'=>'ä', 'e'=>'ë', 'u' => 'ü');
+		$letters = array('o'=>'ö');
 
 		foreach($words as $k=>$word){
 			$found = false;

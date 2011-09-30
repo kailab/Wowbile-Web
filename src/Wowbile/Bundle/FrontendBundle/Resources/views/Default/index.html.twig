@@ -87,7 +87,7 @@
 	    	<dt><img src="{{ asset('bundles/wowbilefrontend/images/contact_ico_email.png') }}" alt="{{ 'Email' | trans }}"/></dt>
 	    	<dd>{{ frontend_helper.configuration.contact_email | mailto | raw }}</dd>
 	    	<dt><img src="{{ asset('bundles/wowbilefrontend/images/contact_ico_phone.png') }}" alt="{{ 'Telephone' | trans }}"/></dt>
-	    	<dd>{{ frontend_helper.configuration.contact_phone | mailto | raw }}</dd>
+	    	<dd>{{ frontend_helper.configuration.contact_phone | callto | raw }}</dd>
     	</dl>
 	</div>
 	{% endif %}

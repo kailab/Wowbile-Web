@@ -88,7 +88,6 @@
 	color: #FFFFFF;
 	display: block;
 	box-shadow: -2px 2px 3px #CCCCCC;
-	text-shadow: -1px 1px 1px #CCCCCC;
 	padding: 5px;
 }
 .block .button a {
@@ -150,6 +149,10 @@
 	color: #999;
 }
 
+.block.wowkipedia a {
+	text-decoration: none;
+}
+
 .block.wowkipedia p {
 	margin: 0 10px 0 10px;
 	font-size: 10pt;
@@ -179,7 +182,7 @@
 	font-family: Nunito, Arial, sans-serif;
 	float: left;
 	width: 585px;
-	font-size: 12pt;
+	font-size: 10pt;
 }
 
 .testimony .side {
@@ -197,7 +200,6 @@
 
 .testimony .text * {
 	font-family: Nunito, Arial, sans-serif !important;
-	font-size: 12pt !important;
 }
 
 .testimony .text blockquote {
