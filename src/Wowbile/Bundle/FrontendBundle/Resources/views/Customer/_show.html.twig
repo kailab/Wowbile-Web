@@ -32,7 +32,7 @@
 	</div>
 	{% if customer.links.count %}
 	<div class="links">
-	<h3>{{ 'Related links' | trans }}</h2>
+	<h3>{{ 'Related links' | trans }}</h3>
 	<ul>
 		{% for link in customer.links %}
 		<li><a href="{{ link.url }}">{{ link.title }}</a></li>

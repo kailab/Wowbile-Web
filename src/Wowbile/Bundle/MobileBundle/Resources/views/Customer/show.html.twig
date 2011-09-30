@@ -12,5 +12,18 @@
 <div class="description">
 {{ customer.description | raw }}
 </div>
+
+{% if customer.links.count %}
+<ul data-role="listview" data-inset="true">
+	<li data-role="list-divider" role="heading">
+		{{ 'Related links' | trans }}
+	</li>
+	{% for link in customer.links %}
+	<li><a href="{{ link.url }}" rel="external">
+		{{ link.title }}
+	</a></li>
+	{% endfor %}
+</ul>
+{% endif %}
  
 {% endblock %}
