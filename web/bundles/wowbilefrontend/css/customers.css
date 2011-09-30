@@ -59,16 +59,19 @@
 	background-position: right bottom;
 }
 
-.customer ul {
+.customer .content ul,
+.customer .links ul {
 	margin: 0 0 1em 0;
 	padding: 0;
 }
 
-.customer ul li ul {
+.customer .content ul li ul,
+.customer .links ul li ul {
 	margin-left: 10px;
 }
 
-.customer ul li {
+.customer .content ul li,
+.customer .links ul li {
 	margin: 0;
 	padding: 0 0 0 10px;
 	list-style: inside url(../images/bullet.png);
