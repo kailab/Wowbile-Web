@@ -150,58 +150,10 @@
 	color: #999;
 }
 
-.block.wowkipedia dl {
-	border-bottom: 1px solid #FFFFFF;
-	overflow: hidden;
-}
-
-.block.wowkipedia dd {
-	font-size: 30pt;
-	color: #33a3c9;
-	font-family: Nunito, Arial, sans-serif;
-	line-height: normal;
-	margin: 0;
-	text-align: left;
-	float : left;
-	clear: left;
-	padding: 0 5px 0 5px;
-	width: 40px;
-	border-top: 1px solid #FFFFFF;
-}
-
-.block.wowkipedia dt {
-	text-align: left;
-	border-top: 1px solid #FFFFFF;
-	float: left;
-	width: 130px;
-	padding: 10px 5px 10px 0px;
-}
-
-.block.wowkipedia .entry {
-	margin-bottom: 5px;
-}
-
-.block.wowkipedia .entry a {
-	text-decoration: none;
-	color: inherit;
-}
-
-.block.wowkipedia .entry p:first-child {
-	display: inline;
-}
-
-.block.wowkipedia .entry .name {
-	color: #33a3c9;
-	display: inline;
-	font-weight: bold;
-}
-
-.block.wowkipedia .entry .description {
-	display: inline;
-}
-
-.block dl.contact {
-
+.block.wowkipedia p {
+	margin: 0 10px 0 10px;
+	font-size: 10pt;
+	color: #000000;
 }
 
 .block dl.contact dt {

@@ -4,8 +4,12 @@
 	float: left;
 	height: 450px;
 	background-repeat: no-repeat;
-	background-position: right top;
 	position: relative;
+	background-position: 0px 0px;
+}
+
+.person:hover {
+	background-position: -250px 0px;
 }
 
 .person:first-child {
@@ -28,28 +32,16 @@
 	width: 50%;
 }
 
-#dguzman {
-	background-image: url(../images/who_dguzman.png);
-}
-
-#dguzman:hover {
-	background-image: url(../images/who_dguzman_focus.png);
+.person#dguzman {
+	background-image: url(../images/who_dguzman_sprite.png);
 }
 
 .person#ftellez {
-	background-image: url(../images/who_ftellez.png);
-}
-
-.person#ftellez:hover {
-	background-image: url(../images/who_ftellez_focus.png);
+	background-image: url(../images/who_ftellez_sprite.png);
 }
 
 .person#tgarcia {
-	background-image: url(../images/who_tgarcia.png);
-}
-
-.person#tgarcia:hover {
-	background-image: url(../images/who_tgarcia_focus.png);
+	background-image: url(../images/who_tgarcia_sprite.png);
 }
 
 .popup {

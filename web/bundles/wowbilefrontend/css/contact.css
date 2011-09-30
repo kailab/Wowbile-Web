@@ -103,7 +103,11 @@
 	text-align: center;
 	float: left;
 	background-repeat: no-repeat;
-	background-position: center bottom;
+	background-position: 0px bottom;
+}
+
+.person:hover {
+	background-position: -250px bottom;
 }
 
 .person:first-child {
@@ -142,29 +146,16 @@
 }
 
 .person#dguzman {
-		background-image: url(../images/contact_dguzman.png);
-}
-
-.person#dguzman:hover {
-		background-image: url(../images/contact_dguzman_focus.png);
+		background-image: url(../images/contact_dguzman_sprite.png);
 }
 
 .person#ftellez {
-		background-image: url(../images/contact_ftellez.png);
-}
-
-.person#ftellez:hover {
-		background-image: url(../images/contact_ftellez_focus.png);
+		background-image: url(../images/contact_ftellez_sprite.png);
 }
 
 .person#tgarcia {
-		background-image: url(../images/contact_tgarcia.png);
+		background-image: url(../images/contact_tgarcia_sprite.png);
 }
-
-.person#tgarcia:hover {
-		background-image: url(../images/contact_tgarcia_focus.png);
-}
-
 
 #footer_wrapper {
 	margin: 0 auto;
