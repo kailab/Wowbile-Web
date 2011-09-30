@@ -5,7 +5,8 @@
 	margin-bottom: 20px;
 }
 
-.customer h2 {
+.customer h2,
+.customer h3 {
 	margin-left: 35px;
 	color: #000000;
 }
@@ -58,19 +59,26 @@
 	background-position: right bottom;
 }
 
-.customer .content ul {
+.customer ul {
 	margin: 0 0 1em 0;
 	padding: 0;
 }
 
-.customer .content ul li ul {
+.customer ul li ul {
 	margin-left: 10px;
 }
 
-.concept .content ul li {
+.customer ul li {
 	margin: 0;
 	padding: 0 0 0 10px;
 	list-style: inside url(../bundles/wowbilefrontend/images/bullet.png);
+}
+.customer .links h3 {
+	margin-bottom: 0;
+}
+
+.customer .links ul {
+	margin: 0 0 0 35px;
 }
 
 .screenshots {

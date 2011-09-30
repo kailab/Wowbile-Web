@@ -334,5 +334,12 @@ class Customer extends TranslatedEntity
     {
         $this->slug = $slug;
     }
+    
+    public function fixLinks()
+    {
+    	foreach($this->getTranslations() as $trans){
+    		$trans->fixLinks();
+    	}
+    }
 }
 

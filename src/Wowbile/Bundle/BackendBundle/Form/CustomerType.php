@@ -8,7 +8,6 @@ class CustomerType extends BaseType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
-      
         $builder->add('url','url',array(
             'required'  => false
         ));

@@ -26,8 +26,18 @@
 	</div>
 	{% endif %}
 	<div class="content">
-	<blockquote>
-		{{ customer.description | raw }}
-	</blockquote>
+		<blockquote>
+			{{ customer.description | raw }}
+		</blockquote>
 	</div>
+	{% if customer.links.count %}
+	<div class="links">
+	<h3>{{ 'Related links' | trans }}</h2>
+	<ul>
+		{% for link in customer.links %}
+		<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+		{% endfor %}
+	</ul>
+	</div>
+	{% endif %}
 </div>

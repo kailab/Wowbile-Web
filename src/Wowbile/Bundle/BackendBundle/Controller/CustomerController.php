@@ -92,7 +92,7 @@ class CustomerController extends EntityCrudController
 	 */
 	public function downAction($id)
 	{
-		return parent::downAction($id);;
+		return parent::downAction($id);
 	}
 	
 	protected function saveEntity($entity)
@@ -100,6 +100,10 @@ class CustomerController extends EntityCrudController
 		$repo = $this->getRepository();
 		// remove old screenshots
 		$repo->deleteScreenshots($entity);
+		// fix links, setting translation
+		$entity->fixLinks();
+		// remove old links
+		$repo->deleteLinks($entity);
 		return parent::saveEntity($entity);
 	}
 	

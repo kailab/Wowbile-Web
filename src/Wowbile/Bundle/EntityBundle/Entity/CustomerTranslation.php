@@ -116,12 +116,18 @@ class CustomerTranslation
 
     public function setLinks($links)
     {
-    	foreach($links as $k=>$link){
-    		if(!$link->getTitle() || !$link->getUrl()){
-    			unset($links[$k]);
+    	$this->links->clear();
+    	foreach($links as $link){
+    		if($link->getTitle() && $link->getUrl()){
+    			$link->setTranslation($this);
+    			$this->links->add($link);
     		}
     	}
-        $this->links = $links;
+    }
+    
+    public function fixLinks()
+    {
+    	$this->setLinks($this->links->toArray());
     }
 
     public function getLinks()
