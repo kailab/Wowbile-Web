@@ -129,7 +129,7 @@ class WowkipediaEntry extends TranslatedEntity
     {
     	$name = $this->getName();
     	if(mb_strlen($name)>0){
-    		return mb_substr($name,0,1);
+    		return mb_strtolower(mb_substr($name,0,1));
     	}
     }
     
