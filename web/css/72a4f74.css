@@ -32,6 +32,10 @@
 	width: 50%;
 }
 
+.person .more {
+	cursor: pointer;
+}
+
 .person#dguzman {
 	background-image: url(../bundles/wowbilefrontend/images/who_dguzman_sprite.png);
 }
