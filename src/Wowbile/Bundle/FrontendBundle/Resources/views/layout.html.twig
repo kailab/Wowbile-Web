@@ -26,7 +26,7 @@
                     <ul id="languages">
                         {% for code,name in locale_helper.locales %}
                         <li {% if code == locale_helper.code %}class="selected"{% endif %}>
-                        <a href="{{ locale_helper.path(code) }}">{{ name | lower }}</a></li>
+                        <a href="{{ path('localized_homepage', {'_locale': code }) }}">{{ name | lower }}</a></li>
                         {% endfor %}
                     </ul>
                     <div id="logo">
@@ -36,7 +36,8 @@
                     </div>
                     <ul id="main_menu">
                     	{% for route,text in frontend_helper.mainMenuItems %}
-                        <li><a href="{{ path(route) }}" class="
+                    	
+                        <li><a href="{% if locale_helper.code == 'es' %}{{ path(route) }}{% endif %}" class="
                         {% if route == locale_helper.currentRouteName %}
                         selected
                         {% endif %}
@@ -67,6 +68,21 @@
                 {% endblock %}
             </div>
         </div>
+{% if frontend_helper.configuration.analytics %}
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', {{ frontend_helper.configuration.analytics | json_encode | raw }} ]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+{% endif %}
     </body>
 </html>
 
