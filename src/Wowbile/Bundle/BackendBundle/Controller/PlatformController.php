@@ -56,26 +56,26 @@ class PlatformController extends EntityCrudController
      * @Route("/platform/edit/{id}", name="backend_platform_edit")
      * @Template()
      */
-    public function editAction()
+    public function editAction($id)
     {
-    	return parent::editAction();
+    	return parent::editAction($id);
     }
     
     /**
      * @Route("/platform/delete/{id}", name="backend_platform_delete")
      * @Template()
      */
-    public function deleteAction()
+    public function deleteAction($id)
     {
-    	return parent::deleteAction();
+    	return parent::deleteAction($id);
     }
     
     /**
      * @Route("/platform/toggle/{id}", name="backend_platform_toggle")
      * @Template()
      */
-    public function toggleAction()
+    public function toggleAction($id)
     {
-    	return parent::toggleAction();
+    	return parent::toggleAction($id);
     }
 }

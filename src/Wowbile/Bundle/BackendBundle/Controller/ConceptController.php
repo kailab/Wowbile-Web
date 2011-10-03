@@ -54,27 +54,27 @@ class ConceptController extends EntityCrudController
 	* @Route("/concept/edit/{id}", name="backend_concept_edit")
 	* @Template()
 	*/
-	public function editAction()
+	public function editAction($id)
 	{
-		return parent::editAction();
+		return parent::editAction($id);
 	}
 	
 	/**
 	* @Route("/concept/delete/{id}", name="backend_concept_delete")
 	* @Template()
 	*/
-	public function deleteAction()
+	public function deleteAction($id)
 	{
-		return parent::deleteAction();
+		return parent::deleteAction($id);
 	}
 	
 	/**
 	* @Route("/concept/toggle/{id}", name="backend_concept_toggle")
 	* @Template()
 	*/
-	public function toggleAction()
+	public function toggleAction($id)
 	{
-		return parent::toggleAction();
+		return parent::toggleAction($id);
 	}
 	
 	/**
@@ -99,8 +99,7 @@ class ConceptController extends EntityCrudController
 	{
 		$repo = $this->getRepository();
 		// remove old screenshots
-		$repo->deleteScreenshots($entity);
-		
+		$repo->deleteScreenshots($entity);	
 		return parent::saveEntity($entity);
 	}
 	

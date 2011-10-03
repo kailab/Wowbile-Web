@@ -54,27 +54,27 @@ class CustomerController extends EntityCrudController
 	* @Route("/customer/edit/{id}", name="backend_customer_edit")
 	* @Template()
 	*/
-	public function editAction()
+	public function editAction($id)
 	{
-		return parent::editAction();
+		return parent::editAction($id);
 	}
 	
 	/**
 	* @Route("/customer/delete/{id}", name="backend_customer_delete")
 	* @Template()
 	*/
-	public function deleteAction()
+	public function deleteAction($id)
 	{
-		return parent::deleteAction();
+		return parent::deleteAction($id);
 	}
 	
 	/**
 	* @Route("/customer/toggle/{id}", name="backend_customer_toggle")
 	* @Template()
 	*/
-	public function toggleAction()
+	public function toggleAction($id)
 	{
-		return parent::toggleAction();
+		return parent::toggleAction($id);
 	}
 	
 	/**

@@ -56,27 +56,27 @@ class DownloadController extends EntityCrudController
 	* @Route("/download/edit/{id}", name="backend_download_edit")
 	* @Template()
 	*/
-	public function editAction()
+	public function editAction($id)
 	{
-		return parent::editAction();
+		return parent::editAction($id);
 	}
 	
 	/**
 	* @Route("/download/delete/{id}", name="backend_download_delete")
 	* @Template()
 	*/
-	public function deleteAction()
+	public function deleteAction($id)
 	{
-		return parent::deleteAction();
+		return parent::deleteAction($id);
 	}
 	
 	/**
 	* @Route("/download/toggle/{id}", name="backend_download_toggle")
 	* @Template()
 	*/
-	public function toggleAction()
+	public function toggleAction($id)
 	{
-		return parent::toggleAction();
+		return parent::toggleAction($id);
 	}
 	
 	/**

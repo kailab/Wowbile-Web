@@ -54,25 +54,25 @@ class LinkController extends EntityCrudController
 	* @Route("/link/edit/{id}", name="backend_link_edit")
 	* @Template()
 	*/
-	public function editAction()
+	public function editAction($id)
 	{
-		return parent::editAction();
+		return parent::editAction($id);
 	}
 	
 	/**
 	* @Route("/link/delete/{id}", name="backend_link_delete")
 	* @Template()
 	*/
-	public function deleteAction()
+	public function deleteAction($id)
 	{
-		return parent::deleteAction();
+		return parent::deleteAction($id);
 	}
 	
 	/**
 	* @Route("/link/toggle/{id}", name="backend_link_toggle")
 	* @Template()
 	*/
-	public function toggleAction()
+	public function toggleAction($id)
 	{
 		return parent::toggleAction();
 	}
@@ -81,9 +81,9 @@ class LinkController extends EntityCrudController
 	* @Route("/link/homepage/{id}", name="backend_link_homepage")
 	* @Template()
 	*/
-	public function homepageAction()
+	public function homepageAction($id)
 	{
-		$entity = $this->findById();
+		$entity = $this->findById($id);
 		$entity->setHomepage($entity->getHomepage() ? false : true);
 	
 		$em = $this->getEntityManager();

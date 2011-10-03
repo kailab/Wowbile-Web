@@ -7,6 +7,10 @@ use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * A listener that will check if the user agent is a mobile version
+ * and will redirect to a different bundle if so.
+ */
 class MobileVersion
 {
 	protected $bundle = null;
@@ -18,8 +22,8 @@ class MobileVersion
 	
 	public function isMobile(Request $request)
 	{
-		if($request->query->has("mobile_version")){
-			return true;
+		if($request->query->has("mobile")){
+			return $request->query->get("mobile") == true;
 		}
 		if($this->isMobileBot($request)){
 			return true;

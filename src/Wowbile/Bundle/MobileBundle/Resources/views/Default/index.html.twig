@@ -8,8 +8,8 @@
 	<img src="{{ asset('bundles/wowbilemobile/images/logo.png') }}"/>
 </div>
 
-<a href="{{ path('frontend_homepage') }}" rel="external" data-role="button" data-icon="back">
-{{ 'go to full website version' | trans }}
+<a href="{{ path('frontend_homepage', {'mobile': false }) }}" rel="external" data-role="button" data-icon="back">
+{{ 'go to full version' | trans }}
 </a>
 
 {% if testimony %}

@@ -54,27 +54,27 @@ class TestimonyController extends EntityCrudController
 	* @Route("/testimony/edit/{id}", name="backend_testimony_edit")
 	* @Template()
 	*/
-	public function editAction()
+	public function editAction($id)
 	{
-		return parent::editAction();
+		return parent::editAction($id);
 	}
 	
 	/**
 	* @Route("/testimony/delete/{id}", name="backend_testimony_delete")
 	* @Template()
 	*/
-	public function deleteAction()
+	public function deleteAction($id)
 	{
-		return parent::deleteAction();
+		return parent::deleteAction($id);
 	}
 	
 	/**
 	* @Route("/testimony/toggle/{id}", name="backend_testimony_toggle")
 	* @Template()
 	*/
-	public function toggleAction()
+	public function toggleAction($id)
 	{
-		return parent::toggleAction();
+		return parent::toggleAction($id);
 	}
 	
 }

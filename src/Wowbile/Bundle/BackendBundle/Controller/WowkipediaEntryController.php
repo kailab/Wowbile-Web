@@ -54,36 +54,36 @@ class WowkipediaEntryController extends EntityCrudController
 	* @Route("/wowkipedia/edit/{id}", name="backend_wowkipedia_entry_edit")
 	* @Template()
 	*/
-	public function editAction()
+	public function editAction($id)
 	{
-		return parent::editAction();
+		return parent::editAction($id);
 	}
 	
 	/**
 	* @Route("/wowkipedia/delete/{id}", name="backend_wowkipedia_entry_delete")
 	* @Template()
 	*/
-	public function deleteAction()
+	public function deleteAction($id)
 	{
-		return parent::deleteAction();
+		return parent::deleteAction($id);
 	}
 	
 	/**
 	* @Route("/wowkipedia/toggle/{id}", name="backend_wowkipedia_entry_toggle")
 	* @Template()
 	*/
-	public function toggleAction()
+	public function toggleAction($id)
 	{
-		return parent::toggleAction();
+		return parent::toggleAction($id);
 	}
 	
 	/**
 	* @Route("/wowkipedia/homepage/{id}", name="backend_wowkipedia_entry_homepage")
 	* @Template()
 	*/
-	public function homepageAction()
+	public function homepageAction($id)
 	{
-		$entity = $this->findById();
+		$entity = $this->findById($id);
 		$entity->setHomepage($entity->getHomepage() ? false : true);
 	
 		$em = $this->getEntityManager();

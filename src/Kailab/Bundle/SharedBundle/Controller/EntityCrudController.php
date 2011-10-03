@@ -117,10 +117,13 @@ abstract class EntityCrudController extends Controller
         return $this->redirect($url);
     }
     
-    protected function findById()
+    protected function findById($id=null)
     {
-    	$request = $this->get('request');
-    	$entity = $this->findEntity($request->attributes->get('id'));
+    	if($id === null){
+	    	$request = $this->get('request');
+	    	$id = $request->attributes->get('id');
+    	}
+    	$entity = $this->findEntity($id);
     	if(!$entity){
     		throw new NotFoundHttpException('The entity does not exist.');
     	}
@@ -158,9 +161,9 @@ abstract class EntityCrudController extends Controller
         ));
     }
 
-    public function editAction()
+    public function editAction($id)
     {
-        $entity = $this->findById();
+        $entity = $this->findById($id);
         $form = $this->getForm($entity);
         $request = $this->get('request');
         if($request->getMethod() == 'POST'){
@@ -175,9 +178,9 @@ abstract class EntityCrudController extends Controller
         ));
     }
 
-    public function deleteAction()
+    public function deleteAction($id)
     {
-        $entity = $this->findById();
+        $entity = $this->findById($id);
         $em = $this->getEntityManager();
         $em->remove($entity);
         $em->flush();
@@ -185,9 +188,9 @@ abstract class EntityCrudController extends Controller
         return $this->redirectCrud('index');
     }
 
-    public function toggleAction()
+    public function toggleAction($id)
     {
-    	$entity = $this->findById();
+    	$entity = $this->findById($id);
         $entity->setActive($entity->getActive() ? false : true);
 
         $em = $this->getEntityManager();
