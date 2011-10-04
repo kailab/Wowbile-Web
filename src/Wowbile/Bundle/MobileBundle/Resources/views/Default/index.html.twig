@@ -23,7 +23,7 @@
 
 <ul data-role="listview" data-inset="true">
 	<li data-role="list-divider" role="heading"></li>
-	{% for route,text in mobile_helper.mainMenuItems %}
+	{% for route,text in mobile_helper.getMainMenuItems(locale_helper.code) %}
 	<li><a href="{{ path(route) }}">{{ text | trans | wowbilify }}</a></li>
    	{% endfor %}
 </ul>

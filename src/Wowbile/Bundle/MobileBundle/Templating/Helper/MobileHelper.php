@@ -10,4 +10,14 @@ class MobileHelper extends FrontendHelper
 	{
 		return 'mobile';
 	}
+	
+	public function getMainMenuItems($code = null)
+	{
+		$items = parent::getMainMenuItems($code);
+		if($code != 'es' && $code !== null){
+			unset($items['mobile_concepts']);
+			unset($items['mobile_customers']);
+		}
+		return $items;
+	}
 }

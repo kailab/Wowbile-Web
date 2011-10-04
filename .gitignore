@@ -5,4 +5,4 @@ build/
 .buildpath
 .project
 .settings/
-
+app/config/local_parameters.yml
