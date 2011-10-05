@@ -1,0 +1,36 @@
+#error {
+	margin-top: 50px;
+	width: 300px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#error h1,
+#error h2 {
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+#error ul {
+	margin: 0;
+	padding: 0;
+}
+
+#error ul li {
+	display: block;
+	list-style: none;
+}
+
+#error .icon {
+	display: block;
+	margin: 0 auto;
+}
+
+#error .logo {
+	display: block;
+	margin: 0 auto;
+}
+
+#error .content {
+	height: 500px;
+}

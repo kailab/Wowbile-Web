@@ -1,0 +1,48 @@
+{% extends "WowbileFrontendBundle::simple_layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite'
+        'bundles/wowbilefrontend/css/error.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+
+
+<div id="error">
+	<div class="content">
+{% block icon %}
+		<img class="icon" src="{{ asset('bundles/wowbilefrontend/images/error_500.png') }}" />
+{% endblock %}
+
+{% block body %}
+		{% if title %}
+		<h1>{{ title }}</h1>
+		{% else %}	
+		<h1>{{ 'Unknown Error' | trans }}</h1>
+		{% endif %}
+		
+		{% if text %}
+		<p>{{ text }}</p>
+		{% else %}
+		<p>{{ 'It seems like the website crashed.' | trans }}
+		{{ "We're terribly sorry and are probably already working on it." | trans }}</p>
+		{% endif %}
+{% endblock %}
+		
+		<h2>{{ "What's next?" | trans }}</h2>
+		
+		<ul>
+			<li><a href="{{ path('homepage') }}">{{ 'Go to the homepage' | trans }}</a></li>
+			<li><a href="http://www.google.com/search?q=site:{{ app.request.host }}">{{ 'Search google' | trans }}</a></li>
+			<li>{{ frontend_helper.configuration.contact_email | mailto('Contact the administrator' | trans) | raw }}</a></li>
+		</ul>
+	</div>
+	
+	<img class="logo" src="{{ asset('bundles/wowbilefrontend/images/logo.png') }}" alt="{{ 'Wowbile - mobile marketing goes wow!' | trans }}"/>
+</div>
+
+{% endblock %}

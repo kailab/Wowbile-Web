@@ -1,0 +1,11 @@
+{% extends "WowbileFrontendBundle:Exception:error.html.twig" %}
+
+{% block icon %}
+	<img class="icon" src="{{ asset('bundles/wowbilefrontend/images/error_400.png') }}" />
+{% endblock %}
+
+{% block body %}		
+		<h1>{{ 'Page not found!' | trans }}</h1>
+		
+		<p>{{ 'The website you were looking for does not exist.' | trans }}</p>
+{% endblock %}
