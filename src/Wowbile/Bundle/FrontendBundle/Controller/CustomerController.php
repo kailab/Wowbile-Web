@@ -5,7 +5,7 @@ namespace Wowbile\Bundle\FrontendBundle\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Kailab\Bundle\SharedBundle\Routing\Annotation\LocalizedRoute as Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class CustomerController extends Controller

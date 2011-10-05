@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\FlattenException;
 use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Kailab\Bundle\SharedBundle\Routing\Annotation\LocalizedRoute as Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class ExceptionController extends Controller

@@ -7,21 +7,14 @@ mobile_homepage:
     pattern:  /m
     defaults: { _controller: "WowbileMobileBundle:Default:index" }
     
+backend:
+    prefix:   /admin
+    resource: "@WowbileBackendBundle/Resources/config/routing.yml"
 
 WowbileMobileBundle:
     resource: "@WowbileMobileBundle/Controller/"
     type:     annotation
     prefix:   /m
-
-localized_homepage:
-    pattern:  /{_locale}
-    defaults: { _controller: "WowbileFrontendBundle:Default:index" }
-    requirements:
-        _locale: ^..$
-    
-backend:
-    prefix:   /admin
-    resource: "@WowbileBackendBundle/Resources/config/routing.yml"
     
 WowbileBackendBundle:
     resource: "@WowbileBackendBundle/Controller/"
@@ -31,11 +24,3 @@ WowbileBackendBundle:
 WowbileFrontendBundle:
     resource: "@WowbileFrontendBundle/Controller/"
     type:     annotation
-    prefix:   /{_locale}
-    requirements:
-        _locale: ^..$ 
-
-# Internal routing configuration to handle ESI
-#_internal:
-#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
-#   prefix:   /_internal

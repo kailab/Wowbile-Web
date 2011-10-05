@@ -26,7 +26,7 @@
                     <ul id="languages">
                         {% for code,name in locale_helper.locales %}
                         <li {% if code == locale_helper.code %}class="selected"{% endif %}>
-                        <a href="{{ path('localized_homepage', {'_locale': code }) }}">{{ name | lower }}</a></li>
+                        <a href="{{ path('frontend_homepage', {'_locale': code }) }}">{{ name | lower }}</a></li>
                         {% endfor %}
                     </ul>
                     <div id="logo">
