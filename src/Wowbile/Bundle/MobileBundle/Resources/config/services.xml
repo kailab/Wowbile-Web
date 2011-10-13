@@ -14,6 +14,10 @@
                 <argument key="slideshare">mmaspain</argument>
                 <argument key="contact_email">info@wowbile.eu</argument>
                 <argument key="contact_phone">+34 668 818 238</argument>
+                <argument type="collection" key="analytics">
+                	<argument key="wowbile.eu">UA-11103681-2</argument>
+                	<argument key="wowbile.es">UA-26254798-1</argument>
+                </argument>
                 <argument type="collection" key="main_menu">
                 	<argument key="mobile_who">Who we are</argument>
                 	<argument key="mobile_concepts">What we do</argument>

@@ -90,7 +90,8 @@ class FrontendHelper extends Helper
     	return implode(" ", $words);
     }
     
-    public function getAnalytics($host=null){
+    public function getAnalytics($host=null)
+    {
     	$keys = $this->config['analytics'];
     	$key = null;
     	if(is_string($keys)){
