@@ -89,5 +89,23 @@ class FrontendHelper extends Helper
 		}
     	return implode(" ", $words);
     }
+    
+    public function getAnalytics($host=null){
+    	$keys = $this->config['analytics'];
+    	$key = null;
+    	if(is_string($keys)){
+    		$key = $keys;
+    	}else if(is_array($keys)){
+    		foreach($keys as $domain=>$k){
+    			if(strrpos($host,$domain) == strlen($host)-strlen($domain)){
+    				$key = $k;
+    				break;
+    			}
+    		}
+    	}
+    	if($key){
+    		return json_encode($key);
+    	}
+    }
 
 }

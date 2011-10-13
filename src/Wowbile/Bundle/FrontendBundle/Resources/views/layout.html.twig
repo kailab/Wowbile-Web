@@ -68,11 +68,12 @@
                 {% endblock %}
             </div>
         </div>
-{% if frontend_helper.configuration.analytics %}
+{% set analytics = frontend_helper.analytics(app.request.host) %}
+{% if analytics %}
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', {{ frontend_helper.configuration.analytics | json_encode | raw }} ]);
+  _gaq.push(['_setAccount', {{ analytics | raw }} ]);
   _gaq.push(['_trackPageview']);
 
   (function() {
