@@ -1,4 +1,6 @@
 parameters:
+    database_host:      'localhost' 
+	database_port:		null
     database_name:      'wowbile'
     database_user:      'root'
     database_password:  '' 
