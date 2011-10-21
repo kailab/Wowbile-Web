@@ -1,8 +1,9 @@
 web1:
+    name: web
 	shared_writable_dirs:
-		- app/cache
-		- app/logs
-		- app/upload
+		- /app/cache
+		- /app/logs
+		- /app/upload
 	 
 	document_root: /web
 	default_gateway: app.php
