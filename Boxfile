@@ -25,7 +25,7 @@ web1:
     php_session_autostart: Off
     php_short_open_tag: Off
     magic_quotes_gpc: Off
-    php_upload_max_filesize: 4M
+    php_upload_max_filesize: 10M
 
 db1:
     name: wowbile

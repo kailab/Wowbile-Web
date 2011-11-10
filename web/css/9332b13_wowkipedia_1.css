@@ -76,22 +76,6 @@ ul#letters {
 	clear: both;
 }
 
-#empty_group {
-	margin-top: 20px;
-	font-size: 120%;
-	font-style: italic;
-	background-color: #E5F2F6;
-	padding: 10px;
-}
-
-#empty_group p:first-child {
-	margin: 0 0 0 0;
-}
-
-#empty_group p {
-	margin: 10px 0 0 0;
-}
-
 .group .letter {
 	color: #33a3c9;
 	font-size: 60px;

@@ -137,6 +137,7 @@ form.entity .form_submit_row {
 #entity_list_actions {
     background-color: #e5f2f6;
     padding: 10px;
+	margin: 0;
 }
 
 #entity_list_actions li {

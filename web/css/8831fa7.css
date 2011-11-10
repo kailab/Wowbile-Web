@@ -20,7 +20,7 @@ ul.screenshots li {
     border: 1px solid #33A3C9;
     font-size: 0;
     text-indent: -99999px;
-    background-image: url(../bundles/wowbilebackend/images/delete.png);
+    background-image: url(../../bundles/wowbilebackend/images/delete.png);
     background-repeat: no-repeat;
     background-position: center center;
     cursor: pointer;

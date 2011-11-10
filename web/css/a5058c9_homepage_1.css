@@ -42,11 +42,14 @@
 	border-radius: 15px;
 	float: left;
 	margin-right: 15px;
-	text-align: center;
 	font-size: 10pt;
 	padding-bottom: 15px;
 	color: #777;
 	min-height: 200px;
+}
+
+.block p {
+	text-align: center;
 }
 
 .block .title {
@@ -87,9 +90,10 @@
 	background-repeat: repeat-x;
 	color: #FFFFFF;
 	display: block;
+	margin: 0 auto;
 	box-shadow: -2px 2px 3px #CCCCCC;
-	text-shadow: -1px 1px 1px #CCCCCC;
 	padding: 5px;
+	text-align: center;
 }
 .block .button a {
 	color: #FFFFFF;
@@ -119,82 +123,66 @@
 	font-weight: bold;
 }
 
-.block ul {
+.block.links ul {
 	margin: 0;
 	padding: 0;
 }
 
-.block ul li {
+.block.links ul li:first-child {
 	margin: 0;
-	padding: 0;
-	border-bottom: 1px solid #FFFFFF;
+}
+
+.block.links ul li {
+	margin: 10px 0 0 0;
 	list-style: none;
+	list-style-image: none; 
+	padding: 0;
+	text-align: center;
+}
+
+.block.links ul li.textlink {
 	padding: 2px;
 }
 
-.block ul li a {
+.block ul li.textlink a {
 	text-decoration: none;
 	color: #777;
 	font-weight: bold;
-	display: block;
-	background-image: url(../../bundles/wowbilefrontend/images/block_li_a_bg.png);
-	background-position: right center;
-	background-repeat: no-repeat;
-	margin-right: 5px;
+	font-family: Nunito, Arial, sans-serif;
+	font-size: 12pt;
 }
 
 .block ul li a:hover {
 	color: #999;
 }
-
-.block.wowkipedia dl {
-	border-bottom: 1px solid #FFFFFF;
-	overflow: hidden;
+.block.wowkipedia {
+	text-align: center;
 }
 
-.block.wowkipedia dd {
-	font-size: 30pt;
-	color: #33a3c9;
-	font-family: Nunito, Arial, sans-serif;
-	line-height: normal;
-	margin: 0;
-	text-align: left;
-	float : left;
-	clear: left;
-	padding: 0 5px 0 5px;
-	width: 40px;
-	border-top: 1px solid #FFFFFF;
-}
-
-.block.wowkipedia dt {
-	text-align: left;
-	border-top: 1px solid #FFFFFF;
-	float: left;
-	width: 130px;
-	padding: 10px 5px 10px 0px;
-}
-
-.block.wowkipedia .entry {
-	margin-bottom: 5px;
-}
-
-.block.wowkipedia .entry a {
+.block.wowkipedia a {
 	text-decoration: none;
-	color: inherit;
 }
 
-.block.wowkipedia .entry p:first-child {
-	display: inline;
+.block.wowkipedia p {
+	margin: 0 10px 0 10px;
+	font-size: 10pt;
+	color: #000000;
 }
 
-.block.wowkipedia .entry .name {
-	color: #33a3c9;
-	display: inline;
-	font-weight: bold;
+.block dl.contact dt {
+	float: left;
+	height: 60px;
+	line-height: 60px;
+	margin: 0 10px 10px 10px;
+	clear: left;
 }
 
-.block.wowkipedia .entry .description {
+.block dl.contact dd {
+	float: left;
 	display: inline;
+	height: 60px;
+	margin: 0 0 10px 0;
+	line-height: 60px;
 }
 
 .testimony {
@@ -204,7 +192,7 @@
 	font-family: Nunito, Arial, sans-serif;
 	float: left;
 	width: 585px;
-	font-size: 12pt;
+	font-size: 10pt;
 }
 
 .testimony .side {
@@ -220,6 +208,10 @@
 	background-position: left top;
 }
 
+.testimony .text * {
+	font-family: Nunito, Arial, sans-serif !important;
+}
+
 .testimony .text blockquote {
 	margin: 0;
 	background-image: url(../../bundles/wowbilefrontend/images/quote_end.png);
@@ -227,7 +219,8 @@
 	background-position: right bottom;
 }
 
-.testimony .text strong {
+.testimony .text strong,
+.testimony .text b {
 	font-size: 120%;
 	color: #33a3c9;
 }

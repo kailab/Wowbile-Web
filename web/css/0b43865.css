@@ -146,15 +146,15 @@
 }
 
 .person#dguzman {
-		background-image: url(../bundles/wowbilefrontend/images/contact_dguzman_sprite.png);
+		background-image: url(../../bundles/wowbilefrontend/images/contact_dguzman_sprite.png);
 }
 
 .person#ftellez {
-		background-image: url(../bundles/wowbilefrontend/images/contact_ftellez_sprite.png);
+		background-image: url(../../bundles/wowbilefrontend/images/contact_ftellez_sprite.png);
 }
 
 .person#tgarcia {
-		background-image: url(../bundles/wowbilefrontend/images/contact_tgarcia_sprite.png);
+		background-image: url(../../bundles/wowbilefrontend/images/contact_tgarcia_sprite.png);
 }
 
 #footer_wrapper {

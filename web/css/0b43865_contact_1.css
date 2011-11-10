@@ -10,7 +10,7 @@
 
 #map_canvas {
 	width: 515px;
-	height: 120px;
+	height: 240px;
 	border: 1px solid #33A3C9;
 	float: right;
 	margin-bottom: 10px;
@@ -103,7 +103,11 @@
 	text-align: center;
 	float: left;
 	background-repeat: no-repeat;
-	background-position: center bottom;
+	background-position: 0px bottom;
+}
+
+.person:hover {
+	background-position: -250px bottom;
 }
 
 .person:first-child {
@@ -126,49 +130,32 @@
 	color: #33A3C9;
 	font-size: x-small;
 }
+.person .info dl{
+	line-height: 20px;
+}
 
 .person .info dt {
 	display: inline;
 	float: none;
+		line-height: 20px;
 }
 
 .person .info dd {
 	display: inline;
-}
-
-.person .info dd:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    margin-bottom: 2px;
-    visibility: hidden;
+		line-height: 20px;
 }
 
 .person#dguzman {
-		background-image: url(../../bundles/wowbilefrontend/images/contact_dguzman.png);
-}
-
-.person#dguzman:hover {
-		background-image: url(../../bundles/wowbilefrontend/images/contact_dguzman_focus.png);
+		background-image: url(../../bundles/wowbilefrontend/images/contact_dguzman_sprite.png);
 }
 
 .person#ftellez {
-		background-image: url(../../bundles/wowbilefrontend/images/contact_ftellez.png);
-}
-
-.person#ftellez:hover {
-		background-image: url(../../bundles/wowbilefrontend/images/contact_ftellez_focus.png);
+		background-image: url(../../bundles/wowbilefrontend/images/contact_ftellez_sprite.png);
 }
 
 .person#tgarcia {
-		background-image: url(../../bundles/wowbilefrontend/images/contact_tgarcia.png);
+		background-image: url(../../bundles/wowbilefrontend/images/contact_tgarcia_sprite.png);
 }
-
-.person#tgarcia:hover {
-		background-image: url(../../bundles/wowbilefrontend/images/contact_tgarcia_focus.png);
-}
-
 
 #footer_wrapper {
 	margin: 0 auto;

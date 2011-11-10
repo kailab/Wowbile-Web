@@ -42,16 +42,19 @@
 	border-radius: 15px;
 	float: left;
 	margin-right: 15px;
-	text-align: center;
 	font-size: 10pt;
 	padding-bottom: 15px;
 	color: #777;
 	min-height: 200px;
 }
 
+.block p {
+	text-align: center;
+}
+
 .block .title {
 	background-color: #33A3C9;
-	background-image: url(../bundles/wowbilefrontend/images/block_title_bg.png);
+	background-image: url(../../bundles/wowbilefrontend/images/block_title_bg.png);
 	background-repeat: repeat-x;
 	color: #FFFFFF;
 	border-radius: 15px 15px 0 0;
@@ -83,12 +86,14 @@
 
 .block .button {
 	background-color: #33a3c9;
-	background-image: url(../bundles/wowbilefrontend/images/block_button_bg.png);
+	background-image: url(../../bundles/wowbilefrontend/images/block_button_bg.png);
 	background-repeat: repeat-x;
 	color: #FFFFFF;
 	display: block;
+	margin: 0 auto;
 	box-shadow: -2px 2px 3px #CCCCCC;
 	padding: 5px;
+	text-align: center;
 }
 .block .button a {
 	color: #FFFFFF;
@@ -103,7 +108,7 @@
 
 .block .button.download a {
 	display: block;
-	background-image: url(../bundles/wowbilefrontend/images/block_button_download.png);
+	background-image: url(../../bundles/wowbilefrontend/images/block_button_download.png);
 	background-repeat: no-repeat;
 	background-position: right center;
 }
@@ -129,8 +134,10 @@
 
 .block.links ul li {
 	margin: 10px 0 0 0;
-	padding: 0;
 	list-style: none;
+	list-style-image: none; 
+	padding: 0;
+	text-align: center;
 }
 
 .block.links ul li.textlink {
@@ -147,6 +154,9 @@
 
 .block ul li a:hover {
 	color: #999;
+}
+.block.wowkipedia {
+	text-align: center;
 }
 
 .block.wowkipedia a {
@@ -193,7 +203,7 @@
 .testimony .text {
 	margin: 0 0 1em 155px;
 	padding: 0 0 0 35px;
-	background-image: url(../bundles/wowbilefrontend/images/quote_start.png);
+	background-image: url(../../bundles/wowbilefrontend/images/quote_start.png);
 	background-repeat: no-repeat;
 	background-position: left top;
 }
@@ -204,7 +214,7 @@
 
 .testimony .text blockquote {
 	margin: 0;
-	background-image: url(../bundles/wowbilefrontend/images/quote_end.png);
+	background-image: url(../../bundles/wowbilefrontend/images/quote_end.png);
 	background-repeat: no-repeat;
 	background-position: right bottom;
 }

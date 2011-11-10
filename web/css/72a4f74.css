@@ -37,15 +37,15 @@
 }
 
 .person#dguzman {
-	background-image: url(../bundles/wowbilefrontend/images/who_dguzman_sprite.png);
+	background-image: url(../../bundles/wowbilefrontend/images/who_dguzman_sprite.png);
 }
 
 .person#ftellez {
-	background-image: url(../bundles/wowbilefrontend/images/who_ftellez_sprite.png);
+	background-image: url(../../bundles/wowbilefrontend/images/who_ftellez_sprite.png);
 }
 
 .person#tgarcia {
-	background-image: url(../bundles/wowbilefrontend/images/who_tgarcia_sprite.png);
+	background-image: url(../../bundles/wowbilefrontend/images/who_tgarcia_sprite.png);
 }
 
 .popup {
@@ -72,7 +72,7 @@
 	right: 0;
 	width: 24px;
 	height: 24px;
-	background-image: url(../bundles/wowbilefrontend/images/popup_close.png);
+	background-image: url(../../bundles/wowbilefrontend/images/popup_close.png);
 	background-repeat: no-repeat;
 	background-position: center center;
 	top: -10px;
@@ -81,7 +81,7 @@
 }
 
 .popup .close:hover{
-	background-image: url(../bundles/wowbilefrontend/images/popup_close_focus.png);
+	background-image: url(../../bundles/wowbilefrontend/images/popup_close_focus.png);
 }
 
 .info {

@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f5f6f8;
-    background-image: url(../bundles/wowbilefrontend/images/bg.png);
+    background-image: url(../../bundles/wowbilefrontend/images/bg.png);
     background-repeat: repeat-x;
 }
 
@@ -30,7 +30,7 @@ h1, h2, h3, h4, h5 {
 ul li {
 	margin: 0;
 	padding: 0;
-	list-style: url(../bundles/wowbilefrontend/images/bullet.png) square;
+	list-style: url(../../bundles/wowbilefrontend/images/bullet.png) square;
 }
 
 #body_wrapper {
@@ -105,7 +105,7 @@ ul#main_menu {
 
 #main_menu .selected {
     background-color: #33a3c9;
-    background-image: url(../bundles/wowbilefrontend/images/main_menu_selected_bg.png);
+    background-image: url(../../bundles/wowbilefrontend/images/main_menu_selected_bg.png);
     background-repeat: repeat-x;
 }
 

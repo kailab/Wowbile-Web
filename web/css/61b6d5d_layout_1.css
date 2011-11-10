@@ -139,8 +139,40 @@ ul#main_menu {
 
 #footer {
     padding: 0.5em;
+    height: 15px;
+    line-height: 15px;
+}
+
+#footer a {
+	color: #FFFFFF;
+}
+
+#footer ul {
+	margin: 0;
+	padding: 0;
+}
+
+#footer ul li {
+	float: right;
+	list-style: none;
 }
 
 #main_wrapper {
     overflow: hidden;
+}
+
+.flash_info {
+	margin-top: 20px;
+	font-size: 120%;
+	font-style: italic;
+	background-color: #E5F2F6;
+	padding: 10px;
+}
+
+.flash_info p:first-child {
+	margin: 0 0 0 0;
+}
+
+.flash_info p {
+	margin: 10px 0 0 0;
 }

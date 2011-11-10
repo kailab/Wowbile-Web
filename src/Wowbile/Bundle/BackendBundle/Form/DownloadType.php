@@ -14,8 +14,8 @@ class DownloadType extends BaseType
         ));
         $builder->add('type', 'choice', array(
         	'choices'   => array(
-            	'ppt'    => 'PPT',
-                'other'   => 'Other',
+            	'homepage'    	=> 'Homepage',
+                'other'   		=> 'Other',
         	)
         ));
         $builder->add('language', 'choice', array(

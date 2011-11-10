@@ -10,7 +10,7 @@ class DownloadRepository extends EntityRepository
 {	
 	public function findForHomepage($locale=null)
 	{
-		$sql = "WHERE e.active = true AND e.type = 'ppt'";
+		$sql = "WHERE e.active = true AND e.type = 'homepage'";
 		if($locale){
 			$sql .= " AND ( e.language IS NULL OR e.language = '' OR e.language = :language )";
 		}

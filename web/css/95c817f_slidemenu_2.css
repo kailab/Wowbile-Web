@@ -1,0 +1,93 @@
+
+.slidemenu {
+	margin-bottom: 20px;
+	border-bottom: 1px solid #C0C0C0;
+}
+
+.slidemenu ul {
+	margin: 0;
+	padding: 13px 0;
+	height: 28px;
+	position: absolute;
+	width: 100%;
+}
+
+.slidemenu .scroll {
+	width: 750px;
+	height: 48px;
+	overflow: hidden;
+	position: relative;
+}
+
+.slidemenu ul li {
+	float: left;
+	list-style: none;
+	color: #C0C0C0;
+	border-left: 2px solid #C0C0C0;
+	margin: 0;
+	font-family: Nunito, Arial, sans-serif;
+	font-size: 16px;
+	padding: 0 10px;
+	text-align: center;
+	cursor: pointer;
+	position:relative;
+}
+
+.slidemenu ul li:first-child {
+	margin-left: 0;
+	padding-left: 0;
+	border-left: 0;
+}
+
+.slidemenu .left {
+	float: left;
+	cursor: pointer;
+	height: 48px;
+	background-image: url(../../bundles/wowbilefrontend/images/arrow_left.png);
+	background-repeat: no-repeat;
+	background-position: left center; 
+	width: 25px;
+}
+
+.slidemenu .right {
+	float: right;
+	cursor: pointer;
+	height: 48px;
+	width: 25px;
+	background-position: right center;
+	background-image: url(../../bundles/wowbilefrontend/images/arrow_right.png);
+	background-repeat: no-repeat;
+}
+
+.slidemenu .gradient_left {
+	width: 90px;
+	height: 48px;
+	position: absolute;
+	left: 0;
+	z-index: 2;
+	background-image: url(../../bundles/wowbilefrontend/images/slidemenu_gradient_left.png);
+	backgroun-repeat: repeat-x;
+}
+
+.slidemenu .gradient_right {
+	width: 90px;
+	height: 48px;
+	position: absolute;
+	right: 0;
+	z-index: 2;
+	background-image: url(../../bundles/wowbilefrontend/images/slidemenu_gradient_right.png);
+	backgroun-repeat: repeat-x;
+}
+
+.slidemenu ul li.selected {
+	color: #33A3C9;
+}
+
+.slidemenu ul li a {
+	color: #C0C0C0;
+	text-decoration: none;
+}
+
+.slidemenu ul li.selected a {
+	color: #33A3C9;
+}
